@@ -1,3 +1,9 @@
+// Skip the annoying intro page
+if (location.pathname == '/mmorpg/free-multiplayer-online-role-playing-game.php') {
+	location.href = 'http://www.tibia.com/news/?subtopic=latestnews';
+	return;
+}
+
 var currentTable;
 function $table(header, callback) {
 	var tables = document.querySelectorAll('table');

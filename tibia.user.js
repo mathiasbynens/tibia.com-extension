@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name Tibia world and house linker
 // @description Enhance the character info pages on Tibia.com.
-// @version 2012-09-01 19:51:25
+// @version 2012-10-20 15:25:40
 // @link http://mths.be/tibiauserjs
 // @author Mathias Bynens <http://mathiasbynens.be/>
+// @match http://www.tibia.com/mmorpg/free-multiplayer-online-role-playing-game.php
 // @match http://www.tibia.com/community/?subtopic=character*
 // @match http://www.tibia.com/community/?*name=*
 // ==/UserScript==
@@ -1002,6 +1003,12 @@ var houses = {
 		'Radiant Plaza 4': 37016
 	}
 };
+
+// Skip the annoying intro page
+if (location.pathname == '/mmorpg/free-multiplayer-online-role-playing-game.php') {
+	location.href = 'http://www.tibia.com/news/?subtopic=latestnews';
+	return;
+}
 
 var currentTable;
 function $table(header, callback) {

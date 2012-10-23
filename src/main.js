@@ -89,8 +89,8 @@ if (elCharacters) {
 
 		// Link to House detail page
 		$cell('House', function(element, text) {
-			var city = text.match(/\(([^\)]+)\)/)[1];
-			var houseName = text.match(/^(.+)\x20\(/)[1];
+			var city = text.match(/\(([^\)]+)\)\x20is/)[1];
+			var houseName = text.match(/^(.+)\x20\([^\)]+\)\x20is/)[1];
 			var houseID = buildings.houses[city][houseName];
 			element.classList.add('block-links');
 			return text.link('http://www.tibia.com/community/?subtopic=houses&amp;page=view&amp;world=' + encode(world) + '&amp;town=' + encode(city) + '&amp;houseid=' + encode(houseID));

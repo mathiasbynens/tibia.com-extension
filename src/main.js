@@ -1,5 +1,5 @@
 // Skip the annoying intro page
-if (location.pathname == '/mmorpg/free-multiplayer-online-role-playing-game.php') {
+if (/^\/mmorpg\/free\-multiplayer\-online\-role\-playing\-game\.php/.test(location.pathname)) {
 	location.href = 'http://www.tibia.com/news/?subtopic=latestnews';
 	return;
 }

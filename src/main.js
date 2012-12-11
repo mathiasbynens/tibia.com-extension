@@ -65,10 +65,23 @@ if (elCharacters) {
 	// Character information table
 	$table('Character Information', function() {
 
-		// Account for “Foo, will be deleted at Oct 1 2012, 17:00:00 CEST”
-		var charName = $cell('Name').innerText.match('^[^,]+')[0];
+		var charCell;
+		var charName;
+		var charNameEncoded;
+		$cell('Name', function(element, text) {
+			// Account for “Foo, will be deleted at Oct 1 2012, 17:00:00 CEST”
+			charCell = element;
+			charName = text.match('^[^,]+')[0];
+			charNameEncoded = encode(charName);
+			return charName + ' <span style="font-size: 90%;">(' + [
+				'PvP history'.link('http://www.tibiaring.com/char.php?lang=en&c=' + charNameEncoded),
+				'online time'.link('http://tibiafanstats.com/timecounter.php?player=' + charNameEncoded),
+				'experience history'.link('http://tibiafanstats.com/xphist.php?player=' + charNameEncoded)
+			].join(', ') + ')</span>';
+		});
+		charCell.querySelector('a').focus();
 
-		var queryString = '?subtopic=characters&name=' + encode(charName);
+		var queryString = '?subtopic=characters&name=' + charNameEncoded;
 		if (location.search.indexOf(queryString) == -1) {
 			history.replaceState({}, charName, queryString);
 		}
@@ -78,14 +91,11 @@ if (elCharacters) {
 
 		// World name
 		var world;
-		var worldCell;
 		$cell('World', function(element, text) {
 			world = text;
-			worldCell = element;
 			element.classList.add('block-links');
 			return text.link('http://www.tibia.com/community/?subtopic=worlds&amp;order=level_desc&amp;world=' + encode(text));
 		});
-		worldCell.querySelector('a').focus();
 
 		// Link to House detail page
 		$cell('House', function(element, text) {

@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name Tibia world and house linker
 // @description Enhance the character info pages on Tibia.com.
-// @version 2012-12-11 20:11:45
+// @version 2012-12-15 20:35:03
 // @link http://mths.be/tibiauserjs
 // @author Mathias Bynens <http://mathiasbynens.be/>
 // @match http://www.tibia.com/mmorpg/free-multiplayer-online-role-playing-game.php*
+// @match https://secure.tibia.com/mmorpg/free-multiplayer-online-role-playing-game.php*
 // @match http://www.tibia.com/community/?subtopic=character*
 // @match http://www.tibia.com/community/?*name=*
 // @match http://www.tibia.com/community/?*GuildName=*

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Tibia world and house linker
 // @description Enhance the character info pages on Tibia.com.
-// @version 2012-12-15 20:35:03
+// @version 2013-01-11 09:06:03
 // @link http://mths.be/tibiauserjs
 // @author Mathias Bynens <http://mathiasbynens.be/>
 // @match http://www.tibia.com/mmorpg/free-multiplayer-online-role-playing-game.php*
@@ -1167,6 +1167,12 @@ if (elCharacters) {
 		var world;
 		$cell('World', function(element, text) {
 			world = text;
+			element.classList.add('block-links');
+			return text.link('http://www.tibia.com/community/?subtopic=worlds&amp;order=level_desc&amp;world=' + encode(text));
+		});
+
+		// Former world name (if any)
+		$cell('Former World', function(element, text) {
 			element.classList.add('block-links');
 			return text.link('http://www.tibia.com/community/?subtopic=worlds&amp;order=level_desc&amp;world=' + encode(text));
 		});

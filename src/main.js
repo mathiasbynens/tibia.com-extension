@@ -97,6 +97,12 @@ if (elCharacters) {
 			return text.link('http://www.tibia.com/community/?subtopic=worlds&amp;order=level_desc&amp;world=' + encode(text));
 		});
 
+		// Former world name (if any)
+		$cell('Former World', function(element, text) {
+			element.classList.add('block-links');
+			return text.link('http://www.tibia.com/community/?subtopic=worlds&amp;order=level_desc&amp;world=' + encode(text));
+		});
+
 		// Link to House detail page
 		$cell('House', function(element, text) {
 			var city = text.match(/\(([^\)]+)\)\x20is/)[1];

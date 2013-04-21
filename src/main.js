@@ -145,7 +145,7 @@ if (elCharacters) {
 // Enhance the guild page
 var guildContent = document.querySelector('#guilds .BoxContent');
 if (guildContent) {
-	guildContent.innerHTML = guildContent.innerHTML.replace(/Their home on ([a-zA-Z]+) is ([a-zA-Z\x20]+)./, function($0, $1, $2) {
+	guildContent.innerHTML = guildContent.innerHTML.replace(/Their home on ([a-zA-Z]+) is ([a-zA-Z\x20,]+)./, function($0, $1, $2) {
 		return $0.link('http://www.tibia.com/community/?subtopic=houses&amp;world=' + $1 + '&amp;page=view&amp;houseid=' + buildings.guildhalls[$2]);
 	});
 }

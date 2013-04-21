@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Tibia world and house linker
 // @description Enhance the character info pages on Tibia.com.
-// @version 2013-01-11 09:06:03
+// @version 2013-04-21 14:30:31
 // @link http://mths.be/tibiauserjs
 // @author Mathias Bynens <http://mathiasbynens.be/>
 // @match http://www.tibia.com/mmorpg/free-multiplayer-online-role-playing-game.php*
@@ -10,7 +10,6 @@
 // @match http://www.tibia.com/community/?*name=*
 // @match http://www.tibia.com/community/?*GuildName=*
 // ==/UserScript==
-
 (function() {
 
 var buildings = {
@@ -1219,9 +1218,10 @@ if (elCharacters) {
 // Enhance the guild page
 var guildContent = document.querySelector('#guilds .BoxContent');
 if (guildContent) {
-	guildContent.innerHTML = guildContent.innerHTML.replace(/Their home on ([a-zA-Z]+) is ([a-zA-Z\x20]+)./, function($0, $1, $2) {
+	guildContent.innerHTML = guildContent.innerHTML.replace(/Their home on ([a-zA-Z]+) is ([a-zA-Z\x20,]+)./, function($0, $1, $2) {
 		return $0.link('http://www.tibia.com/community/?subtopic=houses&amp;world=' + $1 + '&amp;page=view&amp;houseid=' + buildings.guildhalls[$2]);
 	});
 }
+
 
 }());

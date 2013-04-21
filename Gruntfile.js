@@ -25,11 +25,8 @@ module.exports = function(grunt) {
 					'// @version <%= grunt.template.today("yyyy-mm-dd HH:MM:ss") %>',
 					'// @link http://mths.be/tibiauserjs',
 					'// @author Mathias Bynens <http://mathiasbynens.be/>',
-					'// @match http://www.tibia.com/mmorpg/free-multiplayer-online-role-playing-game.php*',
-					'// @match https://secure.tibia.com/mmorpg/free-multiplayer-online-role-playing-game.php*',
-					'// @match http://www.tibia.com/community/?subtopic=character*',
-					'// @match http://www.tibia.com/community/?*name=*',
-					'// @match http://www.tibia.com/community/?*GuildName=*',
+					'// @match http://*.tibia.com/*',
+					'// @match https://*.tibia.com/*',
 					'// ==/UserScript=='
 				].join('\n') + '\n'
 			},

@@ -1,14 +1,11 @@
 // ==UserScript==
 // @name Tibia world and house linker
 // @description Enhance the character info pages on Tibia.com.
-// @version 2013-04-21 14:30:31
+// @version 2013-04-21 15:02:24
 // @link http://mths.be/tibiauserjs
 // @author Mathias Bynens <http://mathiasbynens.be/>
-// @match http://www.tibia.com/mmorpg/free-multiplayer-online-role-playing-game.php*
-// @match https://secure.tibia.com/mmorpg/free-multiplayer-online-role-playing-game.php*
-// @match http://www.tibia.com/community/?subtopic=character*
-// @match http://www.tibia.com/community/?*name=*
-// @match http://www.tibia.com/community/?*GuildName=*
+// @match http://*.tibia.com/*
+// @match https://*.tibia.com/*
 // ==/UserScript==
 (function() {
 
@@ -1129,12 +1126,6 @@ if (elCharacters) {
 		}
 	}
 
-
-	// Apply Fitts’s Law: increase clickable area for some links
-	var style = document.createElement('style');
-	style.innerHTML = '.block-links a { display: block; }';
-	document.head.appendChild(style);
-
 	// Character information table
 	$table('Character Information', function() {
 
@@ -1222,6 +1213,22 @@ if (guildContent) {
 		return $0.link('http://www.tibia.com/community/?subtopic=houses&amp;world=' + $1 + '&amp;page=view&amp;houseid=' + buildings.guildhalls[$2]);
 	});
 }
+
+// Remove social media bullshit
+var elNetworkBox = document.getElementById('NetworksBox');
+if (elNetworkBox) {
+	elNetworkBox.parentNode.removeChild(elNetworkBox);
+}
+
+// Insert some CSS
+var style = document.createElement('style');
+style.innerHTML = [
+	// Apply Fitts’s Law: increase clickable area for some links
+	'.block-links a { display: block; }',
+	// Hide the Facebook login button as it’s a very bad idea to link accounts
+	'#FB_LoginButton { display: none; }'
+].join('');
+document.head.appendChild(style);
 
 
 }());

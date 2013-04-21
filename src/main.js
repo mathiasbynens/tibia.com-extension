@@ -56,12 +56,6 @@ if (elCharacters) {
 		}
 	}
 
-
-	// Apply Fitts’s Law: increase clickable area for some links
-	var style = document.createElement('style');
-	style.innerHTML = '.block-links a { display: block; }';
-	document.head.appendChild(style);
-
 	// Character information table
 	$table('Character Information', function() {
 
@@ -149,3 +143,19 @@ if (guildContent) {
 		return $0.link('http://www.tibia.com/community/?subtopic=houses&amp;world=' + $1 + '&amp;page=view&amp;houseid=' + buildings.guildhalls[$2]);
 	});
 }
+
+// Remove social media bullshit
+var elNetworkBox = document.getElementById('NetworksBox');
+if (elNetworkBox) {
+	elNetworkBox.parentNode.removeChild(elNetworkBox);
+}
+
+// Insert some CSS
+var style = document.createElement('style');
+style.innerHTML = [
+	// Apply Fitts’s Law: increase clickable area for some links
+	'.block-links a { display: block; }',
+	// Hide the Facebook login button as it’s a very bad idea to link accounts
+	'#FB_LoginButton { display: none; }'
+].join('');
+document.head.appendChild(style);

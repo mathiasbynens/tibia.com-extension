@@ -150,12 +150,35 @@ if (elNetworkBox) {
 	elNetworkBox.parentNode.removeChild(elNetworkBox);
 }
 
+// Improve forum usability
+if (location.hostname == 'forum.tibia.com') {
+
+	var regexThreadID = /^Thread\x20#/;
+	var threadID = '';
+	each(document.querySelectorAll('b'), function(el) {
+		var text = el.innerText;
+		if (regexThreadID.test(text)) {
+			threadID = text.replace(regexThreadID, '');
+			return false; // break
+		}
+	});
+
+	each(document.querySelectorAll('a[name^="post"]'), function(el) {
+		var postID = el.name.replace(/^post/, '');
+		el.href = 'http://forum.tibia.com/forum/?action=thread&threadid=' + threadID + '&postid=' + postID + '#post' + postID;
+		el.innerHTML = '\xB6';
+		el.className = 'permalink';
+	});
+
+}
+
 // Insert some CSS
 var style = document.createElement('style');
 style.innerHTML = [
 	// Apply Fitts’s Law: increase clickable area for some links
 	'.block-links a { display: block; }',
 	// Hide the Facebook login button as it’s a very bad idea to link accounts
-	'#FB_LoginButton { display: none; }'
+	'#FB_LoginButton { display: none; }',
+	'.permalink { position: absolute; top: 5px; right: 5px; z-index: 1; }'
 ].join('');
 document.head.appendChild(style);

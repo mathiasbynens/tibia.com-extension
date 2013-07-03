@@ -20,8 +20,8 @@ module.exports = function(grunt) {
 			'options': {
 				'banner': [
 					'// ==UserScript==',
-					'// @name Tibia world and house linker',
-					'// @description Enhance the character info pages on Tibia.com.',
+					'// @name Tibia.com enhancer',
+					'// @description Enhance Tibia.com.',
 					'// @version <%= grunt.template.today("yyyy-mm-dd HH:MM:ss") %>',
 					'// @link http://mths.be/tibiauserjs',
 					'// @author Mathias Bynens <http://mathiasbynens.be/>',

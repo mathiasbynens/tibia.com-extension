@@ -88,13 +88,13 @@ if (elCharacters) {
 		$cell('World', function(element, text) {
 			world = text;
 			element.classList.add('block-links');
-			return text.link('http://www.tibia.com/community/?subtopic=worlds&amp;order=level_desc&amp;world=' + encode(text));
+			return text.link('/community/?subtopic=worlds&amp;order=level_desc&amp;world=' + encode(text));
 		});
 
 		// Former world name (if any)
 		$cell('Former World', function(element, text) {
 			element.classList.add('block-links');
-			return text.link('http://www.tibia.com/community/?subtopic=worlds&amp;order=level_desc&amp;world=' + encode(text));
+			return text.link('/community/?subtopic=worlds&amp;order=level_desc&amp;world=' + encode(text));
 		});
 
 		// Link to House detail page
@@ -103,7 +103,7 @@ if (elCharacters) {
 			var houseName = text.match(/^(.+)\x20\([^\)]+\)\x20is/)[1];
 			var houseID = buildings.houses[city][houseName];
 			element.classList.add('block-links');
-			return text.link('http://www.tibia.com/community/?subtopic=houses&amp;page=view&amp;world=' + encode(world) + '&amp;town=' + encode(city) + '&amp;houseid=' + encode(houseID));
+			return text.link('/community/?subtopic=houses&amp;page=view&amp;world=' + encode(world) + '&amp;town=' + encode(city) + '&amp;houseid=' + encode(houseID));
 		});
 
 	});
@@ -116,7 +116,7 @@ if (elCharacters) {
 			var charName = text.match(/^\d+\.(?:\xA0|\x20)(.*)/)[1];
 			cell.classList.add('block-links');
 			// `<nobr>`… I know! But that’s what they’re using:
-			cell.innerHTML = '<nobr>' + text.link('http://www.tibia.com/community/?subtopic=characters&amp;name=' + encode(charName)) + '</nobr>';
+			cell.innerHTML = '<nobr>' + text.link('/community/?subtopic=characters&amp;name=' + encode(charName)) + '</nobr>';
 		});
 	});
 
@@ -151,7 +151,7 @@ if (elNetworkBox) {
 }
 
 // Improve forum usability
-if (location.hostname == 'forum.tibia.com') {
+if (/forum(?:\.test)?\.tibia\.com$/.test(location.hostname)) {
 
 	var regexThreadID = /^Thread\x20#/;
 	var threadID = '';
@@ -165,7 +165,7 @@ if (location.hostname == 'forum.tibia.com') {
 
 	each(document.querySelectorAll('a[name^="post"]'), function(el) {
 		var postID = el.name.replace(/^post/, '');
-		el.href = 'http://forum.tibia.com/forum/?action=thread&threadid=' + threadID + '&postid=' + postID + '#post' + postID;
+		el.href = '/forum/?action=thread&threadid=' + threadID + '&postid=' + postID + '#post' + postID;
 		el.innerHTML = '\xB6';
 		el.className = 'permalink';
 	});

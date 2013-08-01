@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Tibia.com enhancer
 // @description Enhance Tibia.com.
-// @version 2013-07-04 15:02:13
+// @version 2013-08-01 09:04:18
 // @link http://mths.be/tibiauserjs
 // @author Mathias Bynens <http://mathiasbynens.be/>
 // @match http://*.tibia.com/*
@@ -1139,8 +1139,8 @@ if (elCharacters) {
 			charNameEncoded = encode(charName);
 			return charName + ' <span style="font-size: 90%;">(' + [
 				'PvP history'.link('http://www.tibiaring.com/char.php?lang=en&c=' + charNameEncoded),
-				'online time'.link('http://tibiafanstats.com/timecounter.php?player=' + charNameEncoded),
-				'experience history'.link('http://tibiafanstats.com/xphist.php?player=' + charNameEncoded)
+				'online time'.link('http://www.pskonejott.com/otc_display.php?character=' + charNameEncoded),
+				'experience history'.link('http://www.tibiastat.com/index.php?page=playerLookup&name=' + charNameEncoded)
 			].join(', ') + ')</span>';
 		});
 		charCell.querySelector('a').focus();

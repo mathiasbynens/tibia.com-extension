@@ -69,8 +69,8 @@ if (elCharacters) {
 			charNameEncoded = encode(charName);
 			return charName + ' <span style="font-size: 90%;">(' + [
 				'PvP history'.link('http://www.tibiaring.com/char.php?lang=en&c=' + charNameEncoded),
-				'online time'.link('http://tibiafanstats.com/timecounter.php?player=' + charNameEncoded),
-				'experience history'.link('http://tibiafanstats.com/xphist.php?player=' + charNameEncoded)
+				'online time'.link('http://www.pskonejott.com/otc_display.php?character=' + charNameEncoded),
+				'experience history'.link('http://www.tibiastat.com/index.php?page=playerLookup&name=' + charNameEncoded)
 			].join(', ') + ')</span>';
 		});
 		charCell.querySelector('a').focus();

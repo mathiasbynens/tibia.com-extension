@@ -70,7 +70,7 @@ if (elCharacters) {
 			return charName + ' <span style="font-size: 90%;">(' + [
 				'PvP history'.link('http://www.tibiaring.com/char.php?lang=en&c=' + charNameEncoded),
 				'online time'.link('http://www.pskonejott.com/otc_display.php?character=' + charNameEncoded),
-				'experience history'.link('http://www.tibiastat.com/index.php?page=playerLookup&name=' + charNameEncoded)
+				'experience history'.link('http://www.tibiastat.com/?page=playerLookup&search=' + charNameEncoded)
 			].join(', ') + ')</span>';
 		});
 		charCell.querySelector('a').focus();

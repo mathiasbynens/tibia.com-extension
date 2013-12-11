@@ -1,0 +1,8 @@
+{
+	"private": true,
+	"dependencies": {
+		"grunt": "~0.4.2",
+		"grunt-shell": "~0.6.1",
+		"grunt-contrib-concat": "~0.3.0"
+	}
+}

@@ -43,7 +43,6 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('default', ['shell', 'concat']);
 

@@ -1,14 +1,9 @@
+var dateFormat = require('dateformat');
+var jsesc = require('jsesc');
+
 module.exports = function(grunt) {
 
 	grunt.initConfig({
-		'meta': {
-			'srcfiles': [
-				'src/intro.js',
-				'data/data.js',
-				'src/main.js',
-				'src/outro.js'
-			]
-		},
 		'shell': {
 			'scrape': {
 				'command': 'phantomjs --load-images=no scripts/scrape.js',
@@ -16,34 +11,29 @@ module.exports = function(grunt) {
 				'stderr': grunt.warn
 			}
 		},
-		'concat': {
-			'options': {
-				'banner': [
-					'// ==UserScript==',
-					'// @name Tibia.com enhancer',
-					'// @description Enhance Tibia.com.',
-					'// @version <%= grunt.template.today("yyyy-mm-dd HH:MM:ss") %>',
-					'// @link http://mths.be/tibiauserjs',
-					'// @author Mathias Bynens <http://mathiasbynens.be/>',
-					'// @match http://*.tibia.com/*',
-					'// @match https://*.tibia.com/*',
-					'// ==/UserScript=='
-				].join('\n') + '\n'
-			},
-			'js': {
-				'src': ['<%= meta.srcfiles %>'],
-				'dest': 'tibia.user.js'
+		'template': {
+			'build': {
+				'options': {
+					'data': function() {
+						return {
+							'buildings': jsesc(require('./data/buildings.json')),
+							'version': dateFormat(new Date, 'yyyy-mm-dd HH:MM:ss')
+						};
+					}
+				},
+				'files': {
+					'tibia.user.js': 'src/tibia.user.src.js'
+				}
 			}
-		},
-		'watch': {
-			'files': '<config:meta.srcfiles>',
-			'tasks': 'concat'
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-shell');
-	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-template');
 
-	grunt.registerTask('default', ['shell', 'concat']);
+	grunt.registerTask('default', [
+		'shell',
+		'template'
+	]);
 
 };

@@ -2,10 +2,15 @@
 
 	var page = require('webpage').create();
 	var fs = require('fs');
+	var jsesc = require('jsesc');
+
+	// Mask as a commonly used browser (in this case, Chrome 35 on Windows).
+	page.settings.userAgent = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML like Gecko) Chrome/35.0.1916.153 Safari/537.36';
 
 	function open(url, callback) {
 		page.open(url, function(status) {
 			if (status != 'success') {
+				console.log('Error loading ' + url);
 				return phantom.exit();
 			}
 			callback();
@@ -15,12 +20,12 @@
 	function extend(destination, source) {
 		destination || (destination = {});
 		for (var key in source) {
-			// no need to check `hasOwnProperty` in this case
+			// Note: there is no need to check `hasOwnProperty` in this case.
 			destination[key] = source[key];
 		}
 	}
 
-	// Get a list of all Tibian cities, and use it to build a list of items
+	// Get a list of all Tibian cities, and use it to build a list of items.
 	var cities;
 	var items = [];
 	var map = { 'guildhalls': {}, 'houses': {} };
@@ -56,11 +61,13 @@
 		if (item) {
 			handleItem(item);
 		} else {
-			// All done
-			result = JSON.stringify(map, null, '\t').replace(/\xA0/g, '\x20');
-			// Save a JSON version, because why not?
-			fs.write('data/data.json', result + '\n', 'w');
-			fs.write('data/data.js', 'var buildings = ' + result.replace(/\x27/g, '\\x27').replace(/\x22/g, '\x27') + ';\n', 'w');
+			// All done.
+			result = jsesc(map, {
+				'json': true,
+				'compact': false }
+			) + '\n';
+			// Save a JSON-formatted version of the data.
+			fs.write('data/buildings.json', result, 'w');
 			phantom.exit();
 		}
 	}
@@ -77,15 +84,16 @@
 					return {};
 				}
 				while (++index < cells.length) {
-					houseName = cells[index].innerText;
+					houseName = cells[index].textContent.replace(/\xA0/g, '\x20');
 					houseID = (cells[++index].querySelector('input[name="houseid"]') || {}).value;
 					object[houseName] = Number(houseID);
 				}
 				return object;
 			});
-			// Houses are grouped by city, but guildhalls aren’t
+			// Houses are grouped by city, but guildhalls aren’t.
 			extend(item.type == 'houses' ? map[item.type][item.city] : map[item.type], results);
-			next();
+			// Some delay is needed to prevent the server from denying the request. :(
+			setTimeout(next, 250);
 		});
 	}
 

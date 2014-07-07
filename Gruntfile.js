@@ -31,8 +31,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-template');
 
+	grunt.registerTask('build', [
+		'shell'
+	]);
 	grunt.registerTask('default', [
-		'shell',
 		'template'
 	]);
 

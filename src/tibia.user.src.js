@@ -25,7 +25,7 @@ function each(array, callback) {
 }
 
 // Skip the annoying intro page.
-if (/^\/mmorpg\/free\-multiplayer\-online\-role\-playing\-game\.php/.test(location.pathname)) {
+if (location.pathname.indexOf('free-multiplayer-online-role-playing-game.php') > -1) {
 	location.href = START_PAGE_URL;
 	return;
 }
@@ -88,10 +88,20 @@ if (elCharacters) {
 			charCell = element;
 			charName = text.match('^[^,]+')[0];
 			charNameEncoded = encode(charName);
-			return charName + ' <span style="font-size: 90%;">(' + [
-				'PvP history'.link('http://www.tibiaring.com/char.php?lang=en&c=' + charNameEncoded),
+			charCell.onclick = function(event) {
+				var target = event.target;
+				if (target.matches('.character-name')) {
+					var selection = window.getSelection();
+					var range = new Range();
+					range.selectNodeContents(target);
+					selection.removeAllRanges();
+					selection.addRange(range);
+				}
+			};
+			return '<span class="character-name">' + charName + '</span> <span style="font-size: 90%;">(' + [
+				'PvP history'.link('http://www.tibiaring.com/char.php?lang=en&amp;c=' + charNameEncoded),
 				'online time'.link('http://www.pskonejott.com/otc_display.php?character=' + charNameEncoded),
-				'experience history'.link('http://tibiastat.com/?page=playerLookup&search=' + charNameEncoded)
+				'experience history'.link('http://tibiastat.com/?page=playerLookup&amp;search=' + charNameEncoded)
 			].join(', ') + ')</span>';
 		});
 		charCell.querySelector('a').focus();

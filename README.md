@@ -1,10 +1,14 @@
 # Tibia.com user script
 
-This user script enhances [the character info pages on Tibia.com](http://www.tibia.com/community/?subtopic=character&name=Arthas+Midnight) as well as [guild info pages](http://www.tibia.com/community/?subtopic=guilds&page=view&GuildName=Supremus).
+This user script enhances [the character info pages on Tibia.com](http://www.tibia.com/community/?subtopic=character&name=Illja+Mythus) as well as [guild info pages](http://www.tibia.com/community/?subtopic=guilds&page=view&GuildName=Toxic).
 
 Tibia is a MMORPG I used to play a decade ago, so this script isn’t really that useful for me anymore (although I hope it is for others) — but at least it gave me an excuse to learn how to scrape sites using [PhantomJS](http://phantomjs.org/).
 
-## What it does
+## Installation
+
+See [_How to install a user script in your browser of choice_](http://stackapps.com/tags/script/info).
+
+## Functionality
 
 The user script does a couple of things:
 
@@ -16,12 +20,12 @@ The user script does a couple of things:
 * On character info pages, it puts the focus on the world name link, so it’s easier to move to the other relevant links using keyboard navigation.
 * On guild info pages, it makes any guild’s guildhall name clickable _without_ introducing additional XHR requests.
 
-## How it works
+## Development
 
 To generate a new version of `tibia.user.js`, simply run [`grunt`](https://github.com/cowboy/grunt):
 
 ```bash
-grunt
+grunt build
 ```
 
 This will perform the following steps:
@@ -31,8 +35,8 @@ This will perform the following steps:
 3. Build a map of guildhall names and IDs.
 4. Concatenate the generated data together with the core of the user script, and write the result to `tibia.user.js`.
 
-The first two steps are only really needed when new Tibian cities are added in an update. To run only the third step and re-use the scraped data from last time, run the `concat` task:
+The first two steps are only really needed when new Tibian cities are added in an update. To run only the third step and re-use the scraped data from last time, just run the default Grunt task:
 
 ```bash
-grunt concat
+grunt
 ```

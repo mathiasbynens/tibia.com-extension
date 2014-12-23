@@ -2,8 +2,8 @@
 // @name Tibia.com enhancer
 // @description Enhance Tibia.com.
 // @version 2014-07-07 17:55:10
-// @link http://mths.be/tibiauserjs
-// @author Mathias Bynens <http://mathiasbynens.be/>
+// @link https://mths.be/tibiauserjs
+// @author Mathias Bynens <https://mathiasbynens.be/>
 // @match http://*.tibia.com/*
 // @match https://*.tibia.com/*
 // ==/UserScript==

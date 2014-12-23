@@ -4,8 +4,18 @@
 	var fs = require('fs');
 	var jsesc = require('jsesc');
 
-	// Mask as a commonly used browser (in this case, Chrome 35 on Windows).
-	page.settings.userAgent = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML like Gecko) Chrome/35.0.1916.153 Safari/537.36';
+	// Mask as a commonly used browser (in this case, Chrome 41 on Windows 7).
+	page.settings.userAgent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36';
+
+	// Abort Facebook-specific requests.
+	page.onResourceRequested = function(request, net) {
+		if (
+			request.url.indexOf('fbstatic-a.akamaihd.net') > -1 ||
+			request.url.indexOf('connect.facebook.net') > -1
+		) {
+			net.abort();
+		}
+	};
 
 	function open(url, callback) {
 		page.open(url, function(status) {

@@ -1,0 +1,34 @@
+{
+	"manifest_version": 2,
+	"name": "Tibia.com enhancer",
+	"description": "Improve the user experience on Tibia.com.",
+	"author": "Mathias Bynens",
+	"version": "0.0.0",
+	"homepage_url": "https://mths.be/tibiauserjs",
+	"icons": {
+		"48": "img/icon-48.png",
+		"128": "img/icon-128.png",
+		"256": "img/icon-256.png"
+	},
+	"content_scripts": [
+		{
+			"run_at": "document_end",
+			"matches": [
+				"http://*.tibia.com/*",
+				"https://*.tibia.com/*"
+			],
+			"css": [
+				"css/common.css"
+			],
+			"js": [
+				"data/buildings.js",
+				"js/common.js",
+				"js/skip-intro.js",
+				"js/guild.js",
+				"js/character.js",
+				"js/forum.js",
+				"js/news.js"
+			]
+		}
+	]
+}

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Man, this markup is filthy. -->
-<!-- Saved from <http://www.tibia.com/community/?subtopic=characters&name=Aberyn+Vyssy>. -->
+<!-- Saved from <http://www.tibia.com/community/?subtopic=guilds&page=view&GuildName=Reckless>. -->
 <html>
 <head>
   <meta charset=utf-8>
@@ -11,35 +11,95 @@
   <meta name="keywords" content="free online game, free multiplayer game, free online rpg, free mmorpg, mmorpg, mmog, online role playing game, online multiplayer game, internet game, online rpg, rpg" />
   <meta name="google-site-verification" content="DnO3wR8m-XUPrU02NoZt9x3vMB0fjpOXXJshbKucEj8" />
 
+  <!--  regular browsers -->
   <link rel="shortcut icon" href="http://static.tibia.com/images/global/general/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="http://static.tibia.com/images/global/general/favicon.ico" type="image/x-icon">
+  <!-- For iPad with high-resolution Retina display running iOS = 7: -->
+  <link rel="apple-touch-icon" sizes="152x152" href="http://static.tibia.com/images/global/general/apple-touch-icon-152x152.png">
+  <!-- For iPad with high-resolution Retina display running iOS = 6: -->
+  <link rel="apple-touch-icon" sizes="144x144" href="http://static.tibia.com/images/global/general/apple-touch-icon-144x144.png">
+  <!-- For iPhone with high-resolution Retina display running iOS = 7: -->
+  <link rel="apple-touch-icon" sizes="120x120" href="http://static.tibia.com/images/global/general/apple-touch-icon-120x120.png">
+  <!-- For iPhone with high-resolution Retina display running iOS = 6: -->
+  <link rel="apple-touch-icon" sizes="114x114" href="http://static.tibia.com/images/global/general/apple-touch-icon-114x114.png">
+  <!-- For the iPad mini and the first- and second-generation iPad on iOS = 7: -->
+  <link rel="apple-touch-icon" sizes="76x76" href="http://static.tibia.com/images/global/general/apple-touch-icon-76x76.png">
+  <!-- For the iPad mini and the first- and second-generation iPad on iOS = 6: -->
+  <link rel="apple-touch-icon" sizes="72x72" href="http://static.tibia.com/images/global/general/apple-touch-icon-72x72.png">
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon" href="http://static.tibia.com/images/global/general/apple-touch-icon.png">
+  <!-- Fallback for older devices: -->
+  <link rel="apple-touch-icon-precomposed" href="http://static.tibia.com/images/global/general/apple-touch-icon-precomposed.png">
 
-  <link href="http://static.tibia.com/styles/basic_d.css" rel="stylesheet" type="text/css">
+  <link href="http://static.tibia.com/styles/basic_d.css?version=754e58cf1f85b08732433cd22bea6662" rel="stylesheet" type="text/css">
 
-      <script type="text/javascript" src="http://static.tibia.com/javascripts/generic.js" ></script>
-    <script type='text/javascript'>  var loginStatus=0; loginStatus='false';  var activeSubmenuItem='characters';  var JS_DIR_IMAGES=0; JS_DIR_IMAGES='http://static.tibia.com/images/';  var JS_DIR_ACCOUNT=0; JS_DIR_ACCOUNT='https://secure.tibia.com/account/';  var g_FormName='';  var g_FormField='';  var g_Deactivated=false;</script><SCRIPT TYPE="text/javascript">
-<!-- // Framekiller
-setTimeout ("changePage()", 6000);
-function changePage()
-{
-  if (parent.frames.length > 2) {
-    if (browserTyp == "ie") {
-      parent.location=document.location;
-    } else {
-      self.top.location=document.location;
-    }
+  <script type="text/javascript" src="http://static.tibia.com/javascripts/extern/jquery.js" ></script>
+  <script type="text/javascript" src="http://static.tibia.com/javascripts/extern/jquery_ui/jquery-ui.core.js" ></script>
+  <script type="text/javascript" src="http://static.tibia.com/javascripts/extern/jquery_ui/jquery-ui.widgets.js" ></script>
+  <script type="text/javascript" src="http://static.tibia.com/javascripts/ajax/ajaxcip.js" ></script>
+    <script type="text/javascript" src="http://static.tibia.com/javascripts/generic.js?version=162424c1525895fb7aa44914903651ca" ></script>
+  <script type='text/javascript'>  var loginStatus=0; loginStatus='false';  var activeSubmenuItem='guilds';  var JS_DIR_IMAGES=0; JS_DIR_IMAGES='http://static.tibia.com/images/';  var JS_DIR_ACCOUNT=0; JS_DIR_ACCOUNT='https://secure.tibia.com/account/';  var g_FormName='';  var g_FormField='';  var g_Deactivated=false;  var g_FlashClientInPopUp=true;var FB_TryLogin = 0;var FB_ForceReload = 0;</script><script type="text/javascript" >
+  if(top.location != window.location) {
+    g_FlashClientInPopUp = false;
   }
-}
-// -->
-</SCRIPT>
-
-  <script type="text/javascript" src="http://static.tibia.com/javascripts/initialize.js" ></script>
+</script>
+  <script type="text/javascript" src="http://static.tibia.com/javascripts/initialize.js?version=84b006a17f10638ad20e77ad1647b8df" ></script>
 
 </head>
 
 <body onBeforeUnLoad="SaveMenu();" onUnload="SaveMenu();" onLoad="SetFormFocus()" >
+  <script type="text/javascript" >
+var g_FB_LoginURL = "";
+</script>
+<div id="fb-root" ></div><script type="text/javascript" >
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : 497232093667125, // App ID
+      status     : true,              // check login status
+      cookie     : true,              // enable cookies to allow the server to access the session
+      xfbml      : true               // parse XFBML
+    });
+    FB.Event.subscribe('auth.login', function() {
+      var URLHelper = "?";
+      if (window.location.search.replace("?", "").length > 0) {
+        URLHelper = "&";
+      }
+      if (FB_TryLogin == 1) {
+        window.location = "https://secure.tibia.com/mmorpg/free-multiplayer-online-role-playing-game.php" + window.location.search + URLHelper + "step=facebooktrylogin&wasreloaded=1";
+      } else if (FB_TryLogin == 2) {
+        window.location = window.location + URLHelper + "page=facebooktrylogin&wasreloaded=1";
+      } else {
+      }
+    });
+    FB.Event.subscribe('auth.logout', function(a_Response) {
+      if (a_Response.status !== 'connected') {
+        window.location.href=window.location.href;
+      } else {
+        /* nothing to do here*/
+      }
+    });
+    FB.Event.subscribe('auth.statusChange', function(response) {
+      if (FB_ForceReload == 1 && response.status == "connected") {
+        var URLHelper = "?";
+        if (window.location.search.replace("?", "").length > 0) {
+          URLHelper = "&";
+        }
+        window.location = window.location + URLHelper + "step=facebooktrylogin&wasreloaded=1";
+      }
+    });
+  };
+  (function(d){
+    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement('script'); js.id = id; js.async = true;
+    js.src = "//connect.facebook.net/en_US/all.js";
+    ref.parentNode.insertBefore(js, ref);
+  }(document));
+</script>
+
+  <div id="DeactivationContainer" onClick="DisableDeactivationContainer();" ></div>
 
   <a name="top" ></a>
+  <div id="DeactivationContainer" onClick="DisableDeactivationContainer();" ></div>
 
   <div id="MainHelper1" >
     <div id="MainHelper2" >
@@ -48,13 +108,12 @@ function changePage()
           <div id="HeaderArtworkDiv" style="background-image:url(http://static.tibia.com/images/global/header/background-artwork.jpg);" ></div>
         </div>
       </div>
-      <div id="DeactivationContainer" ></div>
 
       <div id="Bodycontainer" >
-      <div id="ContentRow">
+        <div id="ContentRow">
           <div id="MenuColumn">
             <div id="LeftArtwork">
-              <a href="http://www.tibia.com/mmorpg/free-multiplayer-online-role-playing-game.php" ><img id="TibiaLogoArtworkTop" src="http://static.tibia.com/images/global/header/tibia-logo-artwork-top.gif" alt="logoartwork" /></a>
+              <a href="https://secure.tibia.com/mmorpg/free-multiplayer-online-role-playing-game.php" ><img id="TibiaLogoArtworkTop" src="http://static.tibia.com/images/global/header/tibia-logo-artwork-top.gif" alt="logoartwork" /></a>
               <img id="LogoLink" src="http://static.tibia.com/images/global/header/tibia-logo-artwork-string.gif" onClick="window.location = 'http://www.tibia.com/abouttibia/?subtopic=aboutcipsoft';" alt="logoartwork" />
             </div>
 
@@ -426,6 +485,14 @@ function changePage()
     <div class='RightChain' style='background-image:url(http://static.tibia.com/images/global/general/chain.gif);'></div>
   </div>
 </a>
+<a href='http://forum.tibia.com/forum/?subtopic=councilboards'>
+  <div id='submenu_councilboards' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
+    <div class='LeftChain' style='background-image:url(http://static.tibia.com/images/global/general/chain.gif);'></div>
+    <div id='ActiveSubmenuItemIcon_councilboards' class='ActiveSubmenuItemIcon' style='background-image:url(http://static.tibia.com/images/global/menu/icon-activesubmenu.gif);'></div>
+    <div id='ActiveSubmenuItemLabel_councilboards' class='SubmenuitemLabel'>Council Boards</div>
+    <div class='RightChain' style='background-image:url(http://static.tibia.com/images/global/general/chain.gif);'></div>
+  </div>
+</a>
 <a href='http://forum.tibia.com/forum/?subtopic=supportboards'>
   <div id='submenu_supportboards' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
     <div class='LeftChain' style='background-image:url(http://static.tibia.com/images/global/general/chain.gif);'></div>
@@ -552,32 +619,6 @@ function changePage()
 </a>
 </div>
 </div>
-<div id='shops' class='menuitem'>
-<span onClick="MenuItemAction('shops')">
-  <div class='MenuButton' style='background-image:url(http://static.tibia.com/images/global/menu/button-background.gif);'>
-    <div onMouseOver='MouseOverMenuItem(this);' onMouseOut='MouseOutMenuItem(this);'><div class='Button' style='background-image:url(http://static.tibia.com/images/global/menu/button-background-over.gif);'></div>
-      <span id='shops_Lights' class='Lights'>
-        <div class='light_lu' style='background-image:url(http://static.tibia.com/images/global/menu/green-light.gif);'></div>
-        <div class='light_ld' style='background-image:url(http://static.tibia.com/images/global/menu/green-light.gif);'></div>
-        <div class='light_ru' style='background-image:url(http://static.tibia.com/images/global/menu/green-light.gif);'></div>
-      </span>
-      <div id='shops_Icon' class='Icon' style='background-image:url(http://static.tibia.com/images/global/menu/icon-shops.gif);'></div>
-      <div id='shops_Label' class='Label' style='background-image:url(http://static.tibia.com/images/global/menu/label-shops.gif);'></div>
-      <div id='shops_Extend' class='Extend' style='background-image:url(http://static.tibia.com/images/global/general/plus.gif);'></div>
-    </div>
-  </div>
-</span>
-<div id='shops_Submenu' class='Submenu'>
-<a href='http://www.cafepress.com/cipsoft'>
-  <div id='submenu_cafepress' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)'>
-    <div class='LeftChain' style='background-image:url(http://static.tibia.com/images/global/general/chain.gif);'></div>
-    <div id='ActiveSubmenuItemIcon_cafepress' class='ActiveSubmenuItemIcon' style='background-image:url(http://static.tibia.com/images/global/menu/icon-activesubmenu.gif);'></div>
-    <div id='ActiveSubmenuItemLabel_cafepress' class='SubmenuitemLabel'>Marketplace</div>
-    <div class='RightChain' style='background-image:url(http://static.tibia.com/images/global/general/chain.gif);'></div>
-  </div>
-</a>
-</div>
-</div>
 <div id='MenuBottom' style='background-image:url(http://static.tibia.com/images/global/general/box-bottom.gif);'></div>
 </div>
 <script type='text/javascript'>InitializePage();</script>          </div>
@@ -585,43 +626,266 @@ function changePage()
             <div id="Content" class="Content">
               <div id="ContentHelper">
 
-  <div id="characters" class="Box">
+
+  <div id="guilds" class="Box">
     <div class="Corner-tl" style="background-image:url(http://static.tibia.com/images/global/content/corner-tl.gif);"></div>
     <div class="Corner-tr" style="background-image:url(http://static.tibia.com/images/global/content/corner-tr.gif);"></div>
     <div class="Border_1" style="background-image:url(http://static.tibia.com/images/global/content/border-1.gif);"></div>
     <div class="BorderTitleText" style="background-image:url(http://static.tibia.com/images/global/content/title-background-green.gif);"></div>
-    <img id="ContentBoxHeadline" class="Title" src="http://static.tibia.com/images/global/strings/headline-characters.gif" alt="Contentbox headline" />
+    <img id="ContentBoxHeadline" class="Title" src="http://static.tibia.com/images/global/strings/headline-guilds.gif" alt="Contentbox headline" />
     <div class="Border_2">
       <div class="Border_3">
         <div class="BoxContent" style="background-image:url(http://static.tibia.com/images/global/content/scroll.gif);">
-<table border="0" cellspacing="1" cellpadding="4" width="100%"><tr bgcolor=#505050><td colspan=2 class=white><b>Character Information</b></td></tr><tr bgcolor=#F1E0C6><td width=20%>Name:</td><td>Aberyn Vyssy <div style="float: right"></div></td></tr><tr bgcolor=#D4C0A1><td>Sex:</td><td>female</td></tr><tr bgcolor=#F1E0C6><td>Vocation:</td><td>Knight</td></tr><tr bgcolor=#D4C0A1><td>Level:</td><td>67</td></tr><tr bgcolor=#F1E0C6><td><nobr>Achievement Points:</nobr></td><td>0</td></tr><tr bgcolor=#D4C0A1><td>World:</td><td>Pacera</td></tr><tr bgcolor=#F1E0C6><td>Residence:</td><td>Thais</td></tr><tr bgcolor=#D4C0A1><td>Last login:</td><td>Aug&#160;20&#160;2012,&#160;10:21:47&#160;CEST</td></tr><tr bgcolor=#F1E0C6><td>Account&#160;Status:</td><td>Free Account</td></tr></table>
-<br /><br /><table border="0" cellspacing="1" cellpadding="4" width="100%" ><tr bgcolor="#505050" ><td colspan="2" class="white" ><b>Account Achievements</b></td></tr><tr bgcolor="#F1E0C6" ><td colspan="2" >There are no achievements set to be displayed for this character.</td></tr></table><br /><br /><table border="0" cellspacing="1" cellpadding="4" width="100%" ><tr bgcolor="#505050"><td colspan="2" class="white" ><b>Account Information</b></td></tr><tr bgcolor="#F1E0C6" ><td width="20%" >Created:</td><td>Oct&#160;26&#160;2011,&#160;02:43:35&#160;CEST</td></tr></table><br /><br /><TABLE BORDER=0 CELLSPACING=1 CELLPADDING=4 WIDTH=100%><TR BGCOLOR=#505050><TD COLSPAN=4 CLASS=white><B>Characters</B></TD></TR><TR BGCOLOR=#D4C0A1><TD><B>Name</B></TD><TD><B>World</B></TD><TD><B>Status</B></TD><TD><B>&#160;</B></TD></TR><TR BGCOLOR=#F1E0C6><TD WIDTH=20%><NOBR>1.&#160;Aberyn&#160;Vyssy</NOBR></TD><TD WIDTH=10%><NOBR>Pacera</NOBR></TD><TD WIDTH=70%><B CLASS=green>online</B></TD><TD><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0><FORM ACTION=http://www.tibia.com/community/?subtopic=characters METHOD=post><TR><TD>
-<INPUT TYPE=hidden NAME=name VALUE="Aberyn Vyssy">
-<INPUT TYPE=image NAME="View Aberyn Vyssy" ALT="View Aberyn Vyssy" SRC="http://static.tibia.com/images/global/buttons/sbutton_view.gif" BORDER=0 WIDTH=120 HEIGHT=18>
-</TD></TR></FORM></TABLE>
-</TD></TR><TR BGCOLOR=#D4C0A1><TD WIDTH=20%><NOBR>2.&#160;Kareen&#160;Briuxupol</NOBR></TD><TD WIDTH=10%><NOBR>Pacera</NOBR></TD><TD WIDTH=70%><IMG SRC"=http://static.tibia.com/images/global/general/blank.gif" WIDTH=1 HEIGHT=1 BORDER=0><BR></TD><TD><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0><FORM ACTION=http://www.tibia.com/community/?subtopic=characters METHOD=post><TR><TD>
-<INPUT TYPE=hidden NAME=name VALUE="Kareen Briuxupol">
-<INPUT TYPE=image NAME="View Kareen Briuxupol" ALT="View Kareen Briuxupol" SRC="http://static.tibia.com/images/global/buttons/sbutton_view.gif" BORDER=0 WIDTH=120 HEIGHT=18>
-</TD></TR></FORM></TABLE>
-</TD></TR><TR BGCOLOR=#F1E0C6><TD WIDTH=20%><NOBR>3.&#160;Proxaira&#160;Voldin</NOBR></TD><TD WIDTH=10%><NOBR>Pacera</NOBR></TD><TD WIDTH=70%><IMG SRC"=http://static.tibia.com/images/global/general/blank.gif" WIDTH=1 HEIGHT=1 BORDER=0><BR></TD><TD><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0><FORM ACTION=http://www.tibia.com/community/?subtopic=characters METHOD=post><TR><TD>
-<INPUT TYPE=hidden NAME=name VALUE="Proxaira Voldin">
-<INPUT TYPE=image NAME="View Proxaira Voldin" ALT="View Proxaira Voldin" SRC="http://static.tibia.com/images/global/buttons/sbutton_view.gif" BORDER=0 WIDTH=120 HEIGHT=18>
-</TD></TR></FORM></TABLE>
-</TD></TR><TR BGCOLOR=#D4C0A1><TD WIDTH=20%><NOBR>4.&#160;Sian&#160;Asalaston</NOBR></TD><TD WIDTH=10%><NOBR>Pacera</NOBR></TD><TD WIDTH=70%><IMG SRC"=http://static.tibia.com/images/global/general/blank.gif" WIDTH=1 HEIGHT=1 BORDER=0><BR></TD><TD><TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0><FORM ACTION=http://www.tibia.com/community/?subtopic=characters METHOD=post><TR><TD>
-<INPUT TYPE=hidden NAME=name VALUE="Sian Asalaston">
-<INPUT TYPE=image NAME="View Sian Asalaston" ALT="View Sian Asalaston" SRC="http://static.tibia.com/images/global/buttons/sbutton_view.gif" BORDER=0 WIDTH=120 HEIGHT=18>
-</TD></TR></FORM></TABLE>
-</TD></TR></TABLE>
-<br /><br />  <FORM ACTION="http://www.tibia.com/community/?subtopic=characters" METHOD=post>
-  <TABLE WIDTH=100% BORDER=0 CELLSPACING=1 CELLPADDING=4>
-  <TR><TD BGCOLOR="#505050" CLASS=white><B>Search Character</B></TD></TR>
-  <TR><TD BGCOLOR="#D4C0A1"><TABLE BORDER=0 CELLPADDING=1><TR>
-  <TD>Name:</TD><TD><INPUT NAME="name" VALUE="Aberyn Vyssy"SIZE=29 MAXLENGTH=29></TD>
-  <TD><INPUT TYPE=image NAME="Submit" SRC="http://static.tibia.com/images/global/buttons/sbutton_submit.gif" BORDER=0 WIDTH=120 HEIGHT=18></TD>
-  </TR></TABLE></TD></TR>
-  </TABLE>
-  </FORM>
-          </div>
+<TABLE BORDER=0 WIDTH=100%>
+<TR><TD WIDTH=64><IMG SRC="http://static.tibia.com/images/guildlogos/Reckless.gif" WIDTH=64 HEIGHT=64></TD>
+<TD ALIGN=center WIDTH=100%><H1>Reckless</H1></TD>
+<TD WIDTH=64><IMG SRC="http://static.tibia.com/images/guildlogos/Reckless.gif" WIDTH=64 HEIGHT=64></TD></TR>
+</TABLE><BR>
+<TABLE Width=100%><colgroup><col width="90%"><col width="10%"></colgroup><TR><TD style="vertical-align:top; padding-right: 5px;"><div class="TableContainer" >  <table class="Table1" cellpadding="0" cellspacing="0" >    <div class="CaptionContainer" >      <div class="CaptionInnerContainer" >        <span class="CaptionEdgeLeftTop" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-edge.gif);" /></span>        <span class="CaptionEdgeRightTop" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-edge.gif);" /></span>        <span class="CaptionBorderTop" style="background-image:url(http://static.tibia.com/images/global/content/table-headline-border.gif);" ></span>        <span class="CaptionVerticalLeft" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-vertical.gif);" /></span>        <div class="Text" >Guild Information</div>        <span class="CaptionVerticalRight" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-vertical.gif);" /></span>        <span class="CaptionBorderBottom" style="background-image:url(http://static.tibia.com/images/global/content/table-headline-border.gif);" ></span>        <span class="CaptionEdgeLeftBottom" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-edge.gif);" /></span>        <span class="CaptionEdgeRightBottom" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-edge.gif);" /></span>      </div>    </div>    <tr>      <td>        <div class="InnerTableContainer" >          <table style="width:100%;" ><TR><TD><div id="GuildInformationContainer">One does not simply walk through the path of recklessness - his heart must be steadily blazing, willing to bound with the brotherhood; then, and only then, he will fully become Reckless. Friends only.<BR><BR>
+The guild was founded on Xantera on Sep&#160;12&#160;2014.<BR>
+It is currently active.<BR>
+Guild is opened for applications.<BR>
+Their home on Xantera is Halls of Serenity. The rent is paid until Jan&#160;16&#160;2015.<BR>
+</div></TD></TR>          </table>        </div>      </td>    </tr>  </table></div></TD><TD style="vertical-align:top;"><div class="TableContainer" >  <table class="Table1" cellpadding="0" cellspacing="0" >    <div class="CaptionContainer" >      <div class="CaptionInnerContainer" >        <span class="CaptionEdgeLeftTop" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-edge.gif);" /></span>        <span class="CaptionEdgeRightTop" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-edge.gif);" /></span>        <span class="CaptionBorderTop" style="background-image:url(http://static.tibia.com/images/global/content/table-headline-border.gif);" ></span>        <span class="CaptionVerticalLeft" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-vertical.gif);" /></span>        <div class="Text" >Navigation</div>        <span class="CaptionVerticalRight" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-vertical.gif);" /></span>        <span class="CaptionBorderBottom" style="background-image:url(http://static.tibia.com/images/global/content/table-headline-border.gif);" ></span>        <span class="CaptionEdgeLeftBottom" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-edge.gif);" /></span>        <span class="CaptionEdgeRightBottom" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-edge.gif);" /></span>      </div>    </div>    <tr>      <td>        <div class="InnerTableContainer" >          <table style="width:100%;" ><tr><td align="center"><div id="NavigationContainer"><table border="0" cellspacing="0" cellpadding="0" ><form action="http://www.tibia.com/community/?subtopic=guilds" method="post" ><tr><td style="border:0px;" ><input type="hidden" name=page value=guildwars ><input type="hidden" name=action value=view ><input type="hidden" name=GuildName value="Reckless" ><input type="hidden" name=world value="Xantera" ><div class="BigButton" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton.gif)" ><div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton_over.gif);" ></div><input class="ButtonText" type="image" name="Guild Wars" alt="Guild Wars" src="http://static.tibia.com/images/global/buttons/_sbutton_guildwars.gif" ></div></div></td></tr></form></table><div style="font-size:1px;height:4px;" ></div><table border="0" cellspacing="0" cellpadding="0" ><form action="http://www.tibia.com/community/?subtopic=guilds" method="post" ><tr><td style="border:0px;" ><input type="hidden" name=page value=guildevents ><input type="hidden" name=action value=view ><input type="hidden" name=GuildName value="Reckless" ><input type="hidden" name=world value="Xantera" ><div class="BigButton" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton.gif)" ><div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton_over.gif);" ></div><input class="ButtonText" type="image" name="Guild Events" alt="Guild Events" src="http://static.tibia.com/images/global/buttons/_sbutton_guildevents.gif" ></div></div></td></tr></form></table><div style="font-size:1px;height:4px;" ></div><table border="0" cellspacing="0" cellpadding="0" ><form action="https://secure.tibia.com/account/index.php?subtopic=redirectlogin&redirect=http%3A%2F%2Fwww.tibia.com%2Fcommunity%2F%3Fsubtopic%3Dguilds%26amp%3Bpage%3Dreportguild%26amp%3Baction%3Dselecttype%26amp%3BGuildName%3DReckless" method="post" ><tr><td style="border:0px;" ><div class="BigButton" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton.gif)" ><div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton_over.gif);" ></div><input class="ButtonText" type="image" name="Report Offence" alt="Report Offence" src="http://static.tibia.com/images/global/buttons/_sbutton_reportoffence.gif" ></div></div></td></tr></form></table><div style="font-size:1px;height:4px;" ></div></div></td></tr>          </table>        </div>      </td>    </tr>  </table></div></TD></TR></TABLE><script type="text/javascript" >
+$(document).ready(function() {
+    var g_GuildInformationContainerHeight = $('#GuildInformationContainer').height();
+    if($('#AdministrationContainer').length > 0) {
+      var g_AdministrationContainerHeight = $('#AdministrationContainer').height() + 28;
+      var g_NavigationContainerHeight = $('#NavigationContainer').height() + 28;
+    } else {
+      var g_NavigationContainerHeight = $('#NavigationContainer').height();
+      var g_AdministrationContainerHeight = 0;
+    }
+    //alert(g_GuildInformationContainerHeight+' '+g_NavigationContainerHeight+' '+g_AdministrationContainerHeight);
+    if(g_GuildInformationContainerHeight < g_NavigationContainerHeight + g_AdministrationContainerHeight) {
+      $('#GuildInformationContainer').css('height', g_NavigationContainerHeight + g_AdministrationContainerHeight);
+    } else {
+      if($('#AdministrationContainer').length > 0) {
+        $('#NavigationContainer').css('height', g_GuildInformationContainerHeight * 0.7 - 28);
+        $('#AdministrationContainer').css('height', g_GuildInformationContainerHeight * 0.3 - 28);
+      } else {
+        $('#NavigationContainer').css('height', g_GuildInformationContainerHeight);
+      }
+    }
+  });</script>
+<BR>
+<div class="TableContainer" >  <table class="Table3" cellpadding="0" cellspacing="0" >    <div class="CaptionContainer" >      <div class="CaptionInnerContainer" >        <span class="CaptionEdgeLeftTop" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-edge.gif);" /></span>        <span class="CaptionEdgeRightTop" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-edge.gif);" /></span>        <span class="CaptionBorderTop" style="background-image:url(http://static.tibia.com/images/global/content/table-headline-border.gif);" ></span>        <span class="CaptionVerticalLeft" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-vertical.gif);" /></span>        <div class="Text" >Guild Members</div>        <span class="CaptionVerticalRight" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-vertical.gif);" /></span>        <span class="CaptionBorderBottom" style="background-image:url(http://static.tibia.com/images/global/content/table-headline-border.gif);" ></span>        <span class="CaptionEdgeLeftBottom" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-edge.gif);" /></span>        <span class="CaptionEdgeRightBottom" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-edge.gif);" /></span>      </div>    </div>    <tr>      <td>        <div class="InnerTableContainer" >          <table style="width:100%;" ><tr><td><div class="TableShadowContainerRightTop" >  <div class="TableShadowRightTop" style="background-image:url(http://static.tibia.com/images/global/content/table-shadow-rt.gif);" ></div></div><div class="TableContentAndRightShadow" style="background-image:url(http://static.tibia.com/images/global/content/table-shadow-rm.gif);" >  <div class="TableContentContainer" >    <table class="TableContent" width="100%" ><tr class="LabelH"><td>Rank&#160;&#160;<small style="font-weight:normal;" >[<a href="http://www.tibia.com/community/?subtopic=guilds&page=view&order=rank_desc&GuildName=Reckless&onlyshowonline=" >sort</a>]</small> <img class="sortarrow" src="http://static.tibia.com/images/global/content/order_desc.gif" /></td><td>Name and Title</td><td>Vocation&#160;&#160;<small style="font-weight:normal;" >[<a href="http://www.tibia.com/community/?subtopic=guilds&page=view&order=vocation_desc&GuildName=Reckless&onlyshowonline=" >sort</a>]</small> <img class="sortarrow" src="http://static.tibia.com/images/global/general/blank.gif" /></td><td>Level&#160;&#160;<small style="font-weight:normal;" >[<a href="http://www.tibia.com/community/?subtopic=guilds&page=view&order=level_desc&GuildName=Reckless&onlyshowonline=" >sort</a>]</small> <img class="sortarrow" src="http://static.tibia.com/images/global/general/blank.gif" /></td><td>Joining Date</td><td>Status</td></tr><TR BGCOLOR=#F1E0C6><TD>Dreadful Lord</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Lotus+Kobra">Lotus&#160;Kobra</A> (Te Amo Geni)</TD>
+<TD>Elder Druid</TD>
+<TD>177</TD>
+<TD>Sep&#160;12&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>Bloody Dome</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Blake+the+Leggionaire">Blake&#160;the&#160;Leggionaire</A> (Instinct Precision)</TD>
+<TD>Royal Paladin</TD>
+<TD>113</TD>
+<TD>Sep&#160;29&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Dark+Tork">Dark&#160;Tork</A></TD>
+<TD>Elite Knight</TD>
+<TD>114</TD>
+<TD>Sep&#160;13&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Odin+Wolfskin">Odin&#160;Wolfskin</A> (Frantic)</TD>
+<TD>Elder Druid</TD>
+<TD>194</TD>
+<TD>Nov&#160;17&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Sharpshoter+Ruthless">Sharpshoter&#160;Ruthless</A> (Hawkeye)</TD>
+<TD>Royal Paladin</TD>
+<TD>176</TD>
+<TD>Dec&#160;01&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Vash+Walker">Vash&#160;Walker</A></TD>
+<TD>Royal Paladin</TD>
+<TD>136</TD>
+<TD>Sep&#160;13&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Wiccam">Wiccam</A></TD>
+<TD>Elder Druid</TD>
+<TD>153</TD>
+<TD>Dec&#160;16&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Xoxudo">Xoxudo</A> (Xablau)</TD>
+<TD>Elite Knight</TD>
+<TD>145</TD>
+<TD>Sep&#160;13&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>Elemental Darkness</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Axx+nicco">Axx&#160;nicco</A></TD>
+<TD>Elder Druid</TD>
+<TD>124</TD>
+<TD>Dec&#160;15&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Bahamuty">Bahamuty</A></TD>
+<TD>Elder Druid</TD>
+<TD>171</TD>
+<TD>Dec&#160;06&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Dudulokinha">Dudulokinha</A></TD>
+<TD>Druid</TD>
+<TD>75</TD>
+<TD>Sep&#160;13&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Korexin+Haurn">Korexin&#160;Haurn</A></TD>
+<TD>Elder Druid</TD>
+<TD>155</TD>
+<TD>Dec&#160;19&#160;2014</TD>
+<TD class='onlinestatus'><span class="green" ><b>online</b></span></TD></TR><TR BGCOLOR=#F1E0C6><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Stron+Durom">Stron&#160;Durom</A></TD>
+<TD>Elder Druid</TD>
+<TD>112</TD>
+<TD>Sep&#160;15&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>True Power</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Dialiana">Dialiana</A> (Pretinho)</TD>
+<TD>Master Sorcerer</TD>
+<TD>160</TD>
+<TD>Dec&#160;18&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Friiboi">Friiboi</A></TD>
+<TD>Sorcerer</TD>
+<TD>100</TD>
+<TD>Oct&#160;26&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Koschie">Koschie</A> (Ze Gotinha)</TD>
+<TD>Master Sorcerer</TD>
+<TD>66</TD>
+<TD>Nov&#160;17&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Marcelo+El+Cachasso">Marcelo&#160;El&#160;Cachasso</A> (Cambio Desligo)</TD>
+<TD>Master Sorcerer</TD>
+<TD>46</TD>
+<TD>Nov&#160;22&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Pantojinha">Pantojinha</A></TD>
+<TD>Master Sorcerer</TD>
+<TD>143</TD>
+<TD>Oct&#160;26&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Ryuu+Kin">Ryuu&#160;Kin</A></TD>
+<TD>Master Sorcerer</TD>
+<TD>81</TD>
+<TD>Sep&#160;27&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>Piercing Fury</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Darth+Crazy">Darth&#160;Crazy</A></TD>
+<TD>Paladin</TD>
+<TD>109</TD>
+<TD>Oct&#160;26&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Karma+Patrolman">Karma&#160;Patrolman</A></TD>
+<TD>Royal Paladin</TD>
+<TD>89</TD>
+<TD>Dec&#160;15&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Legolas+Mith">Legolas&#160;Mith</A></TD>
+<TD>Royal Paladin</TD>
+<TD>99</TD>
+<TD>Dec&#160;17&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Porca+Pipa+Banbino">Porca&#160;Pipa&#160;Banbino</A></TD>
+<TD>Royal Paladin</TD>
+<TD>52</TD>
+<TD>Nov&#160;10&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Seph+Snow">Seph&#160;Snow</A></TD>
+<TD>Royal Paladin</TD>
+<TD>108</TD>
+<TD>Oct&#160;26&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Warbenet">Warbenet</A></TD>
+<TD>Royal Paladin</TD>
+<TD>170</TD>
+<TD>Sep&#160;17&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Yamikos">Yamikos</A></TD>
+<TD>Paladin</TD>
+<TD>144</TD>
+<TD>Nov&#160;04&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>Brute Force</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Brighty">Brighty</A></TD>
+<TD>Elite Knight</TD>
+<TD>175</TD>
+<TD>Sep&#160;13&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Charlie+Babbit">Charlie&#160;Babbit</A> (Raposo)</TD>
+<TD>Elite Knight</TD>
+<TD>146</TD>
+<TD>Sep&#160;30&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Erica+Alerine">Erica&#160;Alerine</A></TD>
+<TD>Elite Knight</TD>
+<TD>67</TD>
+<TD>Nov&#160;23&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Juli+Chi">Juli&#160;Chi</A></TD>
+<TD>Elite Knight</TD>
+<TD>130</TD>
+<TD>Dec&#160;05&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Mine+Fox">Mine&#160;Fox</A></TD>
+<TD>Elite Knight</TD>
+<TD>75</TD>
+<TD>Dec&#160;05&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Sir+Zambrotti">Sir&#160;Zambrotti</A></TD>
+<TD>Elite Knight</TD>
+<TD>81</TD>
+<TD>Nov&#160;01&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Thor+Wolfskin">Thor&#160;Wolfskin</A></TD>
+<TD>Elite Knight</TD>
+<TD>171</TD>
+<TD>Oct&#160;25&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#D4C0A1><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Zaaz+Hunter">Zaaz&#160;Hunter</A></TD>
+<TD>Elite Knight</TD>
+<TD>126</TD>
+<TD>Sep&#160;13&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>Brotherhood Initiated</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Diva+do+Meier">Diva&#160;do&#160;Meier</A></TD>
+<TD>Master Sorcerer</TD>
+<TD>67</TD>
+<TD>Dec&#160;17&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Druid+Arenita">Druid&#160;Arenita</A></TD>
+<TD>Elder Druid</TD>
+<TD>61</TD>
+<TD>Dec&#160;05&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Jarath">Jarath</A></TD>
+<TD>Elite Knight</TD>
+<TD>183</TD>
+<TD>Dec&#160;20&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Joker+Vengeance">Joker&#160;Vengeance</A></TD>
+<TD>Elite Knight</TD>
+<TD>115</TD>
+<TD>Dec&#160;17&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Maquina+Do+Mau">Maquina&#160;Do&#160;Mau</A></TD>
+<TD>Elder Druid</TD>
+<TD>97</TD>
+<TD>Dec&#160;19&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Marcelo-Tenebroso">Marcelo-Tenebroso</A></TD>
+<TD>Master Sorcerer</TD>
+<TD>179</TD>
+<TD>Dec&#160;19&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Medabee">Medabee</A></TD>
+<TD>Royal Paladin</TD>
+<TD>105</TD>
+<TD>Dec&#160;22&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR><TR BGCOLOR=#F1E0C6><TD>&#160;</TD>
+</td><TD><A HREF="http://www.tibia.com/community/?subtopic=characters&name=Prince+Malbec">Prince&#160;Malbec</A></TD>
+<TD>Master Sorcerer</TD>
+<TD>56</TD>
+<TD>Dec&#160;16&#160;2014</TD>
+<TD class='onlinestatus'><span class="red" >offline</span></TD></TR>    </table>  </div></div><div class="TableShadowContainer" >  <div class="TableBottomShadow" style="background-image:url(http://static.tibia.com/images/global/content/table-shadow-bm.gif);" >    <div class="TableBottomLeftShadow" style="background-image:url(http://static.tibia.com/images/global/content/table-shadow-bl.gif);" ></div>    <div class="TableBottomRightShadow" style="background-image:url(http://static.tibia.com/images/global/content/table-shadow-br.gif);" ></div>  </div></div></td></tr><tr><td><table class="InnerTableButtonRow" cellpadding="0" cellspacing="0" ><tr><td></td><td align="right" style="padding-right:7px;width:100%;" ><form action="http://www.tibia.com/community/?subtopic=guilds" method="post" style="padding:0px;margin:0px;" ><input type="hidden" name="page" value="view" ><input type="hidden" name="onlyshowonline" value="1" ><input type="hidden" name="order" value="" ><input type="hidden" name="GuildName" value="Reckless" ><div class="BigButton" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton.gif)" ><div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton_over.gif);" ></div><input class="ButtonText" type="image" name="Show Online" alt="Show Online" src="http://static.tibia.com/images/global/buttons/_sbutton_showonline.gif" ></div></div></form></td></tr></table></td></tr>          </table>        </div>      </td>    </tr>  </table></div><BR>
+
+<div class="TableContainer" >  <table class="Table3" cellpadding="0" cellspacing="0" >    <div class="CaptionContainer" >      <div class="CaptionInnerContainer" >        <span class="CaptionEdgeLeftTop" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-edge.gif);" /></span>        <span class="CaptionEdgeRightTop" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-edge.gif);" /></span>        <span class="CaptionBorderTop" style="background-image:url(http://static.tibia.com/images/global/content/table-headline-border.gif);" ></span>        <span class="CaptionVerticalLeft" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-vertical.gif);" /></span>        <div class="Text" >Invited Characters</div>        <span class="CaptionVerticalRight" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-vertical.gif);" /></span>        <span class="CaptionBorderBottom" style="background-image:url(http://static.tibia.com/images/global/content/table-headline-border.gif);" ></span>        <span class="CaptionEdgeLeftBottom" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-edge.gif);" /></span>        <span class="CaptionEdgeRightBottom" style="background-image:url(http://static.tibia.com/images/global/content/box-frame-edge.gif);" /></span>      </div>    </div>    <tr>      <td>        <div class="InnerTableContainer" >          <table style="width:100%;" ><tr><td><div class="TableShadowContainerRightTop" >  <div class="TableShadowRightTop" style="background-image:url(http://static.tibia.com/images/global/content/table-shadow-rt.gif);" ></div></div><div class="TableContentAndRightShadow" style="background-image:url(http://static.tibia.com/images/global/content/table-shadow-rm.gif);" >  <div class="TableContentContainer" >    <table class="TableContent" width="100%" ><TR BGCOLOR=#F1E0C6><TD>No invited characters found.</TD></TR>
+    </table>  </div></div><div class="TableShadowContainer" >  <div class="TableBottomShadow" style="background-image:url(http://static.tibia.com/images/global/content/table-shadow-bm.gif);" >    <div class="TableBottomLeftShadow" style="background-image:url(http://static.tibia.com/images/global/content/table-shadow-bl.gif);" ></div>    <div class="TableBottomRightShadow" style="background-image:url(http://static.tibia.com/images/global/content/table-shadow-br.gif);" ></div>  </div></div></td></tr>          </table>        </div>      </td>    </tr>  </table></div><BR>
+
+<TABLE BORDER=0 WIDTH=100%><TR><TD ALIGN=center><IMG SRC="http://static.tibia.com/images/global/general/blank.gif" WIDTH=80 HEIGHT=1 BORDER=0<BR></TD><TD ALIGN=center><table border="0" cellspacing="0" cellpadding="0" ><form action="https://secure.tibia.com/account/?subtopic=redirectlogin" method="post" ><tr><td style="border:0px;" ><input type="hidden" name=redirect value=http://www.tibia.com/community/?subtopic=guilds&page=view&GuildName=Reckless ><div class="BigButton" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton.gif)" ><div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton_over.gif);" ></div><input class="ButtonText" type="image" name="login" alt="login" src="http://static.tibia.com/images/global/buttons/_sbutton_login.gif" ></div></div></td></tr></form></table></TD><TD ALIGN="center"><form action="http://www.tibia.com/community/?subtopic=guilds" method="post" style="padding:0px;margin:0px;" ><input type="hidden" name="world" value="Xantera" ><div class="BigButton" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton.gif)" ><div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton_over.gif);" ></div><input class="ButtonText" type="image" name="Back" alt="Back" src="http://static.tibia.com/images/global/buttons/_sbutton_back.gif" ></div></div></form></TD><TD ALIGN=center><IMG SRC="http://static.tibia.com/images/global/general/blank.gif" WIDTH=80 HEIGHT=1 BORDER=0<BR></TD></TR></TABLE>
+        </div>
       </div>
     </div>
     <div class="Border_1" style="background-image:url(http://static.tibia.com/images/global/content/border-1.gif);"></div>
@@ -629,39 +893,58 @@ function changePage()
     <div class="CornerWrapper-b"><div class="Corner-br" style="background-image:url(http://static.tibia.com/images/global/content/corner-br.gif);"></div></div>
   </div>
               <div id="ThemeboxesColumn" >
-                <div id="DeactivationContainerThemebox" ></div>
+                <div id="DeactivationContainerThemebox" onClick="DisableDeactivationContainer();" ></div>
                 <div id="RightArtwork">
-                  <img id="Monster" src="http://static.tibia.com/images/global/header/monsters/vampirebride.gif" onClick="window.location = 'http://www.tibia.com/library/?subtopic=creatures&amp;race=vampirebride';" alt="Monster of the Week" />
+                  <img id="Monster" src="http://static.tibia.com/images/global/header/monsters/grimreaper.gif" onClick="window.location = 'http://www.tibia.com/library/?subtopic=creatures&amp;race=grimreaper';" alt="Monster of the Week" />
                   <img id="PedestalAndOnline" src="http://static.tibia.com/images/global/header/pedestal-and-online.gif" alt="Monster Pedestal and Players Online Box"/>
-                  <div id="PlayersOnline" onClick="window.location = 'http://www.tibia.com/community/?subtopic=worlds';">20950<br />Players Online</div>
+                  <div id="PlayersOnline" onClick="window.location = 'http://www.tibia.com/community/?subtopic=worlds';">8499<br />Players Online</div>
                 </div>
                 <div id="Themeboxes">
+                  <!-- premium theme box -->
+<div id="PremiumBox" class="Themebox" style="background-image:url(http://static.tibia.com/images/global/themeboxes/premium/premiumbox.gif);">
+    <div class="ThemeboxButton" >
+    <form action="https://secure.tibia.com/account/index.php?subtopic=redirectlogin&redirect=https%3A%2F%2Fsecure.tibia.com%2Faccount%2F%3Fsubtopic%3Daccountmanagement%23Products%2BAvailable" method="post" style="padding:0px;margin:0px;" ><div class="BigButton" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton_green.gif)" ><div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton_green_over.gif);" ></div><input class="ButtonText" type="image" name="Get Premium" alt="Get Premium" src="http://static.tibia.com/images/global/buttons/_sbutton_getpremium.gif" ></div></div></form>  </div>
+  <div class="Bottom" style="background-image:url(http://static.tibia.com/images/global/general/box-bottom.gif);"></div>
+</div>
 
-  <div id="PremiumBox" class="Themebox" style="background-image:url(http://static.tibia.com/images/global/themeboxes/premium/premiumbox.gif);">
-        <div class="ThemeboxButton" >
-      <div class="BigButton" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton.gif)" ><div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton_over.gif);" ></div><a class="ButtonText" href="http://www.tibia.com/abouttibia/?subtopic=premiumfeatures" ><img border="0" src="http://static.tibia.com/images/global/buttons/_sbutton_getpremium.gif" alt="Get Premium" /></a></div></div>    </div>
-    <div class="Bottom" style="background-image:url(http://static.tibia.com/images/global/general/box-bottom.gif);"></div>
+<!-- networks theme box -->
+<div id="NetworksBox" class="Themebox"  style="background-image:url(http://static.tibia.com/images/global/themeboxes/networks/networksbox.png);" >
+  <div id="FacebookBlock" >
+    <div id="FacebookLikeBox" >
+      <div class="fb-like-box" data-href="https://www.facebook.com/tibia" data-width="175" data-height="180" data-show-faces="true" data-stream="false" data-border-color="none" data-header="false"></div>
+    </div>
+    <div id="FacebookSendBox" >
+      <div class="fb-send" data-href="https://www.facebook.com/tibia" data-width="50" data-height="20" ></div>
+    </div>
+    <div id="FacebookLikes" >
+      <div class="fb-like" data-href="https://www.facebook.com/tibia" data-width="50" data-layout="standard" data-action="recommend" data-show-faces="false" ></div>
+    </div>
   </div>
+  <div id="TwitterBlock" >
+    <a href="https://twitter.com/Tibia" class="twitter-follow-button" data-show-count="false">Follow @Tibia</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  </div>
+  <div class="Bottom" style="background-image:url(http://static.tibia.com/images/global/general/box-bottom.gif);"></div>
+</div>
 
+    <!-- random fansite theme box -->
     <div id="FansiteBox" class="Themebox" style="background-image:url(http://static.tibia.com/images/global/themeboxes/fansites/fansites_themebox.gif);">
       <div id="FansiteLogoFrame" style="background-image:url(http://static.tibia.com/images/global/themeboxes/fansites/border_promoted.gif);">
-        <a href="http://www.tibia-wiki.net" target="_blank" ><img id="FansiteLogo" src="http://static.tibia.com/images/community/fansitelogos/Tibia-Wiki.net.gif" /></a>
+        <a href="http://www.tibiaevents.com" target="_blank" ><img id="FansiteLogo" src="http://static.tibia.com/images/community/fansitelogos/TibiaEvents.com.gif" /></a>
       </div>
       <div class="ThemeboxButton" >
-        <div class="BigButton" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton.gif)" ><div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton_over.gif);" ></div><a class="ButtonText" href="http://www.tibia.com/community/?subtopic=fansites" ><img border="0" src="http://static.tibia.com/images/global/buttons/_sbutton_viewallfansites.gif" alt="View all Fansites" /></a></div></div>      </div>
+        <form action="http://www.tibia.com/community/?subtopic=fansites" method="post" style="padding:0px;margin:0px;" ><div class="BigButton" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton.gif)" ><div onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);" ><div class="BigButtonOver" style="background-image:url(http://static.tibia.com/images/global/buttons/sbutton_over.gif);" ></div><input class="ButtonText" type="image" name="View all Fansites" alt="View all Fansites" src="http://static.tibia.com/images/global/buttons/_sbutton_viewallfansites.gif" ></div></div></form>      </div>
       <div class="Bottom" style="background-image:url(http://static.tibia.com/images/global/general/box-bottom.gif);"></div>
     </div>
                 </div>
               </div>
             </div>
-            </div>
             <div id="Footer">
-              Copyright by CipSoft GmbH. All Rights reserved.<br/>
+              Copyright by CipSoft GmbH. All rights reserved.<br/>
               <a href="http://www.tibia.com/abouttibia/?subtopic=aboutcipsoft">About CipSoft</a> | <a href="http://www.tibia.com/support/?subtopic=legaldocuments&amp;page=agreement">Service Agreement</a> | <a href="http://www.tibia.com/support/?subtopic=legaldocuments&amp;page=privacy">Privacy Policy</a>
             </div>
           </div>
         </div>
-       </div>
       </div>
     </div>
   </div>
@@ -678,21 +961,11 @@ function changePage()
       document.getElementById('ThemeboxesColumn').style.MozOpacity = "0.30";
       document.getElementById('ThemeboxesColumn').filters.alpha.opacity = "0.75";
       document.getElementById('ThemeboxesColumn').style.filter = "alpha(opacity=50); opacity: 0.30";
-      document.getElementById('Monster').setAttribute("onclick", "")
-      document.getElementById('PlayersOnline').setAttribute("onclick", "")
+      document.getElementById('Monster').setAttribute("onclick", "");
+      document.getElementById('PlayersOnline').setAttribute("onclick", "");
     }
   </script>
-  <script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-var pageTracker = _gat._getTracker("UA-1287546-1");
-pageTracker._setDomainName("tibia.com");
-pageTracker._initData();
-pageTracker._trackPageview("/community/characters");
-</script>
-<div id="HelperDivContainer" style="background-image: url(http://static.tibia.com/images/global/content/scroll.gif);" ><div class="HelperDivArrow" style="background-image: url(http://static.tibia.com/images/global/content/helper-div-arrow.png);" ></div><div id="HelperDivHeadline" ></div><div id="HelperDivText" ></div><center><img class="Ornament" src="http://static.tibia.com/images/global/content/ornament.gif" /></center><br/></div>
+  <div id="HelperDivContainer" style="background-image: url(http://static.tibia.com/images/global/content/scroll.gif);" ><div class="HelperDivArrow" style="background-image: url(http://static.tibia.com/images/global/content/helper-div-arrow.png);" ></div><div id="HelperDivHeadline" ></div><div id="HelperDivText" ></div><center><img class="Ornament" src="http://static.tibia.com/images/global/content/ornament.gif" /></center><br/></div>
 <script src="../tibia.user.js"></script>
 </body>
 </html>

@@ -1,0 +1,36 @@
+/* Apply Fitts’s Law: increase clickable area for some links. */
+.mths-tibia-block-links a {
+	display: block;
+}
+
+/* Hide the Facebook login button as it’s a very bad idea to link accounts. */
+#FB_LoginButton {
+	display: none;
+}
+
+/* Position the forum post permalinks nicely. */
+.mths-tibia-permalink {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	z-index: 1;
+}
+
+/* Style news entry permalinks. */
+.mths-tibia-news-permalink {
+	display: block;
+}
+
+.mths-tibia-news-permalink:hover {
+	-webkit-filter: grayscale(1);
+	filter: grayscale(1);
+}
+
+.mths-tibia-news-main-permalink {
+	/* */
+}
+
+.mths-tibia-news-ticker-permalink {
+	color: inherit !important;
+	font-weight: inherit !important;
+}

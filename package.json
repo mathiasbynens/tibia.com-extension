@@ -1,10 +1,9 @@
 {
 	"private": true,
 	"dependencies": {
-		"dateformat": "^1.0.11",
-		"grunt": "^0.4.2",
-		"grunt-shell": "^1.1.1",
-		"grunt-template": "^0.2.3",
 		"jsesc": "^0.5.0"
+	},
+	"scripts": {
+		"scrape": "phantomjs --load-images=no tools/scrape.js"
 	}
 }

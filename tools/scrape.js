@@ -7,6 +7,8 @@
 	// Mask as a commonly used browser (in this case, Chrome 41 on Windows 7).
 	page.settings.userAgent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36';
 
+	const ORIGIN = 'https://secure.tibia.com';
+
 	// Abort Facebook-specific requests.
 	page.onResourceRequested = function(request, net) {
 		if (
@@ -39,7 +41,7 @@
 	var cities;
 	var items = [];
 	var map = { 'guildhalls': {}, 'houses': {} };
-	open('http://www.tibia.com/community/?subtopic=houses&world=Xantera', function() {
+	open(ORIGIN + '/community/?subtopic=houses&world=Xantera', function() {
 		cities = page.evaluate(function() {
 			return [].map.call(document.querySelectorAll('input[type="radio"][name="town"]'), function(element) {
 				return element.value;
@@ -49,12 +51,12 @@
 			var encodedCity = encodeURIComponent(city);
 			items.push(
 				{
-					'url': 'http://www.tibia.com/community/?subtopic=houses&world=Xantera&type=houses&town=' + encodedCity,
+					'url': ORIGIN + '/community/?subtopic=houses&world=Xantera&type=houses&town=' + encodedCity,
 					'type': 'houses',
 					'city': city
 				},
 				{
-					'url': 'http://www.tibia.com/community/?subtopic=houses&world=Xantera&type=guildhalls&town=' + encodedCity,
+					'url': ORIGIN + '/community/?subtopic=houses&world=Xantera&type=guildhalls&town=' + encodedCity,
 					'type': 'guildhalls',
 					'city': city
 				}
@@ -72,12 +74,14 @@
 			handleItem(item);
 		} else {
 			// All done.
-			result = jsesc(map, {
-				'json': true,
-				'compact': false }
-			) + '\n';
-			// Save a JSON-formatted version of the data.
-			fs.write('data/buildings.json', result, 'w');
+			// Save the data as a constant value in a JS file.
+			fs.write(
+				'data/buildings.js',
+				'const TIBIA_BUILDINGS = ' + jsesc(map, {
+					'compact': false
+				}) + ';\n',
+				'w'
+			);
 			phantom.exit();
 		}
 	}

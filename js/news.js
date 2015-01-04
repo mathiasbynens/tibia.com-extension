@@ -35,8 +35,11 @@ function fetchLog(dates) {
 			if (this.status == 200) {
 				resolve(this.responseText);
 			} else {
-				reject(this.status); // TODO handle rejection
+				reject();
 			}
+		};
+		xhr.onerror = function() {
+			reject();
 		};
 		var startDate = dates.startDate;
 		var endDate = dates.endDate;

@@ -27,6 +27,7 @@
 				"js/skip-intro.js",
 				"js/guild.js",
 				"js/character.js",
+				"js/world.js",
 				"js/forum.js",
 				"js/news.js"
 			]

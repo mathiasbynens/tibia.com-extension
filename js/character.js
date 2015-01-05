@@ -1,3 +1,5 @@
+// https://secure.tibia.com/community/?subtopic=characters&name=Illja+Mythus
+
 var elCharacters = document.getElementById('characters');
 
 // Enhance the character info page.

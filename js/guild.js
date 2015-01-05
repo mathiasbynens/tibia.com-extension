@@ -1,3 +1,5 @@
+// https://secure.tibia.com/community/?subtopic=guilds&page=view&GuildName=Glooth&onlyshowonline=0
+
 // Link to guildhall detail pages.
 var guildContent = document.querySelector('#guilds .BoxContent');
 if (guildContent) {

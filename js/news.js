@@ -1,3 +1,5 @@
+// https://secure.tibia.com/news/?subtopic=latestnews
+
 function extractDate(element) {
 	return new Date(element.textContent.replace(/\xA0/g, '\x20').slice(0, 11));
 }

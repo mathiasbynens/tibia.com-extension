@@ -1,3 +1,5 @@
+// https://secure.tibia.com/mmorpg/free-multiplayer-online-role-playing-game.php
+
 const START_PAGE_URL = 'https://secure.tibia.com/news/?subtopic=latestnews';
 
 // Skip the annoying intro page.

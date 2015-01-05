@@ -177,7 +177,7 @@ if (elCharacters) {
 
 		// Get the former world name (if any).
 		$cell('Former World', function(element, text) {
-			element.classList.add('block-links');
+			element.classList.add('mths-tibia-block-links');
 			return text.link(ORIGIN + '/community/?subtopic=worlds&amp;order=level_desc&amp;world=' + encode(text));
 		});
 
@@ -186,7 +186,7 @@ if (elCharacters) {
 			var city = text.match(/\(([^\)]+)\)\x20is/)[1];
 			var houseName = text.match(/^(.+)\x20\([^\)]+\)\x20is/)[1];
 			var houseID = TIBIA_BUILDINGS.houses[city][houseName];
-			element.classList.add('block-links');
+			element.classList.add('mths-tibia-block-links');
 			return text.link(ORIGIN + '/community/?subtopic=houses&amp;page=view&amp;world=' + encode(world) + '&amp;town=' + encode(city) + '&amp;houseid=' + encode(houseID));
 		});
 

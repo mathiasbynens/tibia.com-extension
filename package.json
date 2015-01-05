@@ -4,6 +4,7 @@
 		"jsesc": "^0.5.0"
 	},
 	"scripts": {
-		"scrape": "phantomjs --load-images=no tools/scrape.js"
+		"scrape": "phantomjs --load-images=no tools/scrape.js",
+		"zip": "zip -r dist.zip css data img js LICENSE-MIT.txt manifest.json && unzip -l dist.zip"
 	}
 }

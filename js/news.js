@@ -31,6 +31,7 @@ function fetchLog(dates) {
 	return new Promise(function(resolve, reject) {
 		var xhr = new XMLHttpRequest();
 		xhr.open('post', '/news/?subtopic=newsarchive');
+		xhr.timeout = XHR_TIMEOUT;
 		xhr.onload = function() {
 			if (this.status == 200) {
 				resolve(this.responseText);

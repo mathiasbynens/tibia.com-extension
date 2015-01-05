@@ -1,4 +1,5 @@
 const ORIGIN = 'https://secure.tibia.com';
+const XHR_TIMEOUT = 3000; // Abort XHR requests that take more than 3 seconds.
 
 function encode(string) {
 	// Avoid `encodeURIComponent` since the host page doesn’t use UTF-8.
@@ -6,6 +7,16 @@ function encode(string) {
 	// Note that Tibia.com sometimes uses U+00A0 instead of regular U+0020 spaces
 	// for some reason.
 	return String(string).replace(/\x20|\xA0/g, '+');
+}
+
+// Very simple, Tibia.com-specific `decodeHTML` helper method. Don’t use this
+// anywhere else; use `he.decode()` for proper HTML decoding. https://mths.be/he
+function decodeHTML(string) {
+	return string.replace(/&#160;/g, ' ');
+}
+
+function normalizeSpaces(text) {
+	return text.replace(/\xA0/g, ' ');
 }
 
 function each(array, callback) {

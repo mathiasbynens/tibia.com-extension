@@ -1,13 +1,13 @@
-var elGuildContent = document.querySelector('#guilds .BoxContent');
-var elGuildName = elGuildContent.querySelector('h1');
-if (elGuildName) {
+var elGuildInfo = document.getElementById('GuildInformationContainer');
+
+if (elGuildInfo) {
 
 	// This is a guild detail page. Example:
 	// https://secure.tibia.com/community/?subtopic=guilds&page=view&GuildName=Glooth&onlyshowonline=0
 
 	// Link to guildhall detail pages.
 	var regex = /Their home on ([a-zA-Z]+) is ([a-zA-Z\x20,]+)./;
-	elGuildContent.innerHTML = elGuildContent.innerHTML.replace(regex, function($0, $1, $2) {
+	elGuildInfo.innerHTML = elGuildInfo.innerHTML.replace(regex, function($0, $1, $2) {
 		return $0.link(
 			ORIGIN + '/community/?subtopic=houses&amp;world=' + $1 +
 			'&amp;page=view&amp;houseid=' + TIBIA_BUILDINGS.guildhalls[$2]
@@ -28,13 +28,14 @@ if (elGuildName) {
 	});
 
 	// Normalize the URL in the address bar.
+	var elGuildName = document.querySelector('#guilds .BoxContent h1');
 	var guildName = elGuildName.textContent;
 	var queryString = '?subtopic=guilds&page=view&GuildName=' + guildName + '&onlyshowonline=0';
 	if (location.search.indexOf('GuildName') == -1) {
 		history.replaceState({}, guildName, queryString);
 	}
 
-} else if (elGuildContent) {
+} else {
 
 	// This is a “guilds in world” page. Example:
 	// https://secure.tibia.com/community/?subtopic=guilds&world=Xantera

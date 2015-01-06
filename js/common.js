@@ -2,10 +2,9 @@ const ORIGIN = 'https://secure.tibia.com';
 const XHR_TIMEOUT = 3000; // Abort XHR requests that take more than 3 seconds.
 
 function encode(string) {
-	// Avoid `encodeURIComponent` since the host page doesn’t use UTF-8.
-	// We only ever pass input that matches `/[A-Za-z ']/` anyway.
-	// Note that Tibia.com sometimes uses U+00A0 instead of regular U+0020 spaces
-	// for some reason.
+	// Poor man’s `encodeURIComponent`. We only ever pass input that matches
+	// `/[A-Za-z ']/` anyway. Note that Tibia.com sometimes uses U+00A0 instead of
+	// regular U+0020 spaces for some reason.
 	return String(string).replace(/\x20|\xA0/g, '+');
 }
 
@@ -41,7 +40,8 @@ each(
 each(
 	document.querySelectorAll('form[action^="http://www.tibia.com/'),
 	function(element) {
-		var url = new URL(element.action);
+		// Note: `element.action` is clobbered and points to `<input name=action>`.
+		var url = new URL(element.getAttribute('action'));
 		url.protocol = 'https:';
 		url.hostname = 'secure.tibia.com';
 		element.action = url;

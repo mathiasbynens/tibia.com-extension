@@ -116,6 +116,7 @@ if (elCharacters) {
 		});
 		charCell.querySelector('a').focus();
 
+		// Normalize the URL in the address bar.
 		var queryString = '?subtopic=characters&name=' + charNameEncoded;
 		if (location.search.indexOf(queryString) == -1) {
 			history.replaceState({}, charName, queryString);

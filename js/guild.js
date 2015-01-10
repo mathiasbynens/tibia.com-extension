@@ -37,11 +37,10 @@ if (elGuildInfo) {
 
 } else {
 
-	// This is a “guilds in world” page. Example:
-	// https://secure.tibia.com/community/?subtopic=guilds&world=Xantera
-
 	var elWorldName = document.querySelectorAll('.text')[1];
-	if (elWorldName) {
+	if (elWorldName && elWorldName.textContent.indexOf('Active Guilds on') > -1) {
+		// This is a “guilds in world” page. Example:
+		// https://secure.tibia.com/community/?subtopic=guilds&world=Xantera
 		var worldName = elWorldName.textContent.match(/[A-Za-z]+$/)[0];
 		var queryString = '?subtopic=guilds&world=' + worldName;
 		if (location.search.indexOf(queryString) == -1) {

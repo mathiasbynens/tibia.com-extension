@@ -65,7 +65,7 @@ if (elCharacters) {
 	// Extract character names, levels, and vocations from HTML soup of the form:
 	// https://secure.tibia.com/community/?subtopic=worlds&order=level_desc&world=Xantera
 	function parseOnlineCharacters(html) {
-		var regex = /<a href="http:\/\/www.tibia.com\/community\/\?subtopic=characters&name=(?:[^"&]+)" >([^<]+)<\/a><\/td><td style="width:10%;" >([0-9]+)<\/td><td style="width:20%;" >([^<]+)<\/td><\/tr>/g;
+		var regex = /<a href="https:\/\/secure.tibia.com\/community\/\?subtopic=characters&name=(?:[^"&]+)" >([^<]+)<\/a><\/td><td style="width:10%;" >([0-9]+)<\/td><td style="width:20%;" >([^<]+)<\/td><\/tr>/g;
 		var match;
 		var map = {};
 		while ((match = regex.exec(html))) {

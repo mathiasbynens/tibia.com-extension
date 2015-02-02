@@ -1,4 +1,5 @@
 // https://secure.tibia.com/community/?subtopic=characters&name=Illja+Mythus
+// https://secure.tibia.com/community/?subtopic=characters&name=Himmelh%FCpferin
 
 var elCharacters = document.getElementById('characters');
 
@@ -108,8 +109,8 @@ if (elCharacters) {
 					selection.addRange(range);
 				}
 			};
-			return '<span class="mths-tibia-character-name">' + charName + '</span> <span style="font-size: 90%;">(' + [
-				'PvP history'.link('http://www.tibiaring.com/char.php?lang=en&amp;c=' + charNameEncoded),
+			return '<span class="mths-tibia-character-name">' + charName + '</span> <span class="mths-tibia-character-links">(' + [
+				'PvP history'.link('http://www.tibiaring.com/char.php?lang=en&amp;c=' + encodeURIComponent(charName)),
 				'online time'.link('http://www.pskonejott.com/otc_display.php?character=' + charNameEncoded),
 				'experience history'.link('http://mrthomsen.de/player/view/' + charName.replace(/\x20|\xA0/g, '%20'))
 			].join(', ') + ')</span>';
@@ -117,7 +118,9 @@ if (elCharacters) {
 		charCell.querySelector('a').focus();
 
 		// Normalize the URL in the address bar.
-		var queryString = '?subtopic=characters&name=' + charNameEncoded;
+		var queryString = '?subtopic=characters&name=' + charNameEncoded.replace(/[^\x20-\x7E]/g, function(symbol) {
+			return '%' + symbol.charCodeAt().toString(16).toUpperCase();
+		});
 		if (location.search.indexOf(queryString) == -1) {
 			history.replaceState({}, charName, queryString);
 		}
@@ -162,11 +165,11 @@ if (elCharacters) {
 					levelCell.textContent = entry.level + ' (' + (delta < 0 ? '' : '+') + delta + ' since last login)';
 					levelCell.classList.add('mths-tibia-online');
 				}
-			}
-			// Update the vocation if it changed since the character’s last login.
-			if (vocation != entry.vocation) {
-				vocationCell.textContent = entry.vocation;
-				vocationCell.classList.add('mths-tibia-online');
+				// Update the vocation if it changed since the character’s last login.
+				if (vocation != entry.vocation) {
+					vocationCell.textContent = entry.vocation;
+					vocationCell.classList.add('mths-tibia-online');
+				}
 			}
 			// Highlight online characters in the death list.
 			each(killerAnchors, function(anchor) {

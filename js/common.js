@@ -28,6 +28,21 @@ function each(array, callback) {
 	}
 }
 
+function getBuildingParams(name, separator) {
+	var city;
+	var id;
+	var type;
+	for (type in TIBIA_BUILDINGS) { // `type` is `'guildhalls'` or `'houses'`.
+		for (city in TIBIA_BUILDINGS[type]) {
+			id = TIBIA_BUILDINGS[type][city][name];
+			if (id) {
+				// `city` and `id` have been found.
+				return 'town=' + encode(city) + separator + 'houseid=' + encode(id);
+			}
+		}
+	}
+}
+
 // Rewrite internal HTTP links to their HTTPS equivalent.
 each(
 	document.querySelectorAll('a[href^="http://www.tibia.com/'),

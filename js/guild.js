@@ -9,8 +9,8 @@ if (elGuildInfo) {
 	var regex = /Their home on ([a-zA-Z]+) is ([a-zA-Z\x20,]+)./;
 	elGuildInfo.innerHTML = elGuildInfo.innerHTML.replace(regex, function($0, $1, $2) {
 		return $0.link(
-			ORIGIN + '/community/?subtopic=houses&amp;world=' + $1 +
-			'&amp;page=view&amp;houseid=' + TIBIA_BUILDINGS.guildhalls[$2]
+			ORIGIN + '/community/?subtopic=houses&amp;page=view&amp;world=' + $1 +
+			'&amp;' + getBuildingParams($2, '&amp;')
 		);
 	});
 
@@ -30,7 +30,8 @@ if (elGuildInfo) {
 	// Normalize the URL in the address bar.
 	var elGuildName = document.querySelector('#guilds .BoxContent h1');
 	var guildName = elGuildName.textContent;
-	var queryString = '?subtopic=guilds&page=view&GuildName=' + guildName + '&onlyshowonline=0';
+	var queryString = '?subtopic=guilds&page=view&GuildName=' + guildName
+		+ '&onlyshowonline=0';
 	if (location.search.indexOf('GuildName') == -1) {
 		history.replaceState({}, guildName, queryString);
 	}

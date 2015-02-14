@@ -25,8 +25,9 @@
 				"data/buildings.js",
 				"js/common.js",
 				"js/skip-intro.js",
-				"js/guild.js",
+				"js/building.js",
 				"js/character.js",
+				"js/guild.js",
 				"js/world.js",
 				"js/forum.js",
 				"js/news.js"

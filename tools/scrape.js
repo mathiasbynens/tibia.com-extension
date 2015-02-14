@@ -61,6 +61,7 @@
 					'city': city
 				}
 			);
+			map.guildhalls[city] = {};
 			map.houses[city] = {};
 		});
 		next();
@@ -104,8 +105,7 @@
 				}
 				return object;
 			});
-			// Houses are grouped by city, but guildhalls aren’t.
-			extend(item.type == 'houses' ? map[item.type][item.city] : map[item.type], results);
+			extend(map[item.type][item.city], results);
 			// Some delay is needed to prevent the server from denying the request. :(
 			setTimeout(next, 250);
 		});

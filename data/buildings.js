@@ -1,69 +1,97 @@
 const TIBIA_BUILDINGS = {
 	'guildhalls': {
-		'Ab\'Dendriel Clanhall': 40111,
-		'Castle of the Winds': 40112,
-		'Shadow Towers': 40001,
-		'The Hideout': 40002,
-		'Harrah I': 59020,
-		'Horakhal': 59076,
-		'Ramen Tah': 58047,
-		'Uthemath II': 59066,
-		'Carlin Clanhall': 20515,
-		'House of Recreation': 20002,
-		'Moonkeep': 20001,
-		'Nordic Stronghold': 20003,
-		'Northport Clanhall': 22008,
-		'Seawatch': 22005,
-		'Senja Clanhall': 24014,
-		'Suntower': 20901,
-		'Darashia, Eastern Guildhall': 62018,
-		'Darashia, Western Guildhall': 62017,
-		'Castle of the White Dragon': 54027,
-		'Magic Academy, Guild': 50701,
-		'Sky Lane, Guild 1': 50601,
-		'Sky Lane, Guild 2': 50602,
-		'Sky Lane, Guild 3': 50603,
-		'Stonehome Clanhall': 52022,
-		'Granite Guildhall': 30703,
-		'Hill Hideout': 30002,
-		'Iron Guildhall': 30702,
-		'Marble Guildhall': 30701,
-		'Outlaw Castle': 32015,
-		'Riverspring': 30003,
-		'Wolftower': 30001,
-		'Ivy Cottage': 64026,
-		'Mountain Hideout': 64028,
-		'The Shelter': 65023,
-		'Bamboo Fortress': 46041,
-		'Shark Manor': 46040,
-		'The Treehouse': 47001,
-		'Bronze Brothers Bastion': 19007,
-		'Rathleton Hills Estate': 19002,
-		'Crystal Glance': 55302,
-		'Frost Manor': 55303,
-		'Mammoth Belly': 55301,
-		'Bloodhall': 10005,
-		'Castle of Greenshore': 14002,
-		'Dark Mansion': 10004,
-		'Fibula Clanhall': 12010,
-		'Greenshore Clanhall': 14012,
-		'Guildhall of the Red Rose': 12002,
-		'Halls of the Adventurers': 10003,
-		'Mercenary Tower': 12001,
-		'Snake Tower': 10002,
-		'Southern Thais Guildhall': 10406,
-		'Spiritkeep': 10001,
-		'Thais Clanhall': 10601,
-		'The Tibianic': 14001,
-		'Warriors\' Guildhall': 10801,
-		'Blessed Shield Guildhall': 35001,
-		'Golden Axe Guildhall': 35004,
-		'Steel Home': 35002,
-		'Swamp Watch': 35003,
-		'Valorous Venore': 35005,
-		'Cascade Towers': 38002,
-		'Halls of Serenity': 38001,
-		'Sun Palace': 38003
+		'Ab\'Dendriel': {
+			'Ab\'Dendriel Clanhall': 40111,
+			'Castle of the Winds': 40112,
+			'Shadow Towers': 40001,
+			'The Hideout': 40002
+		},
+		'Ankrahmun': {
+			'Harrah I': 59020,
+			'Horakhal': 59076,
+			'Ramen Tah': 58047,
+			'Uthemath II': 59066
+		},
+		'Carlin': {
+			'Carlin Clanhall': 20515,
+			'House of Recreation': 20002,
+			'Moonkeep': 20001,
+			'Nordic Stronghold': 20003,
+			'Northport Clanhall': 22008,
+			'Seawatch': 22005,
+			'Senja Clanhall': 24014,
+			'Suntower': 20901
+		},
+		'Darashia': {
+			'Darashia, Eastern Guildhall': 62018,
+			'Darashia, Western Guildhall': 62017
+		},
+		'Edron': {
+			'Castle of the White Dragon': 54027,
+			'Magic Academy, Guild': 50701,
+			'Sky Lane, Guild 1': 50601,
+			'Sky Lane, Guild 2': 50602,
+			'Sky Lane, Guild 3': 50603,
+			'Stonehome Clanhall': 52022
+		},
+		'Farmine': {},
+		'Gray Beach': {},
+		'Kazordoon': {
+			'Granite Guildhall': 30703,
+			'Hill Hideout': 30002,
+			'Iron Guildhall': 30702,
+			'Marble Guildhall': 30701,
+			'Outlaw Castle': 32015,
+			'Riverspring': 30003,
+			'Wolftower': 30001
+		},
+		'Liberty Bay': {
+			'Ivy Cottage': 64026,
+			'Mountain Hideout': 64028,
+			'The Shelter': 65023
+		},
+		'Port Hope': {
+			'Bamboo Fortress': 46041,
+			'Shark Manor': 46040,
+			'The Treehouse': 47001
+		},
+		'Rathleton': {
+			'Bronze Brothers Bastion': 19007,
+			'Rathleton Hills Estate': 19002
+		},
+		'Svargrond': {
+			'Crystal Glance': 55302,
+			'Frost Manor': 55303,
+			'Mammoth Belly': 55301
+		},
+		'Thais': {
+			'Bloodhall': 10005,
+			'Castle of Greenshore': 14002,
+			'Dark Mansion': 10004,
+			'Fibula Clanhall': 12010,
+			'Greenshore Clanhall': 14012,
+			'Guildhall of the Red Rose': 12002,
+			'Halls of the Adventurers': 10003,
+			'Mercenary Tower': 12001,
+			'Snake Tower': 10002,
+			'Southern Thais Guildhall': 10406,
+			'Spiritkeep': 10001,
+			'Thais Clanhall': 10601,
+			'The Tibianic': 14001,
+			'Warriors\' Guildhall': 10801
+		},
+		'Venore': {
+			'Blessed Shield Guildhall': 35001,
+			'Golden Axe Guildhall': 35004,
+			'Steel Home': 35002,
+			'Swamp Watch': 35003,
+			'Valorous Venore': 35005
+		},
+		'Yalahar': {
+			'Cascade Towers': 38002,
+			'Halls of Serenity': 38001,
+			'Sun Palace': 38003
+		}
 	},
 	'houses': {
 		'Ab\'Dendriel': {

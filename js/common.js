@@ -1,3 +1,5 @@
+'use strict';
+
 const ORIGIN = 'https://secure.tibia.com';
 const XHR_TIMEOUT = 3000; // Abort XHR requests that take more than 3 seconds.
 
@@ -20,16 +22,16 @@ function normalizeSpaces(text) {
 
 // Strip tabs and newlines from the template literal.
 function strip(callSite) {
-	var args = [].slice.call(arguments, 1);
-	var output = callSite.slice(0, args.length + 1).map(function(text, index) {
+	const args = [].slice.call(arguments, 1);
+	const output = callSite.slice(0, args.length + 1).map(function(text, index) {
 		return (index == 0 ? '' : args[index - 1]) + text;
 	}).join('');
 	return output.replace(/[\n\t]/g, '');
 }
 
 function each(array, callback) {
-	var index = -1;
-	var length = array.length;
+	const length = array.length;
+	let index = -1;
 	while (++index < length) {
 		if (callback(array[index], index) === false) {
 			break;
@@ -38,15 +40,12 @@ function each(array, callback) {
 }
 
 function getBuildingParams(name, separator) {
-	var city;
-	var id;
-	var type;
-	for (type in TIBIA_BUILDINGS) { // `type` is `'guildhalls'` or `'houses'`.
-		for (city in TIBIA_BUILDINGS[type]) {
-			id = TIBIA_BUILDINGS[type][city][name];
+	for (const type in TIBIA_BUILDINGS) { // `type` is `'guildhalls'` or `'houses'`.
+		for (const city in TIBIA_BUILDINGS[type]) {
+			const id = TIBIA_BUILDINGS[type][city][name];
 			if (id) {
 				// `city` and `id` have been found.
-				return 'town=' + encode(city) + separator + 'houseid=' + encode(id);
+				return `town=${ encode(city) }${ separator }houseid=${ encode(id) }`;
 			}
 		}
 	}
@@ -65,7 +64,7 @@ each(
 	document.querySelectorAll('form[action^="http://www.tibia.com/'),
 	function(element) {
 		// Note: `element.action` is clobbered and points to `<input name=action>`.
-		var url = new URL(element.getAttribute('action'));
+		const url = new URL(element.getAttribute('action'));
 		url.protocol = 'https:';
 		url.hostname = 'secure.tibia.com';
 		element.action = url;
@@ -73,7 +72,7 @@ each(
 );
 
 // Remove social media bullshit.
-var elNetworkBox = document.getElementById('NetworksBox');
+const elNetworkBox = document.getElementById('NetworksBox');
 if (elNetworkBox) {
 	elNetworkBox.parentNode.removeChild(elNetworkBox);
 }

@@ -1,15 +1,17 @@
 // https://secure.tibia.com/community/?subtopic=characters&name=Illja+Mythus
 // https://secure.tibia.com/community/?subtopic=characters&name=Himmelh%FCpferin
 
-var elCharacters = document.getElementById('characters');
+'use strict';
+
+const elCharacters = document.getElementById('characters');
 
 // Enhance the character info page.
 if (elCharacters) {
 
-	var currentTable;
+	let currentTable;
 	function $table(header, callback) {
-		var tables = document.querySelectorAll('table');
-		var result;
+		const tables = document.querySelectorAll('table');
+		let result;
 		each(tables, function(table) {
 			if (table.querySelector('td').textContent == header) {
 				result = table;
@@ -23,9 +25,9 @@ if (elCharacters) {
 	}
 
 	function $cell(header, callback) {
-		var cells = currentTable.querySelectorAll('td');
-		var nextCell;
-		var text;
+		const cells = currentTable.querySelectorAll('td');
+		let nextCell;
+		let text;
 		each(cells, function(cell, index) {
 			if (cell.textContent == (header + ':')) {
 				nextCell = cells[++index];
@@ -34,7 +36,7 @@ if (elCharacters) {
 			}
 		});
 		if (nextCell && callback) {
-			var result = callback(nextCell, text);
+			const result = callback(nextCell, text);
 			if (result != null) {
 				nextCell.innerHTML = result;
 			}
@@ -45,7 +47,7 @@ if (elCharacters) {
 
 	function fetchOnlineCharacters(url) {
 		return new Promise(function(resolve, reject) {
-			var xhr = new XMLHttpRequest();
+			const xhr = new XMLHttpRequest();
 			xhr.open('get', url);
 			xhr.timeout = XHR_TIMEOUT;
 			xhr.onload = function() {
@@ -65,14 +67,14 @@ if (elCharacters) {
 	// Extract character names, levels, and vocations from HTML soup of the form:
 	// https://secure.tibia.com/community/?subtopic=worlds&order=level_desc&world=Xantera
 	function parseOnlineCharacters(html) {
-		var regex = /<a href="https:\/\/secure.tibia.com\/community\/\?subtopic=characters&name=(?:[^"&]+)" >([^<]+)<\/a><\/td><td style="width:10%;" >([0-9]+)<\/td><td style="width:20%;" >([^<]+)<\/td><\/tr>/g;
-		var match;
-		var map = {};
+		const regex = /<a href="https:\/\/secure.tibia.com\/community\/\?subtopic=characters&name=(?:[^"&]+)" >([^<]+)<\/a><\/td><td style="width:10%;" >([0-9]+)<\/td><td style="width:20%;" >([^<]+)<\/td><\/tr>/g;
+		const map = {};
+		let match;
 		while ((match = regex.exec(html))) {
-			var name = decodeHTML(match[1]);
-			var level = Number(match[2]);
+			const name = decodeHTML(match[1]);
+			const level = Number(match[2]);
 			// Track vocation too, in case it changed since the character logged in.
-			var vocation = decodeHTML(match[3]);
+			const vocation = decodeHTML(match[3]);
 			map[name] = {
 				'level': level,
 				'vocation': vocation
@@ -82,7 +84,7 @@ if (elCharacters) {
 	}
 
 	// Store a reference to all the player killers in the death list, for later.
-	var killerAnchors;
+	let killerAnchors;
 	$table('Character Deaths', function(table) {
 		killerAnchors = table.querySelectorAll('a');
 	});
@@ -90,19 +92,19 @@ if (elCharacters) {
 	// Improve the character information table.
 	$table('Character Information', function() {
 
-		var charCell;
-		var charName;
-		var charNameEncoded;
+		let charCell;
+		let charName;
+		let charNameEncoded;
 		$cell('Name', function(element, text) {
 			// Account for “Foo, will be deleted at Oct 1 2012, 17:00:00 CEST”.
 			charCell = element;
 			charName = normalizeSpaces(text.match('^[^,]+')[0].trim());
 			charNameEncoded = encode(charName);
 			charCell.onclick = function(event) {
-				var target = event.target;
+				const target = event.target;
 				if (target.matches('.mths-tibia-character-name')) {
-					var selection = window.getSelection();
-					var range = new Range();
+					const selection = window.getSelection();
+					const range = new Range();
 					range.selectNodeContents(target);
 					selection.removeAllRanges();
 					selection.addRange(range);
@@ -121,17 +123,17 @@ if (elCharacters) {
 		charCell.querySelector('a').focus();
 
 		// Normalize the URL in the address bar.
-		var nameParameter = charNameEncoded.replace(/[^\x20-\x7E]/g, function(symbol) {
+		const param = charNameEncoded.replace(/[^\x20-\x7E]/g, function(symbol) {
 			return '%' + symbol.charCodeAt().toString(16).toUpperCase();
 		});
-		var queryString = `?subtopic=characters&name=${ nameParameter }`;
+		const queryString = `?subtopic=characters&name=${ param }`;
 		if (!location.search.includes(queryString)) {
 			history.replaceState({}, charName, queryString);
 		}
 
 		// Store a reference to the vocation cell, for later.
-		var vocation;
-		var vocationCell;
+		let vocation;
+		let vocationCell;
 		$cell('Vocation', function(element, text) {
 			vocationCell = element;
 			vocation = normalizeSpaces(text);
@@ -141,7 +143,7 @@ if (elCharacters) {
 		$cell('Married to').classList.add('mths-tibia-block-links');
 
 		// Get the character’s world name.
-		var world;
+		let world;
 		$cell('World', function(element, text) {
 			world = text;
 			element.classList.add('mths-tibia-block-links');
@@ -150,8 +152,8 @@ if (elCharacters) {
 		});
 
 		// Store a reference to the level cell, for later.
-		var level;
-		var levelCell;
+		let level;
+		let levelCell;
 		$cell('Level', function(element, text) {
 			level = Number(text);
 			levelCell = element;
@@ -160,12 +162,12 @@ if (elCharacters) {
 		fetchOnlineCharacters(strip`
 			/community/?subtopic=worlds&order=level_desc&world=${ encode(world) }
 		`).then(parseOnlineCharacters).then(function(map) {
-			var entry = map[charName];
+			const entry = map[charName];
 			// Update the level if it changed since the character’s last login.
 			if (entry) {
 				document.querySelector('.mths-tibia-character-name')
 					.classList.add('mths-tibia-online');
-				var delta = entry.level - level;
+				const delta = entry.level - level;
 				if (delta) {
 					levelCell.textContent = entry.level + ' (' + (delta < 0 ? '' : '+') +
 						delta + ' since last login)';
@@ -179,8 +181,8 @@ if (elCharacters) {
 			}
 			// Highlight online characters in the death list.
 			each(killerAnchors, function(anchor) {
-				var name = anchor.textContent.replace(/\xA0/g, ' ');
-				var entry = map[name];
+				const name = anchor.textContent.replace(/\xA0/g, ' ');
+				const entry = map[name];
 				if (entry) {
 					anchor.classList.add('mths-tibia-online');
 				}
@@ -196,9 +198,9 @@ if (elCharacters) {
 
 		// Link to the house detail page.
 		$cell('House', function(element, text) {
-			var city = text.match(/\(([^\)]+)\)\x20is/)[1];
-			var houseName = text.match(/^(.+)\x20\([^\)]+\)\x20is/)[1];
-			var houseID = TIBIA_BUILDINGS.houses[city][houseName];
+			const city = text.match(/\(([^\)]+)\)\x20is/)[1];
+			const houseName = text.match(/^(.+)\x20\([^\)]+\)\x20is/)[1];
+			const houseID = TIBIA_BUILDINGS.houses[city][houseName];
 			element.classList.add('mths-tibia-block-links');
 			return strip`<a href="${ ORIGIN }/community/?subtopic=houses&amp;
 				page=view&amp;world=${ encode(world) }&amp;town=${ encode(city) }&amp;
@@ -209,7 +211,7 @@ if (elCharacters) {
 		// This one cell contains U+00A0 instead of a regular U+0020 space for some
 		// reason.
 		$cell('Guild\xA0membership', function(element, text) {
-			var anchor = element.querySelector('a');
+			const anchor = element.querySelector('a');
 			anchor.protocol = 'https://';
 			anchor.host = 'secure.tibia.com';
 			anchor.search += '&onlyshowonline=0';
@@ -218,10 +220,10 @@ if (elCharacters) {
 
 	// Handle other characters on the account.
 	$table('Characters', function(table) {
-		var cells = table.querySelectorAll('td[width]:first-child');
+		const cells = table.querySelectorAll('td[width]:first-child');
 		each(cells, function(cell) {
-			var text = cell.textContent;
-			var charName = text.match(/^\d+\.(?:\xA0|\x20)(.*)/)[1];
+			const text = cell.textContent;
+			const charName = text.match(/^\d+\.(?:\xA0|\x20)(.*)/)[1];
 			cell.classList.add('mths-tibia-block-links');
 			// `<nobr>`… I know! But that’s what they’re using:
 			cell.innerHTML = strip`<nobr><a href="${ ORIGIN }/community/?subtopic=
@@ -236,7 +238,7 @@ if (elCharacters) {
 		),
 		function(form) {
 			form.method = 'get';
-			var button = form.querySelector('input[name="Submit"]');
+			const button = form.querySelector('input[name="Submit"]');
 			if (button) {
 				button.type = 'submit';
 				button.removeAttribute('name');

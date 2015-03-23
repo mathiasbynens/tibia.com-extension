@@ -1,25 +1,27 @@
 // https://secure.tibia.com/news/?subtopic=latestnews
 
+'use strict';
+
 function extractDate(element) {
 	return new Date(element.textContent.replace(/\xA0/g, '\x20').slice(0, 11));
 }
 
 function getDateRange() {
 	return new Promise(function(resolve, reject) {
-		var newsHeadlineDates = document.querySelectorAll('.NewsHeadlineDate');
-		var newsTickerDates = document.querySelectorAll('.NewsTickerDate');
-		var headlineStartDate = extractDate(
+		const newsHeadlineDates = document.querySelectorAll('.NewsHeadlineDate');
+		const newsTickerDates = document.querySelectorAll('.NewsTickerDate');
+		const headlineStartDate = extractDate(
 			newsHeadlineDates[newsHeadlineDates.length - 1]
 		);
-		var headlineEndDate = extractDate(newsHeadlineDates[0]);
-		var newsTickerStartDate = extractDate(
+		const headlineEndDate = extractDate(newsHeadlineDates[0]);
+		const newsTickerStartDate = extractDate(
 			newsTickerDates[newsTickerDates.length - 1]
 		);
-		var newsTickerEndDate = extractDate(newsTickerDates[0]);
-		var startDate = headlineStartDate > newsTickerStartDate ?
+		const newsTickerEndDate = extractDate(newsTickerDates[0]);
+		const startDate = headlineStartDate > newsTickerStartDate ?
 			newsTickerStartDate :
 			headlineStartDate;
-		var endDate = headlineEndDate < newsTickerEndDate ?
+		const endDate = headlineEndDate < newsTickerEndDate ?
 			newsTickerEndDate :
 			headlineEndDate;
 		resolve({
@@ -31,7 +33,7 @@ function getDateRange() {
 
 function fetchLog(dates) {
 	return new Promise(function(resolve, reject) {
-		var xhr = new XMLHttpRequest();
+		const xhr = new XMLHttpRequest();
 		xhr.open('post', '/news/?subtopic=newsarchive');
 		xhr.timeout = XHR_TIMEOUT;
 		xhr.onload = function() {
@@ -44,9 +46,9 @@ function fetchLog(dates) {
 		xhr.onerror = function() {
 			reject();
 		};
-		var startDate = dates.startDate;
-		var endDate = dates.endDate;
-		var params = strip`filter_begin_day=${ startDate.getDate() }
+		const startDate = dates.startDate;
+		const endDate = dates.endDate;
+		const params = strip`filter_begin_day=${ startDate.getDate() }
 			&filter_begin_month=${ startDate.getMonth() + 1 }
 			&filter_begin_year=${ startDate.getFullYear() }
 			&filter_end_day=${ endDate.getDate() }
@@ -65,13 +67,12 @@ function fetchLog(dates) {
 }
 
 function parseResponse(html) {
-	var newsHeadlines = document.querySelectorAll('.NewsHeadlineText');
-	var headlineIndex = 0;
-	var newsTickers = document.querySelectorAll('.NewsTickerText');
-	var tickerIndex = 0;
-	var regex = /<small>(.+)<\/small><\/td>\s*<td><a href='http:\/\/www\.tibia\.com\/news\/\?subtopic=newsarchive&amp;id=([0-9]+)/g;
-	var match;
-	var container;
+	const newsHeadlines = document.querySelectorAll('.NewsHeadlineText');
+	let headlineIndex = 0;
+	const newsTickers = document.querySelectorAll('.NewsTickerText');
+	let tickerIndex = 0;
+	const regex = /<small>(.+)<\/small><\/td>\s*<td><a href='http:\/\/www\.tibia\.com\/news\/\?subtopic=newsarchive&amp;id=([0-9]+)/g;
+	let match;
 	while ((match = regex.exec(html))) {
 		if (
 			headlineIndex >= newsHeadlines.length &&
@@ -79,22 +80,22 @@ function parseResponse(html) {
 		) {
 			break;
 		}
-		var type = match[1]; // 'News' or 'News Ticker'
-		var id = match[2];
-		var link = document.createElement('a');
+		const type = match[1]; // 'News' or 'News Ticker'
+		const id = match[2];
+		const link = document.createElement('a');
 		link.className = 'mths-tibia-news-permalink';
 		link.href = `${ ORIGIN }/news/?subtopic=newsarchive&id=${ id }`;
 		if (type == 'News' && headlineIndex < newsHeadlines.length) {
 			// It’s a main news entry.
 			link.classList.add('mths-tibia-news-main-permalink');
-			container = newsHeadlines[headlineIndex].parentElement;
+			const container = newsHeadlines[headlineIndex].parentElement;
 			container.parentElement.appendChild(link);
 			link.appendChild(container);
 			++headlineIndex;
 		} else if (tickerIndex < newsTickers.length) {
 			// It’s a news ticker entry.
 			link.classList.add('mths-tibia-news-ticker-permalink');
-			container = newsTickers[tickerIndex];
+			const container = newsTickers[tickerIndex];
 			container.parentElement.appendChild(link);
 			link.appendChild(container);
 			++tickerIndex;
@@ -102,9 +103,9 @@ function parseResponse(html) {
 	}
 }
 
-var match = /[?&]id=([0-9]+)/.exec(location.search);
+const match = /[?&]id=([0-9]+)/.exec(location.search);
 if (match) {
-	var id = match[1];
+	const id = match[1];
 	if (location.search.includes('&fbegind=')) {
 		history.replaceState({}, '', `/news/?subtopic=newsarchive&id=${ id }`);
 	}
@@ -120,9 +121,9 @@ each(
 		[href*="&fbegind="]
 	`),
 	function(element) {
-		var match = /[?&]id=([0-9]+)/.exec(element.search);
+		const match = /[?&]id=([0-9]+)/.exec(element.search);
 		if (match) {
-			var id = match[1];
+			const id = match[1];
 			element.search = `?subtopic=newsarchive&id=${ id }`;
 		}
 	}

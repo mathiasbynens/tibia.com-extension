@@ -1,4 +1,6 @@
-var elGuildInfo = document.getElementById('GuildInformationContainer');
+'use strict';
+
+const elGuildInfo = document.getElementById('GuildInformationContainer');
 
 if (elGuildInfo) {
 
@@ -7,7 +9,7 @@ if (elGuildInfo) {
 	// https://secure.tibia.com/community/?subtopic=guilds&page=view&GuildName=Gospel+Sounds&onlyshowonline=0
 
 	// Link to guildhall detail pages.
-	var regex = /Their home on ([a-zA-Z]+) is ([a-zA-Z\x20,']+)./;
+	const regex = /Their home on ([a-zA-Z]+) is ([a-zA-Z\x20,']+)./;
 	elGuildInfo.innerHTML = elGuildInfo.innerHTML.replace(
 		regex,
 		function(match, world, building) {
@@ -23,7 +25,7 @@ if (elGuildInfo) {
 			'form[action="http://www.tibia.com/community/?subtopic=guilds"]'
 		),
 		function(form) {
-			var button = form.querySelector('input[name^="Show"]');
+			const button = form.querySelector('input[name^="Show"]');
 			if (button) {
 				form.innerHTML = strip`
 					<a href="${ ORIGIN }/community/?subtopic=guilds&page=view
@@ -37,9 +39,9 @@ if (elGuildInfo) {
 	);
 
 	// Normalize the URL in the address bar.
-	var elGuildName = document.querySelector('#guilds .BoxContent h1');
-	var guildName = elGuildName.textContent;
-	var queryString = strip`?subtopic=guilds&page=view&GuildName=${ guildName }
+	const elGuildName = document.querySelector('#guilds .BoxContent h1');
+	const guildName = elGuildName.textContent;
+	const queryString = strip`?subtopic=guilds&page=view&GuildName=${ guildName }
 		&onlyshowonline=0`;
 	if (!location.search.includes('GuildName')) {
 		history.replaceState({}, guildName, queryString);
@@ -47,12 +49,12 @@ if (elGuildInfo) {
 
 } else {
 
-	var elWorldName = document.querySelectorAll('.text')[1];
+	const elWorldName = document.querySelectorAll('.text')[1];
 	if (elWorldName && elWorldName.textContent.includes('Active Guilds on')) {
 		// This is a “guilds in world” page. Example:
 		// https://secure.tibia.com/community/?subtopic=guilds&world=Xantera
-		var worldName = elWorldName.textContent.match(/[A-Za-z]+$/)[0];
-		var queryString = `?subtopic=guilds&world=${ worldName }`;
+		const worldName = elWorldName.textContent.match(/[A-Za-z]+$/)[0];
+		const queryString = `?subtopic=guilds&world=${ worldName }`;
 		if (!location.search.includes(queryString)) {
 			history.replaceState({}, 'Guilds in ' + worldName, queryString);
 		}

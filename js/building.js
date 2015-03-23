@@ -9,7 +9,7 @@
 	}
 
 	var surfaceArea = items[1].textContent;
-	if (surfaceArea.indexOf('square meter') == -1) {
+	if (!surfaceArea.includes('square meter')) {
 		return;
 	}
 
@@ -22,7 +22,7 @@
 	// Normalize the URL in the address bar.
 	var queryString = '?subtopic=houses&page=view&world=' + encode(world) +
 		'&' + getBuildingParams(houseName, '&');
-	if (location.search.indexOf(queryString) == -1) {
+	if (!location.search.includes(queryString)) {
 		history.replaceState({}, houseName, queryString);
 	}
 

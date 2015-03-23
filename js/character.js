@@ -121,7 +121,7 @@ if (elCharacters) {
 		var queryString = '?subtopic=characters&name=' + charNameEncoded.replace(/[^\x20-\x7E]/g, function(symbol) {
 			return '%' + symbol.charCodeAt().toString(16).toUpperCase();
 		});
-		if (location.search.indexOf(queryString) == -1) {
+		if (!location.search.includes(queryString)) {
 			history.replaceState({}, charName, queryString);
 		}
 

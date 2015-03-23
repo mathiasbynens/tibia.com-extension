@@ -105,7 +105,7 @@ function parseResponse(html) {
 var match = /[?&]id=([0-9]+)/.exec(location.search);
 if (match) {
 	var id = match[1];
-	if (location.search.indexOf('&fbegind=') > -1) {
+	if (location.search.includes('&fbegind=')) {
 		history.replaceState({}, '', '/news/?subtopic=newsarchive&id=' + id);
 	}
 } else if (document.getElementById('newsticker')) {

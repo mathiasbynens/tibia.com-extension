@@ -20,8 +20,8 @@
 	var world = items[3].textContent;
 
 	// Normalize the URL in the address bar.
-	var queryString = '?subtopic=houses&page=view&world=' + encode(world) +
-		'&' + getBuildingParams(houseName, '&');
+	var queryString = strip`?subtopic=houses&page=view&world=${ encode(world) }&
+		${ getBuildingParams(houseName, '&') }`;
 	if (!location.search.includes(queryString)) {
 		history.replaceState({}, houseName, queryString);
 	}

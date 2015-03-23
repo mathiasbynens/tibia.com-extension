@@ -46,19 +46,19 @@ function fetchLog(dates) {
 		};
 		var startDate = dates.startDate;
 		var endDate = dates.endDate;
-		var params = 'filter_begin_day=' + startDate.getDate() +
-			'&filter_begin_month=' + (startDate.getMonth() + 1) +
-			'&filter_begin_year=' + startDate.getFullYear() +
-			'&filter_end_day=' + endDate.getDate() +
-			'&filter_end_month=' + (endDate.getMonth() + 1) +
-			'&filter_end_year=' + endDate.getFullYear() +
-			'&filter_ticker=ticker' +
-			'&filter_news=news' +
-			'&filter_cipsoft=cipsoft' +
-			'&filter_community=community' +
-			'&filter_development=development' +
-			'&filter_support=support' +
-			'&filter_technical=technical';
+		var params = strip`filter_begin_day=${ startDate.getDate() }
+			&filter_begin_month=${ startDate.getMonth() + 1 }
+			&filter_begin_year=${ startDate.getFullYear() }
+			&filter_end_day=${ endDate.getDate() }
+			&filter_end_month=${ endDate.getMonth() + 1 }
+			&filter_end_year=${ endDate.getFullYear() }
+			&filter_ticker=ticker
+			&filter_news=news
+			&filter_cipsoft=cipsoft
+			&filter_community=community
+			&filter_development=development
+			&filter_support=support
+			&filter_technical=technical`;
 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		xhr.send(params);
 	});
@@ -83,7 +83,7 @@ function parseResponse(html) {
 		var id = match[2];
 		var link = document.createElement('a');
 		link.className = 'mths-tibia-news-permalink';
-		link.href = ORIGIN + '/news/?subtopic=newsarchive&id=' + id;
+		link.href = `${ ORIGIN }/news/?subtopic=newsarchive&id=${ id }`;
 		if (type == 'News' && headlineIndex < newsHeadlines.length) {
 			// It’s a main news entry.
 			link.classList.add('mths-tibia-news-main-permalink');
@@ -106,7 +106,7 @@ var match = /[?&]id=([0-9]+)/.exec(location.search);
 if (match) {
 	var id = match[1];
 	if (location.search.includes('&fbegind=')) {
-		history.replaceState({}, '', '/news/?subtopic=newsarchive&id=' + id);
+		history.replaceState({}, '', `/news/?subtopic=newsarchive&id=${ id }`);
 	}
 } else if (document.getElementById('newsticker')) {
 	getDateRange()
@@ -115,15 +115,15 @@ if (match) {
 }
 
 each(
-	document.querySelectorAll(
-		'a[href*="subtopic=newsarchive&id="]' +
-		'[href*="&fbegind="]'
-	),
+	document.querySelectorAll(strip`
+		a[href*="subtopic=newsarchive&id="]
+		[href*="&fbegind="]
+	`),
 	function(element) {
 		var match = /[?&]id=([0-9]+)/.exec(element.search);
 		if (match) {
 			var id = match[1];
-			element.search = '?subtopic=newsarchive&id=' + id;
+			element.search = `?subtopic=newsarchive&id=${ id }`;
 		}
 	}
 );

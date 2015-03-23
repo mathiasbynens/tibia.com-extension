@@ -12,7 +12,8 @@ if (elCharacters) {
 		var result;
 		each(tables, function(table) {
 			if (table.querySelector('td').textContent == header) {
-				return result = table;
+				result = table;
+				return result;
 			}
 		});
 		if (result) {
@@ -22,8 +23,6 @@ if (elCharacters) {
 	}
 
 	function $cell(header, callback) {
-		// Cells contain U+00A0 instead of regular U+0020 spaces for some reason.
-		header = header.replace(/\x20/g, '\xA0');
 		var cells = currentTable.querySelectorAll('td');
 		var nextCell;
 		var text;
@@ -109,18 +108,23 @@ if (elCharacters) {
 					selection.addRange(range);
 				}
 			};
-			return '<span class="mths-tibia-character-name">' + charName + '</span> <span class="mths-tibia-character-links">(' + [
-				'PvP history'.link('http://www.tibiaring.com/char.php?lang=en&amp;c=' + encodeURIComponent(charName)),
-				'online time'.link('http://www.pskonejott.com/otc_display.php?character=' + charNameEncoded),
-				'experience history'.link('http://mrthomsen.de/player/view/' + charName.replace(/\x20|\xA0/g, '%20'))
-			].join(', ') + ')</span>';
+			return strip`<span class="mths-tibia-character-name">${ charName }</span>
+				${ ' ' }<span class="mths-tibia-character-links">(
+					<a href="http://www.tibiaring.com/char.php?lang=en
+						&amp;c=${ encodeURIComponent(charName) }">PvP history</a>,${ ' ' }
+					<a href="http://www.pskonejott.com/otc_display.php
+						?character=${ charNameEncoded }">online time</a>,${ ' ' }
+					<a href="http://mrthomsen.de/player/view/
+						${ charName.replace(/\x20|\xA0/g, '%20') }">experience history</a>
+				)</span>`;
 		});
 		charCell.querySelector('a').focus();
 
 		// Normalize the URL in the address bar.
-		var queryString = '?subtopic=characters&name=' + charNameEncoded.replace(/[^\x20-\x7E]/g, function(symbol) {
+		var nameParameter = charNameEncoded.replace(/[^\x20-\x7E]/g, function(symbol) {
 			return '%' + symbol.charCodeAt().toString(16).toUpperCase();
 		});
+		var queryString = `?subtopic=characters&name=${ nameParameter }`;
 		if (!location.search.includes(queryString)) {
 			history.replaceState({}, charName, queryString);
 		}
@@ -141,7 +145,8 @@ if (elCharacters) {
 		$cell('World', function(element, text) {
 			world = text;
 			element.classList.add('mths-tibia-block-links');
-			return text.link(ORIGIN + '/community/?subtopic=worlds&amp;order=level_desc&amp;world=' + encode(text));
+			return strip`<a href="${ ORIGIN }/community/?subtopic=worlds&amp;
+				order=level_desc&amp;world=${ encode(text) }">${ text }</a>`;
 		});
 
 		// Store a reference to the level cell, for later.
@@ -152,9 +157,9 @@ if (elCharacters) {
 			levelCell = element;
 		});
 
-		fetchOnlineCharacters(
-			'/community/?subtopic=worlds&order=level_desc&world=' + encode(world)
-		).then(parseOnlineCharacters).then(function(map) {
+		fetchOnlineCharacters(strip`
+			/community/?subtopic=worlds&order=level_desc&world=${ encode(world) }
+		`).then(parseOnlineCharacters).then(function(map) {
 			var entry = map[charName];
 			// Update the level if it changed since the character’s last login.
 			if (entry) {
@@ -162,7 +167,8 @@ if (elCharacters) {
 					.classList.add('mths-tibia-online');
 				var delta = entry.level - level;
 				if (delta) {
-					levelCell.textContent = entry.level + ' (' + (delta < 0 ? '' : '+') + delta + ' since last login)';
+					levelCell.textContent = entry.level + ' (' + (delta < 0 ? '' : '+') +
+						delta + ' since last login)';
 					levelCell.classList.add('mths-tibia-online');
 				}
 				// Update the vocation if it changed since the character’s last login.
@@ -184,7 +190,8 @@ if (elCharacters) {
 		// Get the former world name (if any).
 		$cell('Former World', function(element, text) {
 			element.classList.add('mths-tibia-block-links');
-			return text.link(ORIGIN + '/community/?subtopic=worlds&amp;order=level_desc&amp;world=' + encode(text));
+			return strip`<a href="${ ORIGIN }/community/?subtopic=worlds&amp;
+				order=level_desc&amp;world=${ encode(text) }">${ text }</a>`;
 		});
 
 		// Link to the house detail page.
@@ -193,11 +200,15 @@ if (elCharacters) {
 			var houseName = text.match(/^(.+)\x20\([^\)]+\)\x20is/)[1];
 			var houseID = TIBIA_BUILDINGS.houses[city][houseName];
 			element.classList.add('mths-tibia-block-links');
-			return text.link(ORIGIN + '/community/?subtopic=houses&amp;page=view&amp;world=' + encode(world) + '&amp;town=' + encode(city) + '&amp;houseid=' + encode(houseID));
+			return strip`<a href="${ ORIGIN }/community/?subtopic=houses&amp;
+				page=view&amp;world=${ encode(world) }&amp;town=${ encode(city) }&amp;
+				houseid=${ encode(houseID) }">${ text }</a>`;
 		});
 
 		// Append `onlyshowonline` query string parameter to the guild URL.
-		$cell('Guild membership', function(element, text) {
+		// This one cell contains U+00A0 instead of a regular U+0020 space for some
+		// reason.
+		$cell('Guild\xA0membership', function(element, text) {
 			var anchor = element.querySelector('a');
 			anchor.protocol = 'https://';
 			anchor.host = 'secure.tibia.com';
@@ -213,18 +224,24 @@ if (elCharacters) {
 			var charName = text.match(/^\d+\.(?:\xA0|\x20)(.*)/)[1];
 			cell.classList.add('mths-tibia-block-links');
 			// `<nobr>`… I know! But that’s what they’re using:
-			cell.innerHTML = '<nobr>' + text.link(ORIGIN + '/community/?subtopic=characters&amp;name=' + encode(charName)) + '</nobr>';
+			cell.innerHTML = strip`<nobr><a href="${ ORIGIN }/community/?subtopic=
+				characters&amp;name=${ encode(charName) }">${ text }</a></nobr>`;
 		});
 	});
 
 	// Make the character search form perform a clean GET.
-	each(document.querySelectorAll('form[action="http://www.tibia.com/community/?subtopic=characters"]'), function(form) {
-		form.method = 'get';
-		var button = form.querySelector('input[name="Submit"]');
-		if (button) {
-			button.type = 'submit';
-			button.removeAttribute('name');
+	each(
+		document.querySelectorAll(
+			'form[action="http://www.tibia.com/community/?subtopic=characters"]'
+		),
+		function(form) {
+			form.method = 'get';
+			var button = form.querySelector('input[name="Submit"]');
+			if (button) {
+				button.type = 'submit';
+				button.removeAttribute('name');
+			}
 		}
-	});
+	);
 
 }

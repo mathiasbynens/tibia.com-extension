@@ -18,6 +18,15 @@ function normalizeSpaces(text) {
 	return text.replace(/\xA0/g, ' ');
 }
 
+// Strip tabs and newlines from the template literal.
+function strip(callSite) {
+	var args = [].slice.call(arguments, 1);
+	var output = callSite.slice(0, args.length + 1).map(function(text, index) {
+		return (index == 0 ? '' : args[index - 1]) + text;
+	}).join('');
+	return output.replace(/[\n\t]/g, '');
+}
+
 function each(array, callback) {
 	var index = -1;
 	var length = array.length;

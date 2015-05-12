@@ -214,7 +214,10 @@ if (elCharacters) {
 			const anchor = element.querySelector('a');
 			anchor.protocol = 'https://';
 			anchor.host = 'secure.tibia.com';
-			anchor.search += '&onlyshowonline=0';
+			anchor.search = anchor.search.replace(
+				'&page=view',
+				`&page=view&world=${ world }`
+			) + '&onlyshowonline=0';
 		});
 	});
 

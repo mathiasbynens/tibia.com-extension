@@ -5,16 +5,18 @@ const elGuildInfo = document.getElementById('GuildInformationContainer');
 if (elGuildInfo) {
 
 	// This is a guild detail page. Example:
-	// https://secure.tibia.com/community/?subtopic=guilds&page=view&GuildName=Glooth&onlyshowonline=0
-	// https://secure.tibia.com/community/?subtopic=guilds&page=view&GuildName=Gospel+Sounds&onlyshowonline=0
+	// https://secure.tibia.com/community/?subtopic=guilds&page=view&world=Xantera&GuildName=Forward&onlyshowonline=0
+	// https://secure.tibia.com/community/?subtopic=guilds&page=view&world=Xantera&GuildName=Gospel+Sounds&onlyshowonline=0
 
 	// Link to guildhall detail pages.
-	const regex = /Their home on ([a-zA-Z]+) is ([a-zA-Z\x20,']+)./;
+	const regex = /(?:^|>\n)The guild was founded on ([a-zA-Z]+) on/;
+	const worldName = elGuildInfo.innerHTML.match(regex)[1];
 	elGuildInfo.innerHTML = elGuildInfo.innerHTML.replace(
-		regex,
-		function(match, world, building) {
-			return strip`<a href="${ ORIGIN }/community/?subtopic=houses&amp;page=view
-				&amp;world=${ world }&amp;${ getBuildingParams(building, '&amp;') }">
+		/<br>\nTheir home on ([a-zA-Z]+) is ([a-zA-Z\x20,']+)\./,
+		function(match, worldName, building) {
+			return strip`<a href="${ ORIGIN }/community/?subtopic=houses
+				&amp;page=view&amp;world=${ worldName }
+				&amp;${ getBuildingParams(building, '&amp;') }">
 				${ match }</a>`;
 		}
 	);
@@ -22,7 +24,7 @@ if (elGuildInfo) {
 	// Make the “show online” / “show all” button perform a clean GET.
 	each(
 		document.querySelectorAll(
-			'form[action="http://www.tibia.com/community/?subtopic=guilds"]'
+			'form[action="https://secure.tibia.com/community/?subtopic=guilds"]'
 		),
 		function(form) {
 			const button = form.querySelector('input[name^="Show"]');
@@ -30,6 +32,7 @@ if (elGuildInfo) {
 				form.innerHTML = strip`
 					<a href="${ ORIGIN }/community/?subtopic=guilds&page=view
 					${ (form.order.value ? '&order=' + encode(form.order.value) : '') }
+					&world=${ worldName }
 					&GuildName=${ encode(form.GuildName.value) }
 					&onlyshowonline=${ encode(form.onlyshowonline.value || '0') }">
 						${ button.alt }
@@ -41,9 +44,12 @@ if (elGuildInfo) {
 	// Normalize the URL in the address bar.
 	const elGuildName = document.querySelector('#guilds .BoxContent h1');
 	const guildName = elGuildName.textContent;
-	const queryString = strip`?subtopic=guilds&page=view&GuildName=${ guildName }
+	const queryString = strip`?subtopic=guilds
+		&page=view
+		&world=${ world }
+		&GuildName=${ guildName }
 		&onlyshowonline=0`;
-	if (!location.search.includes('GuildName')) {
+	if (!location.search.includes('&world=')) {
 		history.replaceState({}, guildName, queryString);
 	}
 
@@ -56,7 +62,7 @@ if (elGuildInfo) {
 		const worldName = elWorldName.textContent.match(/[A-Za-z]+$/)[0];
 		const queryString = `?subtopic=guilds&world=${ worldName }`;
 		if (!location.search.includes(queryString)) {
-			history.replaceState({}, 'Guilds in ' + worldName, queryString);
+			history.replaceState({}, `Guilds in ${ worldName }`, queryString);
 		}
 	}
 

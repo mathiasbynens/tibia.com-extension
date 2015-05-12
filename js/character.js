@@ -237,7 +237,7 @@ if (elCharacters) {
 	// Make the character search form perform a clean GET.
 	each(
 		document.querySelectorAll(
-			'form[action="http://www.tibia.com/community/?subtopic=characters"]'
+			'form[action="https://secure.tibia.com/community/?subtopic=characters"]'
 		),
 		function(form) {
 			form.method = 'get';

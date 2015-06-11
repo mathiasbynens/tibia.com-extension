@@ -180,13 +180,15 @@ if (elCharacters) {
 				}
 			}
 			// Highlight online characters in the death list.
-			each(killerAnchors, function(anchor) {
-				const name = anchor.textContent.replace(/\xA0/g, ' ');
-				const entry = map[name];
-				if (entry) {
-					anchor.classList.add('mths-tibia-online');
-				}
-			});
+			if (killerAnchors) {
+				each(killerAnchors, function(anchor) {
+					const name = anchor.textContent.replace(/\xA0/g, ' ');
+					const entry = map[name];
+					if (entry) {
+						anchor.classList.add('mths-tibia-online');
+					}
+				});
+			}
 		});
 
 		// Get the former world name (if any).

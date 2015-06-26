@@ -1,4 +1,5 @@
 // https://secure.tibia.com/news/?subtopic=latestnews
+// https://secure.test.tibia.com/news/?subtopic=latestnews
 
 'use strict';
 
@@ -71,7 +72,7 @@ function parseResponse(html) {
 	let headlineIndex = 0;
 	const newsTickers = document.querySelectorAll('.NewsTickerText');
 	let tickerIndex = 0;
-	const regex = /<small>(.+)<\/small><\/td>\s*<td><a href='http:\/\/www\.tibia\.com\/news\/\?subtopic=newsarchive&amp;id=([0-9]+)/g;
+	const regex = /<small>(.+)<\/small><\/td>\s*<td><a href='http:\/\/www\.(?:test\.)?tibia\.com\/news\/\?subtopic=newsarchive&amp;id=([0-9]+)/g;
 	let match;
 	while ((match = regex.exec(html))) {
 		if (

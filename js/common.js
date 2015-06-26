@@ -1,6 +1,8 @@
 'use strict';
 
-const ORIGIN = 'https://secure.tibia.com';
+const ORIGIN = location.hostname.includes('.test.') ?
+	'https://secure.test.tibia.com' :
+	'https://secure.tibia.com';
 const XHR_TIMEOUT = 3000; // Abort XHR requests that take more than 3 seconds.
 
 function encode(string) {
@@ -59,6 +61,13 @@ each(
 		element.host = 'secure.tibia.com';
 	}
 );
+each(
+	document.querySelectorAll('a[href^="http://www.test.tibia.com/'),
+	function(element) {
+		element.protocol = 'https://';
+		element.host = 'secure.test.tibia.com';
+	}
+);
 // Do the same for forms that post to HTTP.
 each(
 	document.querySelectorAll('form[action^="http://www.tibia.com/'),
@@ -67,6 +76,16 @@ each(
 		const url = new URL(element.getAttribute('action'));
 		url.protocol = 'https:';
 		url.hostname = 'secure.tibia.com';
+		element.action = url;
+	}
+);
+each(
+	document.querySelectorAll('form[action^="http://www.test.tibia.com/'),
+	function(element) {
+		// Note: `element.action` is clobbered and points to `<input name=action>`.
+		const url = new URL(element.getAttribute('action'));
+		url.protocol = 'https:';
+		url.hostname = 'secure.test.tibia.com';
 		element.action = url;
 	}
 );

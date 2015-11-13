@@ -47,6 +47,7 @@ if (elCharacters) {
 
 	function fetchOnlineCharacters(url) {
 		return new Promise(function(resolve, reject) {
+			// Can haz timeout in Fetch API? https://github.com/whatwg/fetch/issues/20
 			const xhr = new XMLHttpRequest();
 			xhr.open('get', url);
 			xhr.timeout = XHR_TIMEOUT;

@@ -17,7 +17,7 @@ if (/forum(?:\.test)?\.tibia\.com$/.test(location.hostname)) {
 		const postID = el.name.replace(/^post/, '');
 		el.href = strip`/forum/?action=thread&threadid=${ threadID }&
 			postid=${ postID }#post${ postID }`;
-		el.innerHTML = '\xB6';
+		el.textContent = '\xB6';
 		el.className = 'mths-tibia-permalink';
 	});
 

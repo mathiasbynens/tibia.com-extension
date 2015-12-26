@@ -92,7 +92,6 @@ if (elCharacters) {
 
 	// Improve the character information table.
 	$table('Character Information', function() {
-
 		let charCell;
 		let charName;
 		let charNameEncoded;

@@ -30,7 +30,9 @@
 				"js/guild.js",
 				"js/world.js",
 				"js/forum.js",
-				"js/news.js"
+				"js/news.js",
+				"js/highscores.js",
+				"js/kill-statistics.js"
 			]
 		}
 	]

@@ -1,7 +1,7 @@
 // https://secure.tibia.com/community/?subtopic=highscores
 // https://secure.tibia.com/community/?subtopic=highscores&world=Xantera
 
-(() => {
+{
 	'use strict';
 
 	const select = document.querySelector('select[name="world"]');
@@ -17,4 +17,4 @@
 			history.replaceState({}, title, queryString);
 		}
 	}
-})();
+}

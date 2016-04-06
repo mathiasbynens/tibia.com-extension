@@ -9,7 +9,7 @@ const elCharacters = document.getElementById('characters');
 if (elCharacters) {
 
 	let currentTable;
-	function $table(header, callback) {
+	const $table = function(header, callback) {
 		const tables = document.querySelectorAll('table');
 		let result;
 		each(tables, function(table) {
@@ -22,9 +22,9 @@ if (elCharacters) {
 			currentTable = result;
 			callback(currentTable);
 		}
-	}
+	};
 
-	function $cell(header, callback) {
+	const $cell = function(header, callback) {
 		const cells = currentTable.querySelectorAll('td');
 		let nextCell;
 		let text;
@@ -43,9 +43,9 @@ if (elCharacters) {
 		}
 		// This is a quick hack to make sure an `HTMLElement` is always returned.
 		return nextCell || new Option;
-	}
+	};
 
-	function fetchOnlineCharacters(url) {
+	const fetchOnlineCharacters = function(url) {
 		return new Promise(function(resolve, reject) {
 			// Can haz timeout in Fetch API? https://github.com/whatwg/fetch/issues/20
 			const xhr = new XMLHttpRequest();
@@ -63,11 +63,11 @@ if (elCharacters) {
 			};
 			xhr.send();
 		});
-	}
+	};
 
 	// Extract character names, levels, and vocations from HTML soup of the form:
 	// https://secure.tibia.com/community/?subtopic=worlds&order=level_desc&world=Xantera
-	function parseOnlineCharacters(html) {
+	const parseOnlineCharacters = function(html) {
 		const regex = /<a href="https:\/\/secure.tibia.com\/community\/\?subtopic=characters&name=(?:[^"&]+)" >([^<]+)<\/a><\/td><td style="width:10%;" >([0-9]+)<\/td><td style="width:20%;" >([^<]+)<\/td><\/tr>/g;
 		const map = {};
 		let match;
@@ -82,7 +82,7 @@ if (elCharacters) {
 			};
 		}
 		return map;
-	}
+	};
 
 	// Store a reference to all the player killers in the death list, for later.
 	let killerAnchors;

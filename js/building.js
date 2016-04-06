@@ -1,9 +1,9 @@
 // https://secure.tibia.com/community/?subtopic=houses&page=view&world=Xantera&town=Liberty+Bay&houseid=64005
 // https://secure.tibia.com/community/?subtopic=houses&page=view&world=Xantera&town=Thais&houseid=19007
 
-'use strict';
-
-(function() {
+// Note: a function scope is needed since `return` is used within the block.
+(() => {
+	'use strict';
 
 	const items = document.querySelectorAll('#houses b');
 	if (!items.length) {
@@ -20,6 +20,7 @@
 
 	const houseName = items[0].textContent;
 	const world = items[3].textContent;
+	GLOBALS.world = world;
 
 	// Normalize the URL in the address bar.
 	const queryString = strip`?subtopic=houses&page=view&world=${ encode(world) }&
@@ -27,5 +28,4 @@
 	if (!location.search.includes(queryString)) {
 		history.replaceState({}, houseName, queryString);
 	}
-
-}());
+})();

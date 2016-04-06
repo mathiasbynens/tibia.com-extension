@@ -1,7 +1,7 @@
 // https://secure.tibia.com/community/?subtopic=killstatistics
 // https://secure.tibia.com/community/?subtopic=killstatistics&world=Xantera
 
-(() => {
+{
 	'use strict';
 
 	const select = document.querySelector('select[name="world"]');
@@ -15,4 +15,4 @@
 			history.replaceState({}, 'Kill statistics for ${ world }', queryString);
 		}
 	}
-})();
+}

@@ -3,11 +3,10 @@
 
 'use strict';
 
-function extractDate(element) {
-	return new Date(element.textContent.replace(/\xA0/g, '\x20').slice(0, 11));
-}
+const extractDate = element =>
+	new Date(element.textContent.replace(/\xA0/g, '\x20').slice(0, 11));
 
-function getDateRange() {
+const getDateRange = function() {
 	return new Promise(function(resolve, reject) {
 		const newsHeadlineDates = document.querySelectorAll('.NewsHeadlineDate');
 		const newsTickerDates = document.querySelectorAll('.NewsTickerDate');
@@ -32,7 +31,7 @@ function getDateRange() {
 	});
 }
 
-function fetchLog(dates) {
+const fetchLog = function(dates) {
 	return new Promise(function(resolve, reject) {
 		const xhr = new XMLHttpRequest();
 		xhr.open('post', '/news/?subtopic=newsarchive');
@@ -65,9 +64,9 @@ function fetchLog(dates) {
 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		xhr.send(params);
 	});
-}
+};
 
-function parseResponse(html) {
+const parseResponse = function(html) {
 	const newsHeadlines = document.querySelectorAll('.NewsHeadlineText');
 	let headlineIndex = 0;
 	const newsTickers = document.querySelectorAll('.NewsTickerText');
@@ -102,7 +101,7 @@ function parseResponse(html) {
 			++tickerIndex;
 		}
 	}
-}
+};
 
 const match = /[?&]id=([0-9]+)/.exec(location.search);
 if (match) {

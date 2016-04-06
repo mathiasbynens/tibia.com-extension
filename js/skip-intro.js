@@ -1,6 +1,6 @@
 // https://secure.tibia.com/mmorpg/free-multiplayer-online-role-playing-game.php
 
-(() => {
+{
 	'use strict';
 
 	const START_PAGE_URL = `${ ORIGIN }/news/?subtopic=latestnews`;
@@ -19,4 +19,4 @@
 			element.href = START_PAGE_URL;
 		}
 	);
-})();
+}

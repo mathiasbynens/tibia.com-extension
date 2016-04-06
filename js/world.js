@@ -1,7 +1,7 @@
 // https://secure.tibia.com/community/?subtopic=worlds
 // https://secure.tibia.com/community/?subtopic=worlds&order=level_desc&world=Xantera
 
-(() => {
+{
 	'use strict';
 
 	const elWorlds = document.getElementById('worlds');
@@ -22,4 +22,4 @@
 		});
 		cells[0].querySelector('a').focus();
 	}
-})();
+}

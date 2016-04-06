@@ -1,11 +1,13 @@
+#!/usr/bin/env phantomjs
+
 (function() {
 
 	var page = require('webpage').create();
 	var fs = require('fs');
 	var jsesc = require('jsesc');
 
-	// Mask as a commonly used browser (in this case, Chrome 41 on Windows 7).
-	page.settings.userAgent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36';
+	// Mask as a commonly used browser (in this case, Chrome 49 on Windows 7).
+	page.settings.userAgent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36';
 
 	const ORIGIN = 'https://secure.tibia.com';
 
@@ -78,7 +80,7 @@
 			// Save the data as a constant value in a JS file.
 			fs.write(
 				'data/buildings.js',
-				'const TIBIA_BUILDINGS = ' + jsesc(map, {
+				'\'use strict\';\n\nconst TIBIA_BUILDINGS = ' + jsesc(map, {
 					'compact': false
 				}) + ';\n',
 				'w'

@@ -5,32 +5,32 @@ const ORIGIN = location.hostname.includes('.test.') ?
 	'https://secure.tibia.com';
 const XHR_TIMEOUT = 3000; // Abort XHR requests that take more than 3 seconds.
 
-function encode(string) {
-	// Poor man’s `encodeURIComponent`. We only ever pass input that matches
-	// `/[A-Za-z ']/` anyway. Note that Tibia.com sometimes uses U+00A0 instead of
-	// regular U+0020 spaces for some reason.
-	return String(string).replace(/\x20|\xA0/g, '+');
-}
+// Create a placeholder object for values that are defined and re-used across
+// `.js` files.
+const GLOBALS = {};
 
-// Very simple, Tibia.com-specific `decodeHTML` helper method. Don’t use this
-// anywhere else; use `he.decode()` for proper HTML decoding. https://mths.be/he
-function decodeHTML(string) {
-	return string.replace(/&#160;/g, ' ');
-}
+// Poor man’s `encodeURIComponent`. We only ever pass input that matches
+// `/[A-Za-z ']/` anyway. Note that Tibia.com sometimes uses U+00A0 instead of
+// regular U+0020 spaces for some reason.
+const encode = text => String(text).replace(/\x20|\xA0/g, '+');
 
-function normalizeSpaces(text) {
-	return text.replace(/\xA0/g, ' ');
-}
+// Replace Tibia.com’s weird U+00A0 spaces with regular U+0020 spaces.
+const normalizeSpaces = text => text.replace(/\xA0/g, ' ');
+
+// Replace Tibia.com’s numeric HTML character references for U+00A0 with a
+// regular space. Don’t use this code anywhere else; use `he.decode()` for
+// proper HTML decoding. https://mths.be/he
+const decodeHTML = html => html.replace(/&#160;/g, ' ');
 
 // Strip tabs and newlines from the template literal.
-function strip(callSite, ...args) {
-	const output = callSite.slice(0, args.length + 1).map(function(text, index) {
-		return (index == 0 ? '' : args[index - 1]) + text;
-	}).join('');
+const strip = function(callSite, ...args) {
+	const output = callSite.slice(0, args.length + 1).map((text, index) =>
+		(index == 0 ? '' : args[index - 1]) + text
+	).join('');
 	return output.replace(/[\n\t]/g, '');
-}
+};
 
-function each(array, callback) {
+const each = function(array, callback) {
 	const length = array.length;
 	let index = -1;
 	while (++index < length) {
@@ -38,9 +38,9 @@ function each(array, callback) {
 			break;
 		}
 	}
-}
+};
 
-function getBuildingParams(name, separator) {
+const getBuildingParams = function(name, separator) {
 	for (const type in TIBIA_BUILDINGS) { // `type` is `'guildhalls'` or `'houses'`.
 		for (const city in TIBIA_BUILDINGS[type]) {
 			const id = TIBIA_BUILDINGS[type][city][name];
@@ -50,7 +50,7 @@ function getBuildingParams(name, separator) {
 			}
 		}
 	}
-}
+};
 
 // Rewrite internal HTTP links to their HTTPS equivalent.
 each(

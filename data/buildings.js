@@ -1,3 +1,5 @@
+'use strict';
+
 const TIBIA_BUILDINGS = {
 	'guildhalls': {
 		'Ab\'Dendriel': {

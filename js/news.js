@@ -109,7 +109,7 @@ if (match) {
 	if (location.search.includes('&fbegind=')) {
 		history.replaceState({}, '', `/news/?subtopic=newsarchive&id=${ id }`);
 	}
-} else if (document.getElementById('newsticker')) {
+} else if (document.getElementById('NewsTicker')) {
 	getDateRange()
 		.then(fetchLog)
 		.then(parseResponse);

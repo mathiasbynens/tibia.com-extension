@@ -54,7 +54,10 @@ const getBuildingParams = function(name, separator) {
 
 // Rewrite internal HTTP links to their HTTPS equivalent.
 each(
-	document.querySelectorAll('a[href^="http://www.tibia.com/'),
+	document.querySelectorAll(
+		'a[href^="http://www.tibia.com/"],' +
+		'a[href^="http://forum.tibia.com/"]'
+	),
 	function(element) {
 		element.protocol = 'https://';
 		element.host = 'secure.tibia.com';
@@ -69,7 +72,10 @@ each(
 );
 // Do the same for forms that post to HTTP.
 each(
-	document.querySelectorAll('form[action^="http://www.tibia.com/'),
+	document.querySelectorAll(
+		'form[action^="http://www.tibia.com/"],' +
+		'form[action^="http://forum.tibia.com/"]'
+	),
 	function(element) {
 		// Note: `element.action` is clobbered and points to `<input name=action>`.
 		const url = new URL(element.getAttribute('action'));
@@ -79,7 +85,7 @@ each(
 	}
 );
 each(
-	document.querySelectorAll('form[action^="http://www.test.tibia.com/'),
+	document.querySelectorAll('form[action^="http://www.test.tibia.com/"]'),
 	function(element) {
 		// Note: `element.action` is clobbered and points to `<input name=action>`.
 		const url = new URL(element.getAttribute('action'));

@@ -1,7 +1,7 @@
 'use strict';
 
 // Improve forum usability.
-if (/forum(?:\.test)?\.tibia\.com$/.test(location.hostname)) {
+if (location.pathname.startsWith('/forum/')) {
 
 	// Make individual posts easily permalinkable.
 	const regexThreadID = /^Thread\x20#/;

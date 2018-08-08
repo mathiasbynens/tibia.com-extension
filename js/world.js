@@ -1,5 +1,5 @@
 // https://www.tibia.com/community/?subtopic=worlds
-// https://www.tibia.com/community/?subtopic=worlds&order=level_desc&world=Xantera
+// https://www.tibia.com/community/?subtopic=worlds&order=level_desc&world=Wintera
 
 {
 	'use strict';
@@ -16,7 +16,7 @@
 	);
 
 	if (isWorldDetailPage) {
-		const cells = elWorlds.querySelectorAll('.table2 :-webkit-any(.Odd,.Even)');
+		const cells = elWorlds.querySelectorAll('.Table2 :-webkit-any(.Odd,.Even)');
 		each(cells, function(element) {
 			element.classList.add('mths-tibia-block-links');
 		});

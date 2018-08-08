@@ -1,5 +1,5 @@
 // https://www.tibia.com/community/?subtopic=killstatistics
-// https://www.tibia.com/community/?subtopic=killstatistics&world=Xantera
+// https://www.tibia.com/community/?subtopic=killstatistics&world=Wintera
 
 {
 	'use strict';

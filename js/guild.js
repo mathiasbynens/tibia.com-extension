@@ -5,8 +5,8 @@ const elGuildInfo = document.getElementById('GuildInformationContainer');
 if (elGuildInfo) {
 
 	// This is a guild detail page. Example:
-	// https://www.tibia.com/community/?subtopic=guilds&page=view&world=Xantera&GuildName=Forward&onlyshowonline=0
-	// https://www.tibia.com/community/?subtopic=guilds&page=view&world=Xantera&GuildName=Gospel+Sounds&onlyshowonline=0
+	// https://www.tibia.com/community/?subtopic=guilds&page=view&world=Wintera&GuildName=Forward&onlyshowonline=0
+	// https://www.tibia.com/community/?subtopic=guilds&page=view&world=Wintera&GuildName=Gospel+Sounds&onlyshowonline=0
 
 	// Link to guildhall detail pages.
 	const regex = /(?:^|>\n)The guild was founded on ([a-zA-Z]+) on/;
@@ -58,7 +58,7 @@ if (elGuildInfo) {
 	const elWorldName = document.querySelectorAll('.text')[1];
 	if (elWorldName && elWorldName.textContent.includes('Active Guilds on')) {
 		// This is a “guilds in world” page. Example:
-		// https://www.tibia.com/community/?subtopic=guilds&world=Xantera
+		// https://www.tibia.com/community/?subtopic=guilds&world=Wintera
 		const worldName = elWorldName.textContent.match(/[A-Za-z]+$/)[0];
 		const queryString = `?subtopic=guilds&world=${ worldName }`;
 		if (!location.search.includes(queryString)) {

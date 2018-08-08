@@ -1,5 +1,5 @@
 // https://www.tibia.com/community/?subtopic=highscores
-// https://www.tibia.com/community/?subtopic=highscores&world=Xantera
+// https://www.tibia.com/community/?subtopic=highscores&world=Wintera
 
 {
 	'use strict';

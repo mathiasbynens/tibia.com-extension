@@ -43,7 +43,7 @@
 	var cities;
 	var items = [];
 	var map = { 'guildhalls': {}, 'houses': {} };
-	open(ORIGIN + '/community/?subtopic=houses&world=Xantera', function() {
+	open(ORIGIN + '/community/?subtopic=houses&world=Wintera', function() {
 		cities = page.evaluate(function() {
 			return [].map.call(document.querySelectorAll('input[type="radio"][name="town"]'), function(element) {
 				return element.value;
@@ -53,12 +53,12 @@
 			var encodedCity = encodeURIComponent(city);
 			items.push(
 				{
-					'url': ORIGIN + '/community/?subtopic=houses&world=Xantera&type=houses&town=' + encodedCity,
+					'url': ORIGIN + '/community/?subtopic=houses&world=Wintera&type=houses&town=' + encodedCity,
 					'type': 'houses',
 					'city': city
 				},
 				{
-					'url': ORIGIN + '/community/?subtopic=houses&world=Xantera&type=guildhalls&town=' + encodedCity,
+					'url': ORIGIN + '/community/?subtopic=houses&world=Wintera&type=guildhalls&town=' + encodedCity,
 					'type': 'guildhalls',
 					'city': city
 				}

@@ -1,8 +1,8 @@
 'use strict';
 
 const ORIGIN = location.hostname.includes('.test.') ?
-	'https://secure.test.tibia.com' :
-	'https://secure.tibia.com';
+	'https://www.test.tibia.com' :
+	'https://www.tibia.com';
 const XHR_TIMEOUT = 3000; // Abort XHR requests that take more than 3 seconds.
 
 // Create a placeholder object for values that are defined and re-used across

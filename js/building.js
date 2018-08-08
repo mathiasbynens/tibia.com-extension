@@ -1,5 +1,5 @@
-// https://secure.tibia.com/community/?subtopic=houses&page=view&world=Xantera&town=Liberty+Bay&houseid=64005
-// https://secure.tibia.com/community/?subtopic=houses&page=view&world=Xantera&town=Thais&houseid=19007
+// https://www.tibia.com/community/?subtopic=houses&page=view&world=Wintera&town=Liberty+Bay&houseid=64005
+// https://www.tibia.com/community/?subtopic=houses&page=view&world=Wintera&town=Thais&houseid=19007
 
 // Note: a function scope is needed since `return` is used within the block.
 (() => {

@@ -1,4 +1,4 @@
-// https://secure.tibia.com/mmorpg/free-multiplayer-online-role-playing-game.php
+// https://www.tibia.com/mmorpg/free-multiplayer-online-role-playing-game.php
 
 {
 	'use strict';

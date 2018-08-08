@@ -5,8 +5,8 @@ const elGuildInfo = document.getElementById('GuildInformationContainer');
 if (elGuildInfo) {
 
 	// This is a guild detail page. Example:
-	// https://secure.tibia.com/community/?subtopic=guilds&page=view&world=Xantera&GuildName=Forward&onlyshowonline=0
-	// https://secure.tibia.com/community/?subtopic=guilds&page=view&world=Xantera&GuildName=Gospel+Sounds&onlyshowonline=0
+	// https://www.tibia.com/community/?subtopic=guilds&page=view&world=Xantera&GuildName=Forward&onlyshowonline=0
+	// https://www.tibia.com/community/?subtopic=guilds&page=view&world=Xantera&GuildName=Gospel+Sounds&onlyshowonline=0
 
 	// Link to guildhall detail pages.
 	const regex = /(?:^|>\n)The guild was founded on ([a-zA-Z]+) on/;
@@ -24,7 +24,7 @@ if (elGuildInfo) {
 	// Make the “show online” / “show all” button perform a clean GET.
 	each(
 		document.querySelectorAll(
-			'form[action="https://secure.tibia.com/community/?subtopic=guilds"]'
+			'form[action="https://www.tibia.com/community/?subtopic=guilds"]'
 		),
 		function(form) {
 			const button = form.querySelector('input[name^="Show"]');
@@ -58,7 +58,7 @@ if (elGuildInfo) {
 	const elWorldName = document.querySelectorAll('.text')[1];
 	if (elWorldName && elWorldName.textContent.includes('Active Guilds on')) {
 		// This is a “guilds in world” page. Example:
-		// https://secure.tibia.com/community/?subtopic=guilds&world=Xantera
+		// https://www.tibia.com/community/?subtopic=guilds&world=Xantera
 		const worldName = elWorldName.textContent.match(/[A-Za-z]+$/)[0];
 		const queryString = `?subtopic=guilds&world=${ worldName }`;
 		if (!location.search.includes(queryString)) {

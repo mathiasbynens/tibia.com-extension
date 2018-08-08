@@ -1,5 +1,5 @@
-// https://secure.tibia.com/community/?subtopic=worlds
-// https://secure.tibia.com/community/?subtopic=worlds&order=level_desc&world=Xantera
+// https://www.tibia.com/community/?subtopic=worlds
+// https://www.tibia.com/community/?subtopic=worlds&order=level_desc&world=Xantera
 
 {
 	'use strict';
@@ -12,7 +12,7 @@
 		titleElement.textContent == 'World Selection'
 		// If the title is some other value, then this might be the entry page; no
 		// world has been selected yet.
-		// https://secure.tibia.com/community/?subtopic=worlds
+		// https://www.tibia.com/community/?subtopic=worlds
 	);
 
 	if (isWorldDetailPage) {

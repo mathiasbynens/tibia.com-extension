@@ -68,7 +68,7 @@ if (elCharacters) {
 	// Extract character names, levels, and vocations from HTML soup of the form:
 	// https://www.tibia.com/community/?subtopic=worlds&order=level_desc&world=Xantera
 	const parseOnlineCharacters = function(html) {
-		const regex = /<a href="https:\/\/secure.tibia.com\/community\/\?subtopic=characters&name=(?:[^"&]+)" >([^<]+)<\/a><\/td><td style="width:10%;" >([0-9]+)<\/td><td style="width:20%;" >([^<]+)<\/td><\/tr>/g;
+		const regex = /<a href="https:\/\/www.tibia.com\/community\/\?subtopic=characters&name=(?:[^"&]+)" >([^<]+)<\/a><\/td><td style="width:10%;" >([0-9]+)<\/td><td style="width:20%;" >([^<]+)<\/td><\/tr>/g;
 		const map = {};
 		let match;
 		while ((match = regex.exec(html))) {
@@ -215,7 +215,7 @@ if (elCharacters) {
 		$cell('Guild\xA0membership', function(element, text) {
 			const anchor = element.querySelector('a');
 			anchor.protocol = 'https://';
-			anchor.host = 'secure.tibia.com';
+			anchor.host = 'www.tibia.com';
 			anchor.search = anchor.search.replace(
 				'&page=view',
 				`&page=view&world=${ world }`

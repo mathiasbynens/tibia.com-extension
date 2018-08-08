@@ -60,14 +60,13 @@ each(
 	),
 	function(element) {
 		element.protocol = 'https://';
-		element.host = 'secure.tibia.com';
+		element.host = 'www.tibia.com';
 	}
 );
 each(
 	document.querySelectorAll('a[href^="http://www.test.tibia.com/'),
 	function(element) {
 		element.protocol = 'https://';
-		element.host = 'secure.test.tibia.com';
 	}
 );
 // Do the same for forms that post to HTTP.
@@ -80,7 +79,7 @@ each(
 		// Note: `element.action` is clobbered and points to `<input name=action>`.
 		const url = new URL(element.getAttribute('action'));
 		url.protocol = 'https:';
-		url.hostname = 'secure.tibia.com';
+		url.hostname = 'www.tibia.com';
 		element.action = url;
 	}
 );
@@ -90,7 +89,7 @@ each(
 		// Note: `element.action` is clobbered and points to `<input name=action>`.
 		const url = new URL(element.getAttribute('action'));
 		url.protocol = 'https:';
-		url.hostname = 'secure.test.tibia.com';
+		url.hostname = 'www.test.tibia.com';
 		element.action = url;
 	}
 );

@@ -9,7 +9,7 @@
 	// Mask as a commonly used browser (in this case, Chrome 49 on Windows 7).
 	page.settings.userAgent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36';
 
-	const ORIGIN = 'https://secure.tibia.com';
+	const ORIGIN = 'https://www.tibia.com';
 
 	// Abort Facebook-specific requests.
 	page.onResourceRequested = function(request, net) {

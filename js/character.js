@@ -200,8 +200,8 @@ if (elCharacters) {
 
 		// Link to the house detail page.
 		$cell('House', function(element, text) {
-			const city = text.match(/\(([^\)]+)\)\x20is/)[1];
-			const houseName = text.match(/^(.+)\x20\([^\)]+\)\x20is/)[1];
+			const city = text.match(/\(([^\)]+)\)\x20is/)[1].trim();
+			const houseName = text.match(/^(.+)\x20\([^\)]+\)\x20is/)[1].trim();
 			const houseID = TIBIA_BUILDINGS.houses[city][houseName];
 			element.classList.add('mths-tibia-block-links');
 			return strip`<a href="${ ORIGIN }/community/?subtopic=houses&amp;

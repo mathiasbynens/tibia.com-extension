@@ -68,7 +68,7 @@ if (elCharacters) {
 	// Extract character names, levels, and vocations from HTML soup of the form:
 	// https://www.tibia.com/community/?subtopic=worlds&order=level_desc&world=Wintera
 	const parseOnlineCharacters = function(html) {
-		const regex = /<a href="https:\/\/www.tibia.com\/community\/\?subtopic=characters&name=(?:[^"&]+)" >([^<]+)<\/a><\/td><td style="width:10%;" >([0-9]+)<\/td><td style="width:20%;" >([^<]+)<\/td><\/tr>/g;
+		const regex = /<a href="https:\/\/www.tibia.com\/community\/\?subtopic=characters&name=(?:[^"&]+)">([^<]+)<\/a><\/td><td style="width:10%;">([0-9]+)<\/td><td style="width:20%;">([^<]+)<\/td><\/tr>/g;
 		const map = {};
 		let match;
 		while ((match = regex.exec(html))) {
@@ -114,8 +114,7 @@ if (elCharacters) {
 				${ ' ' }<span class="mths-tibia-character-links">(
 					<a href="http://www.tibiaring.com/char.php?lang=en
 						&amp;c=${ encodeURIComponent(charName) }">PvP history</a>,${ ' ' }
-					<a href="http://www.pskonejott.com/otc_display.php
-						?character=${ charNameEncoded }">online time</a>,${ ' ' }
+					<a href="https://guildstats.eu/character?nick=${ charNameEncoded }#tab2">online time</a>,${ ' ' }
 					<a href="http://mrthomsen.de/player/view/
 						${ charName.replace(/\x20|\xA0/g, '%20') }">experience history</a>
 				)</span>`;

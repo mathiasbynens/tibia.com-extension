@@ -70,8 +70,7 @@ if (elCharacters) {
 	const parseOnlineCharacters = function(html) {
 		const regex = /<a href="https:\/\/www.tibia.com\/community\/\?subtopic=characters&name=(?:[^"&]+)">([^<]+)<\/a><\/td><td style="width:10%;">([0-9]+)<\/td><td style="width:20%;">([^<]+)<\/td><\/tr>/g;
 		const map = {};
-		let match;
-		while ((match = regex.exec(html))) {
+		for (const match of html.matchAll(regex)) {
 			const name = decodeHTML(match[1]);
 			const level = Number(match[2]);
 			// Track vocation too, in case it changed since the character logged in.

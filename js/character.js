@@ -69,16 +69,16 @@ if (elCharacters) {
 	// https://www.tibia.com/community/?subtopic=worlds&order=level_desc&world=Wintera
 	const parseOnlineCharacters = function(html) {
 		const regex = /<a href="https:\/\/www.tibia.com\/community\/\?subtopic=characters&name=(?:[^"&]+)">([^<]+)<\/a><\/td><td style="width:10%;">([0-9]+)<\/td><td style="width:20%;">([^<]+)<\/td><\/tr>/g;
-		const map = {};
+		const map = new Map();
 		for (const match of html.matchAll(regex)) {
 			const name = decodeHTML(match[1]);
 			const level = Number(match[2]);
 			// Track vocation too, in case it changed since the character logged in.
 			const vocation = decodeHTML(match[3]);
-			map[name] = {
+			map.set(name, {
 				'level': level,
-				'vocation': vocation
-			};
+				'vocation': vocation,
+			});
 		}
 		return map;
 	};
@@ -160,7 +160,7 @@ if (elCharacters) {
 		fetchOnlineCharacters(strip`
 			/community/?subtopic=worlds&order=level_desc&world=${ encode(world) }
 		`).then(parseOnlineCharacters).then(function(map) {
-			const entry = map[charName];
+			const entry = map.get(charName);
 			// Update the level if it changed since the character’s last login.
 			if (entry) {
 				document.querySelector('.mths-tibia-character-name')
@@ -181,7 +181,7 @@ if (elCharacters) {
 			if (killerAnchors) {
 				each(killerAnchors, function(anchor) {
 					const name = anchor.textContent.replace(/\xA0/g, ' ');
-					const entry = map[name];
+					const entry = map.get(name);
 					if (entry) {
 						anchor.classList.add('mths-tibia-online');
 					}

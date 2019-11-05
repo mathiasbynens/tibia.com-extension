@@ -1,116 +1,78 @@
-#!/usr/bin/env phantomjs
+const fs = require('fs');
+const jsesc = require('jsesc');
+const puppeteer = require('puppeteer');
 
-(function() {
+(async () => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
 
-	var page = require('webpage').create();
-	var fs = require('fs');
-	var jsesc = require('jsesc');
+  // Block image requests.
+  await page.setRequestInterception(true);
+  page.on('request', (request) => {
+    if (request.resourceType() === 'image') {
+      request.abort();
+    } else {
+      request.continue();
+    }
+  });
 
-	// Mask as a commonly used browser (in this case, Chrome 49 on Windows 7).
-	page.settings.userAgent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36';
+  await page.goto('https://www.tibia.com/community/?subtopic=houses&world=Wintera');
+  const cities = await page.evaluate(() => {
+    const elements = document.querySelectorAll('input[type="radio"][name="town"]');
+    const cities = [...elements].map(element => element.value);
+    return cities;
+  });
 
-	const ORIGIN = 'https://www.tibia.com';
+  async function fetchBuildings(city, type) {
+    console.assert(type === 'houses' || type === 'guildhalls');
+    const url = `https://www.tibia.com/community/?subtopic=houses&world=Wintera&type=${type}&town=${encodeURIComponent(city)}`;
+    const page = await browser.newPage();
+    await page.goto(url);
+    const object = await page.evaluate(() => {
+      const firstTable = document.querySelector('table');
+      const cells = firstTable.querySelectorAll('tr:nth-child(n+3) > td:nth-child(4n+1)');
+      const buildingsToIds = {};
+      if (cells.length === 1) {
+        return buildingsToIds;
+      }
+      let index = -1;
+      while (++index < cells.length) {
+        const houseName = cells[index].textContent.replace(/\xA0/g, '\x20');
+        const houseID = (cells[++index].querySelector('input[name="houseid"]') || {}).value;
+        buildingsToIds[houseName] = Number(houseID);
+      }
+      return buildingsToIds;
+    });
+    const buildings = new Map(Object.entries(object).sort((a, b) => {
+      // Sort by building ID.
+      return a[1] - b[1];
+    }));
+    return buildings;
+  }
 
-	// Abort Facebook-specific requests.
-	page.onResourceRequested = function(request, net) {
-		if (
-			request.url.indexOf('fbstatic-a.akamaihd.net') > -1 ||
-			request.url.indexOf('connect.facebook.net') > -1
-		) {
-			net.abort();
-		}
-	};
+  const housesByCity = new Map();
+  const guildhallsByCity = new Map();
 
-	function open(url, callback) {
-		page.open(url, function(status) {
-			if (status != 'success') {
-				console.log('Error loading ' + url);
-				return phantom.exit();
-			}
-			callback();
-		});
-	}
+  // TODO: parallelize all HTTP requests, assuming the tibia.com server
+  // doesn’t block rapid requests.
+  for (const city of cities) {
+    const [houses, guildhalls] = await Promise.all([
+      fetchBuildings(city, 'houses'),
+      fetchBuildings(city, 'guildhalls'),
+    ]);
+    if (houses.size) housesByCity.set(city, houses);
+    if (guildhalls.size) guildhallsByCity.set(city, guildhalls);
+  }
 
-	function extend(destination, source) {
-		destination || (destination = {});
-		for (var key in source) {
-			// Note: there is no need to check `hasOwnProperty` in this case.
-			destination[key] = source[key];
-		}
-	}
+  await browser.close();
 
-	// Get a list of all Tibian cities, and use it to build a list of items.
-	var cities;
-	var items = [];
-	var map = { 'guildhalls': {}, 'houses': {} };
-	open(ORIGIN + '/community/?subtopic=houses&world=Wintera', function() {
-		cities = page.evaluate(function() {
-			return [].map.call(document.querySelectorAll('input[type="radio"][name="town"]'), function(element) {
-				return element.value;
-			});
-		});
-		cities.forEach(function(city) {
-			var encodedCity = encodeURIComponent(city);
-			items.push(
-				{
-					'url': ORIGIN + '/community/?subtopic=houses&world=Wintera&type=houses&town=' + encodedCity,
-					'type': 'houses',
-					'city': city
-				},
-				{
-					'url': ORIGIN + '/community/?subtopic=houses&world=Wintera&type=guildhalls&town=' + encodedCity,
-					'type': 'guildhalls',
-					'city': city
-				}
-			);
-			map.guildhalls[city] = {};
-			map.houses[city] = {};
-		});
-		next();
-	});
+  const escape = (map) => {
+    return jsesc(map, {
+      'compact': false,
+    });
+  };
+  const output = `'use strict';\n\nconst TIBIA_HOUSES = ${ escape(housesByCity) };\n\nconst TIBIA_GUILDHALLS = ${ escape(guildhallsByCity) };\n`;
+  // Write the data to a JS file.
+  fs.writeFileSync('data/buildings.js', output);
 
-	var index = -1;
-	function next() {
-		var item = items[++index];
-		var result;
-		if (item) {
-			handleItem(item);
-		} else {
-			// All done.
-			// Save the data as a constant value in a JS file.
-			fs.write(
-				'data/buildings.js',
-				'\'use strict\';\n\nconst TIBIA_BUILDINGS = ' + jsesc(map, {
-					'compact': false
-				}) + ';\n',
-				'w'
-			);
-			phantom.exit();
-		}
-	}
-
-	function handleItem(item) {
-		open(item.url, function() {
-			var results = page.evaluate(function() {
-				var index = -1;
-				var cells = document.querySelector('table').querySelectorAll('tr:nth-child(n+3) > td:nth-child(4n+1)');
-				var houseName;
-				var houseID;
-				var object = {};
-				if (cells.length == 1) {
-					return {};
-				}
-				while (++index < cells.length) {
-					houseName = cells[index].textContent.replace(/\xA0/g, '\x20');
-					houseID = (cells[++index].querySelector('input[name="houseid"]') || {}).value;
-					object[houseName] = Number(houseID);
-				}
-				return object;
-			});
-			extend(map[item.type][item.city], results);
-			// Some delay is needed to prevent the server from denying the request. :(
-			setTimeout(next, 250);
-		});
-	}
-
-}());
+})();

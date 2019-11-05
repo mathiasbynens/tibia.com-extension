@@ -41,9 +41,10 @@ const each = function(array, callback) {
 };
 
 const getBuildingParams = function(name, separator) {
-	for (const type in TIBIA_BUILDINGS) { // `type` is `'guildhalls'` or `'houses'`.
-		for (const city in TIBIA_BUILDINGS[type]) {
-			const id = TIBIA_BUILDINGS[type][city][name];
+	const types = [TIBIA_GUILDHALLS, TIBIA_HOUSES];
+	for (const type of types) {
+		for (const [city, namesToIds] of type) {
+			const id = namesToIds.get(name);
 			if (id) {
 				// `city` and `id` have been found.
 				return `town=${ encode(city) }${ separator }houseid=${ encode(id) }`;

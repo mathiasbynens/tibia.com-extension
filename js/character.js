@@ -200,7 +200,7 @@ if (elCharacters) {
 		$cell('House', function(element, text) {
 			const city = text.match(/\(([^\)]+)\)\x20is/)[1].trim();
 			const houseName = text.match(/^(.+)\x20\([^\)]+\)\x20is/)[1].trim();
-			const houseID = TIBIA_BUILDINGS.houses[city][houseName];
+			const houseID = TIBIA_HOUSES.get(city).get(houseName);
 			element.classList.add('mths-tibia-block-links');
 			return strip`<a href="${ ORIGIN }/community/?subtopic=houses&amp;
 				page=view&amp;world=${ encode(world) }&amp;town=${ encode(city) }&amp;

@@ -7,7 +7,6 @@ Tibia is a MMORPG I used to play a decade ago, so this script isn’t really tha
 ## Installation
 
 * [Chrome extension](https://chrome.google.com/webstore/detail/tibiacom-enhancer/nffjdandbhengjofneamfibpichapjbb)
-* [Opera add-on](https://addons.opera.com/en/extensions/details/tibiacom-enhancer/)
 
 ## Features
 
@@ -16,7 +15,7 @@ The extension does a couple of things all around the website:
 * It skips [the annoying intro page on Tibia.com](https://www.tibia.com/mmorpg/free-multiplayer-online-role-playing-game.php).
 * It shows permanent links for news entries and individual forum posts.
 * It ensures internal links use HTTPS (i.e. `https://www.tibia.com/…`) rather than HTTP (i.e. `http://www.tibia.com/…`) wherever possible.
-* On guild info pages ([example](https://www.tibia.com/community/?subtopic=guilds&page=view&GuildName=Blood)), it makes any guild’s guildhall name clickable _without_ introducing additional XHR requests.
+* On guild info pages ([example](https://www.tibia.com/community/?subtopic=guilds&page=view&GuildName=Serene)), it makes any guild’s guildhall name clickable _without_ introducing additional XHR requests.
 * On house or guildhall detail pages, it makes sure the URL displayed in the address bar is always a permalink to the building you’re currently viewing, so that you can always easily copy-paste a permalink to the active page.
 
 The extension enhances character info pages ([example](https://www.tibia.com/community/?subtopic=characters&name=Illja+Mythus)) as follows:

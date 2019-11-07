@@ -46,7 +46,7 @@ if (elGuildInfo) {
 	const guildName = elGuildName.textContent;
 	const queryString = strip`?subtopic=guilds
 		&page=view
-		&world=${ GLOBALS.world }
+		&world=${ worldName }
 		&GuildName=${ guildName }
 		&onlyshowonline=0`;
 	if (!location.search.includes('&world=')) {

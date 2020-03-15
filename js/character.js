@@ -196,17 +196,6 @@ if (elCharacters) {
 				order=level_desc&amp;world=${ encode(text) }">${ text }</a>`;
 		});
 
-		// Link to the house detail page.
-		$cell('House', function(element, text) {
-			const city = text.match(/\(([^\)]+)\)\x20is/)[1].trim();
-			const houseName = text.match(/^(.+)\x20\([^\)]+\)\x20is/)[1].trim();
-			const houseID = TIBIA_HOUSES.get(city).get(houseName);
-			element.classList.add('mths-tibia-block-links');
-			return strip`<a href="${ ORIGIN }/community/?subtopic=houses&amp;
-				page=view&amp;world=${ encode(world) }&amp;town=${ encode(city) }&amp;
-				houseid=${ encode(houseID) }">${ text }</a>`;
-		});
-
 		// Append `onlyshowonline` query string parameter to the guild URL.
 		// This one cell contains U+00A0 instead of a regular U+0020 space for some
 		// reason.
@@ -226,7 +215,7 @@ if (elCharacters) {
 		const cells = table.querySelectorAll('td[width]:first-child');
 		each(cells, function(cell) {
 			const text = cell.textContent;
-			const charName = text.match(/^\d+\.(?:\xA0|\x20)(.*)/)[1];
+			const charName = text.match(/^\d+\.(?:\xA0|\x20)(.*)/)[1].trim();
 			cell.classList.add('mths-tibia-block-links');
 			// `<nobr>`… I know! But that’s what they’re using:
 			cell.innerHTML = strip`<nobr><a href="${ ORIGIN }/community/?subtopic=

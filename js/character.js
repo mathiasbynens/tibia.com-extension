@@ -97,7 +97,7 @@ if (elCharacters) {
 		$cell('Name', function(element, text) {
 			// Account for “Foo, will be deleted at Oct 1 2012, 17:00:00 CEST”.
 			charCell = element;
-			charName = normalizeSpaces(text.match('^[^,]+')[0].trim());
+			charName = normalizeSpaces(text.match('^[^,\(]+')[0].trim());
 			charNameEncoded = encode(charName);
 			charCell.onclick = function(event) {
 				const target = event.target;
@@ -110,7 +110,8 @@ if (elCharacters) {
 				}
 			};
 			return strip`<span class="mths-tibia-character-name">${ charName }</span>
-				${ ' ' }<span class="mths-tibia-character-links">(
+				${ text.includes('(traded)') ? ' (traded) ' : ' ' }
+				<span class="mths-tibia-character-links">(
 					<a href="http://www.tibiaring.com/char.php?lang=en
 						&amp;c=${ encodeURIComponent(charName) }">PvP history</a>,${ ' ' }
 					<a href="https://guildstats.eu/character?nick=${ charNameEncoded }#tab2">online time</a>,${ ' ' }

@@ -12,7 +12,7 @@ if (elGuildInfo) {
 	const regex = /(?:^|>\n)The guild was founded on ([a-zA-Z]+) on/;
 	const worldName = elGuildInfo.innerHTML.match(regex)[1];
 	elGuildInfo.innerHTML = elGuildInfo.innerHTML.replace(
-		/<br>\nTheir home on ([a-zA-Z]+) is ([a-zA-Z\x20,']+)\./,
+		/<br>\nTheir home on ([a-zA-Z]+) is ([^.]+)\./,
 		function(match, worldName, building) {
 			return strip`<a href="${ ORIGIN }/community/?subtopic=houses
 				&amp;page=view&amp;world=${ worldName }

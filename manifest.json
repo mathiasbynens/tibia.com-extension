@@ -3,7 +3,7 @@
 	"name": "Tibia.com enhancer",
 	"description": "Improve the user experience on Tibia.com.",
 	"author": "Mathias Bynens",
-	"version": "1.8.5",
+	"version": "1.8.6",
 	"homepage_url": "https://mths.be/tibiauserjs",
 	"icons": {
 		"48": "img/icon-48.png",

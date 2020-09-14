@@ -216,7 +216,7 @@ if (elCharacters) {
 		const cells = table.querySelectorAll('td[width]:first-child');
 		each(cells, function(cell) {
 			const text = cell.textContent;
-			const charName = text.match(/^\d+\.(?:\xA0|\x20)(.*)/)[1].trim();
+			const charName = text.match(/^\d+\.[\xA0\x20]([^\(]+)/)[1].trim();
 			cell.classList.add('mths-tibia-block-links');
 			// `<nobr>`… I know! But that’s what they’re using:
 			cell.innerHTML = strip`<nobr><a href="${ ORIGIN }/community/?subtopic=

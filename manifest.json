@@ -11,6 +11,17 @@
 		"128": "img/icon-128.png",
 		"256": "img/icon-256.png"
 	},
+	"permissions": [
+		"webRequest",
+		"webRequestBlocking",
+		"https://www.tibia.com/*"
+	],
+	"background": {
+		"scripts": [
+			"js/background.js"
+		],
+		"persistent": true
+	},
 	"content_scripts": [
 		{
 			"run_at": "document_end",

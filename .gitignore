@@ -1,6 +1,9 @@
 # Generated ZIP archives (`npm run zip`)
 dist.zip
 
+# Generated extension metadata (e.g. indexed rulesets)
+_metadata
+
 # npm modules and logs
 node_modules
 npm-debug.log

@@ -1,0 +1,21 @@
+[
+	{
+		"id": 1,
+		"priority": 1,
+		"action": {
+			"type": "modifyHeaders",
+			"responseHeaders": [
+				{
+					"header": "Cache-Control",
+					"operation": "set",
+					"value": "no-store, max-age=0"
+				}
+			]
+		},
+		"condition": {
+			"urlFilter": "/community/*",
+			"domains": ["www.tibia.com"],
+			"resourceTypes": ["main_frame"]
+		}
+	}
+]

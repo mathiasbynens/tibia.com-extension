@@ -1,5 +1,5 @@
 {
-	"manifest_version": 2,
+	"manifest_version": 3,
 	"name": "Tibia.com enhancer",
 	"description": "Improve the user experience on Tibia.com.",
 	"author": "Mathias Bynens",
@@ -12,15 +12,20 @@
 		"256": "img/icon-256.png"
 	},
 	"permissions": [
-		"webRequest",
-		"webRequestBlocking",
+		"declarativeNetRequest",
+		"storage"
+	],
+	"host_permissions": [
 		"https://www.tibia.com/*"
 	],
-	"background": {
-		"scripts": [
-			"js/background.js"
-		],
-		"persistent": true
+	"declarative_net_request": {
+		"rule_resources": [
+			{
+				"id": "bypass-cache",
+				"enabled": true,
+				"path": "bypass-cache.json"
+			}
+		]
 	},
 	"content_scripts": [
 		{

@@ -26,24 +26,25 @@ if (location.pathname.startsWith('/forum/')) {
 	const select = document.querySelector('select[name="forum_character"]');
 	if (select) {
 		const separator = '|';
-		const storedCharacter = localStorage.forumCharacter;
-		if (storedCharacter) {
-			const parts = storedCharacter.split(separator);
-			const value = parts[0];
-			const character = parts[1];
-			each(select.options, function(option, index) {
-				if (option.value == value && option.textContent == character) {
-					select.selectedIndex = index;
-					return false; // break
-				}
-			});
-		}
+		chrome.storage.sync.get(['forumCharacter'], (storedCharacter) => {
+			if (storedCharacter) {
+				const [value, character] = storedCharacter.split(separator);
+				each(select.options, (option, index) => {
+					if (option.value == value && option.textContent == character) {
+						select.selectedIndex = index;
+						return false; // break
+					}
+				});
+			}
+		});
 		select.oninput = function() {
 			const index = select.selectedIndex;
 			const value = select.value;
 			const character = select.options[index].textContent;
 			const id = `${ value }${ separator }${ character }`;
-			localStorage.forumCharacter = id;
+			chrome.storage.sync.set({ forumCharacter: id }, () => {
+				// console.log('Setting saved!');
+			});
 		};
 	}
 

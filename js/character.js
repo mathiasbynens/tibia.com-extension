@@ -10,10 +10,11 @@ if (elCharacters) {
 
 	let currentTable;
 	const $table = function(header, callback) {
-		const tables = document.querySelectorAll('table');
+		const tables = document.querySelectorAll('table:not(:empty)');
 		let result;
 		each(tables, function(table) {
-			if (table.querySelector('td').textContent == header) {
+			const td = table.querySelector('td');
+			if (td.textContent == header) {
 				result = table;
 				return result;
 			}

@@ -561,6 +561,7 @@ const TIBIA_HOUSES = new Map([
 		['Meriana Beach', 63010],
 		['The Yeah Beach Project', 63011],
 		['Ivory Mansion', 63012],
+		['Lion\'s Head Reef', 63013],
 		['Freedom Street 1', 64001],
 		['Freedom Street 2', 64002],
 		['Trader\'s Point 1', 64003],

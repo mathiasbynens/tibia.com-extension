@@ -23,7 +23,7 @@
 			{
 				"id": "bypass-cache",
 				"enabled": true,
-				"path": "bypass-cache.json"
+				"path": "rules/bypass-cache.json"
 			}
 		]
 	},

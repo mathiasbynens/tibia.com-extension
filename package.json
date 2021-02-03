@@ -2,7 +2,7 @@
 	"private": true,
 	"scripts": {
 		"scrape": "node tools/scrape.js",
-		"zip": "zip -r dist.zip css data img js LICENSE-MIT.txt manifest.json && unzip -l dist.zip"
+		"zip": "zip -r dist.zip css data img js rules LICENSE-MIT.txt manifest.json && unzip -l dist.zip"
 	},
 	"devDependencies": {
 		"jsesc": "^2.5.2",

@@ -15,7 +15,7 @@
 		"condition": {
 			"urlFilter": "/community/*",
 			"domains": ["www.tibia.com"],
-			"resourceTypes": ["main_frame"]
+			"resourceTypes": ["main_frame", "xmlhttprequest"]
 		}
 	}
 ]

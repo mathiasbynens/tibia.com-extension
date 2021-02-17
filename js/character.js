@@ -116,7 +116,7 @@ if (elCharacters) {
 					<a href="http://www.tibiaring.com/char.php?lang=en
 						&amp;c=${ encodeURIComponent(charName) }">PvP history</a>,${ ' ' }
 					<a href="https://guildstats.eu/character?nick=${ charNameEncoded }#tab2">online time</a>,${ ' ' }
-					<a href="https://guildstats.eu/character?nick=${ charNameEncoded }#tab7">experience history</a>,${ ' ' }
+					<a href="https://guildstats.eu/character?nick=${ charNameEncoded }#tab7">experience history</a>
 				)</span>`;
 		});
 		charCell.querySelector('a').focus();

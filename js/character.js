@@ -14,7 +14,7 @@ if (elCharacters) {
 		let result;
 		each(tables, function(table) {
 			const td = table.querySelector('td');
-			if (td.textContent == header) {
+			if (td && td.textContent == header) {
 				result = table;
 				return result;
 			}
@@ -159,7 +159,7 @@ if (elCharacters) {
 		});
 
 		fetchOnlineCharacters(strip`
-			/community/?subtopic=worlds&order=level_desc&world=${ encode(world) }
+			/community/?subtopic=worlds&order=level_desc&world=${ encode(world) }&cacheBust=${ Date.now() }
 		`).then(parseOnlineCharacters).then(function(map) {
 			const entry = map.get(charName);
 			// Update the level if it changed since the character’s last login.

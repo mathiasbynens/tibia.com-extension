@@ -6,7 +6,10 @@
 	const START_PAGE_URL = `${ ORIGIN }/news/?subtopic=latestnews`;
 
 	// Skip the annoying intro page.
-	if (location.pathname.includes('free-multiplayer-online-role-playing-game.php')) {
+	if (
+		location.pathname.includes('free-multiplayer-online-role-playing-game.php') &&
+		!location.search.includes('taftoken=')
+	) {
 		location.href = START_PAGE_URL;
 	}
 

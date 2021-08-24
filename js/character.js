@@ -10,18 +10,14 @@ if (elCharacters) {
 
 	let currentTable;
 	const $table = function(header, callback) {
-		const tables = document.querySelectorAll('table:not(:empty)');
-		let result;
-		each(tables, function(table) {
-			const td = table.querySelector('td');
-			if (td && td.textContent == header) {
-				result = table;
-				return result;
+		const captions = document.querySelectorAll('.CaptionContainer .Text');
+		for (const caption of captions) {
+			if (caption.textContent === header) {
+				const table = caption.closest('.TableContainer').querySelector('table:not(:empty)');
+				currentTable = table;
+				callback(currentTable);
+				return;
 			}
-		});
-		if (result) {
-			currentTable = result;
-			callback(currentTable);
 		}
 	};
 
@@ -77,8 +73,8 @@ if (elCharacters) {
 			// Track vocation too, in case it changed since the character logged in.
 			const vocation = decodeHTML(match[3]);
 			map.set(name, {
-				'level': level,
-				'vocation': vocation,
+				level: level,
+				vocation: vocation,
 			});
 		}
 		return map;
@@ -213,7 +209,7 @@ if (elCharacters) {
 
 	// Handle other characters on the account.
 	$table('Characters', function(table) {
-		const cells = table.querySelectorAll('td[width]:first-child');
+		const cells = table.querySelectorAll('td[style^="width: 20%"]');
 		each(cells, function(cell) {
 			const text = cell.textContent;
 			const charName = text.match(/^\d+\.[\xA0\x20]([^\(]+)/)[1].trim();

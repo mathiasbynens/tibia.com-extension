@@ -4,15 +4,10 @@
 if (location.pathname.startsWith('/forum/')) {
 
 	// Make individual posts easily permalinkable.
-	const regexThreadID = /^Thread\x20#/;
-	let threadID = '';
-	each(document.querySelectorAll('b'), function(el) {
-		const text = el.innerText;
-		if (regexThreadID.test(text)) {
-			threadID = text.replace(regexThreadID, '');
-			return false; // break
-		}
-	});
+	const regexThreadID = /^Thread #(\d+)/;
+	const elHeader = document.querySelector('.ForumPostHeaderText');
+	const match = regexThreadID.exec(elHeader.textContent);
+	const threadID = match[1];
 
 	each(document.querySelectorAll('a[name^="post"]'), function(el) {
 		const postID = el.name.replace(/^post/, '');

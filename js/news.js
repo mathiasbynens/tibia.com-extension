@@ -25,11 +25,11 @@ const getDateRange = function() {
 			newsTickerEndDate :
 			headlineEndDate;
 		resolve({
-			'startDate': startDate,
-			'endDate': endDate
+			startDate: startDate,
+			endDate: endDate,
 		});
 	});
-}
+};
 
 const fetchLog = function(dates) {
 	return new Promise(function(resolve, reject) {
@@ -71,9 +71,8 @@ const parseResponse = function(html) {
 	let headlineIndex = 0;
 	const newsTickers = document.querySelectorAll('.NewsTickerText');
 	let tickerIndex = 0;
-	const regex = /<small>(.+)<\/small><\/td>\s*<td><a href='https:\/\/www\.(?:test\.)?tibia\.com\/news\/\?subtopic=newsarchive&amp;id=([0-9]+)/g;
-	let match;
-	while ((match = regex.exec(html))) {
+	const regex = /<small>([^<]+)<\/small><\/td>\s*<td><a href=['"]https:\/\/www\.(?:test\.)?tibia\.com\/news\/\?subtopic=newsarchive&amp;id=([0-9]+)/g;
+	for (const match of html.matchAll(regex)) {
 		if (
 			headlineIndex >= newsHeadlines.length &&
 			tickerIndex >= newsTickers.length

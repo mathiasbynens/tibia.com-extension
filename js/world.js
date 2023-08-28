@@ -16,7 +16,7 @@
 	);
 
 	if (isWorldDetailPage) {
-		const cells = elWorlds.querySelectorAll('.Table2 :-webkit-any(.Odd,.Even)');
+		const cells = document.querySelectorAll('.Table2 :is(.Odd, .Even)');
 		each(cells, function(element) {
 			element.classList.add('mths-tibia-block-links');
 		});

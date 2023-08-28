@@ -53,6 +53,12 @@ const getBuildingParams = function(name, separator) {
 	}
 };
 
+const calculateLevelShareRange = (level) => {
+	const min = Math.floor(level * 2 / 3);
+	const max = Math.ceil(level * 3 / 2) + (level % 2 === 0 ? 1 : 0);
+	return {min, max};
+};
+
 // Rewrite internal HTTP links to their HTTPS equivalent.
 each(
 	document.querySelectorAll(

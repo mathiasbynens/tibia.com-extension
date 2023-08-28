@@ -152,6 +152,8 @@ if (elCharacters) {
 		$cell('Level', function(element, text) {
 			level = Number(text);
 			levelCell = element;
+			const {min, max} = calculateLevelShareRange(level);
+			levelCell.innerHTML += ` <small>(share range: ${min}\u2013${max})</small>`;
 		});
 
 		fetchOnlineCharacters(strip`

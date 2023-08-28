@@ -54,8 +54,8 @@ const getBuildingParams = function(name, separator) {
 };
 
 const calculateLevelShareRange = (level) => {
-	const min = Math.floor(level * 2 / 3);
-	const max = Math.ceil((level + 1) * 3 / 2) - 1;
+	const min = Math.floor(level / 1.5);
+	const max = Math.floor(level * 1.5 + 1);
 	return {min, max};
 };
 

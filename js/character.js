@@ -164,11 +164,14 @@ if (elCharacters) {
 			if (entry) {
 				document.querySelector('.mths-tibia-character-name')
 					.classList.add('mths-tibia-online');
-				const delta = entry.level - level;
+				const newLevel = entry.level;
+				const delta = newLevel - level;
 				if (delta) {
-					levelCell.textContent = entry.level + ' (' + (delta < 0 ? '' : '+') +
+					levelCell.textContent = newLevel + ' (' + (delta < 0 ? '' : '+') +
 						delta + ' since last login)';
 					levelCell.classList.add('mths-tibia-online');
+					const {min, max} = calculateLevelShareRange(newLevel);
+					levelCell.innerHTML += ` <small>(share range: ${min}\u2013${max})</small>`;
 				}
 				// Update the vocation if it changed since the character’s last login.
 				if (vocation != entry.vocation) {

@@ -59,6 +59,9 @@ const calculateLevelShareRange = (level) => {
 	return {min, max};
 };
 
+const formatter = new Intl.NumberFormat('en');
+const formatInt = (number) => formatter.format(number);
+
 // Rewrite internal HTTP links to their HTTPS equivalent.
 each(
 	document.querySelectorAll(

@@ -28,4 +28,14 @@
 	if (!location.search.includes(queryString)) {
 		history.replaceState({}, houseName, queryString);
 	}
+
+	const bees = document.querySelectorAll('b');
+	const lastBee = bees[bees.length - 1];
+	const match = /^(\d+) gold$/.exec(lastBee.textContent);
+	if (match) {
+		// Enable pretty number formatting.
+		const bid = match[1];
+		lastBee.textContent = `${formatInt(bid)} gold`;
+	}
+
 })();

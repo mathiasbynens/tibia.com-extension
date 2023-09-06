@@ -10,17 +10,12 @@ const elTibiaCoins = document.querySelectorAll('.ShortAuctionDataValue b');
 // 1 TC = 0.03487 EUR
 const TIBIA_COIN_COST_IN_EUR = 0.03487;
 
-const formatter = new Intl.NumberFormat('en', {
-  style: 'currency',
-	currency: 'EUR',
-});
-
 // Enhance the auction page.
 if (elTibiaCoins) {
 	for (const el of elTibiaCoins) {
 		const costInCoins = el.textContent.replaceAll(',', '');
 		const costInEur = costInCoins * TIBIA_COIN_COST_IN_EUR;
-		el.title = `≈ ${ formatter.format(costInEur) } EUR @ ${ TIBIA_COIN_COST_IN_EUR } per TC`;
+		el.title = `≈ ${ formatEuro(costInEur) } @ ${ TIBIA_COIN_COST_IN_EUR } per TC`;
 	}
 
 	// If it’s an auction detail page, simplify and future-proof the URL

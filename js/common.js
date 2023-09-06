@@ -59,8 +59,14 @@ const calculateLevelShareRange = (level) => {
 	return {min, max};
 };
 
-const formatter = new Intl.NumberFormat('en');
+const intFormatter = new Intl.NumberFormat('en');
 const formatInt = (number) => formatter.format(number);
+
+const euroFormatter = new Intl.NumberFormat('en', {
+	style: 'currency',
+	currency: 'EUR',
+});
+const formatEuro = (price) => euroFormatter.format(price);
 
 // Rewrite internal HTTP links to their HTTPS equivalent.
 each(

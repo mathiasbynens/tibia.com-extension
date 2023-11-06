@@ -7,8 +7,8 @@
 
 const elTibiaCoins = document.querySelectorAll('.ShortAuctionDataValue b');
 
-// 1 TC = 0.03487 EUR
-const TIBIA_COIN_COST_IN_EUR = 0.03487;
+// 1 TC = 0.03765 EUR
+const TIBIA_COIN_COST_IN_EUR = 0.03765;
 
 // Enhance the auction page.
 if (elTibiaCoins) {

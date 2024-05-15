@@ -11,8 +11,7 @@ if (location.pathname.startsWith('/forum/')) {
 
 	each(document.querySelectorAll('a[name^="post"]'), function(el) {
 		const postID = el.name.replace(/^post/, '');
-		el.href = strip`/forum/?action=thread&threadid=${ threadID }&
-			postid=${ postID }#post${ postID }`;
+		el.href = strip`/forum/?action=thread&postid=${ postID }#post${ postID }`;
 		el.textContent = '\xB6';
 		el.className = 'mths-tibia-permalink';
 	});

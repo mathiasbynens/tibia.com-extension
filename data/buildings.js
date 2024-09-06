@@ -173,6 +173,11 @@ const TIBIA_HOUSES = new Map([
 		['Esuph IV c', 59074],
 		['Esuph IV d', 59075]
 	])],
+    ['Candia', new Map([
+		['Blueberry Bay', 53501],
+		['Cherry Cake Tower', 53503],
+		['Vanilla Beach', 53502]
+	])],
 	['Carlin', new Map([
 		['Druids Retreat A', 20004],
 		['Druids Retreat B', 20005],

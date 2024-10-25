@@ -6,15 +6,14 @@
 			"type": "modifyHeaders",
 			"responseHeaders": [
 				{
-					"header": "Cache-Control",
 					"operation": "set",
+					"header": "Cache-Control",
 					"value": "no-store, max-age=0"
 				}
 			]
 		},
 		"condition": {
-			"urlFilter": "/community/*",
-			"domains": ["www.tibia.com"],
+			"urlFilter": "|https://www.tibia.com/community/*",
 			"resourceTypes": ["main_frame", "xmlhttprequest"]
 		}
 	}

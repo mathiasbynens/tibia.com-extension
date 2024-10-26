@@ -9,6 +9,10 @@
 					"operation": "set",
 					"header": "Cache-Control",
 					"value": "no-store, max-age=0"
+				},
+				{
+					"operation": "remove",
+					"header": "Expires"
 				}
 			]
 		},

@@ -111,7 +111,7 @@ if (elCharacters) {
 				<span class="mths-tibia-character-links">(
 					<a href="http://www.tibiaring.com/char.php?lang=en
 						&amp;c=${ encodeURIComponent(charName) }">PvP history</a>,${ ' ' }
-					<a href="https://guildstats.eu/character?nick=${ charNameEncoded }&amp;tab=7">experience history</a>,${ ' ' }
+					<a href="https://guildstats.eu/character?nick=${ charNameEncoded }&amp;tab=9">experience history</a>,${ ' ' }
 					<a href="https://www.exevopan.com/?mode=history&descending=true&amp;nicknameFilter=${ charNameEncoded }">bazaar history</a>
 				)</span>`;
 		});

@@ -94,7 +94,7 @@ if (elCharacters) {
 		$cell('Name', function(element, text) {
 			// Account for “Foo, will be deleted at Oct 1 2012, 17:00:00 CEST”.
 			charCell = element;
-			charName = normalizeSpaces(text.match('^[^,\(]+')[0].trim());
+			charName = normalizeSpaces(text.match(/^([^,(]+(?:,(?! will be deleted at)[^,(]*)*)?/)[0].trim());
 			charNameEncoded = encode(charName);
 			charCell.onclick = function(event) {
 				const target = event.target;

@@ -157,7 +157,7 @@ if (elCharacters) {
 		});
 
 		fetchOnlineCharacters(strip`
-			/community/?subtopic=worlds&order=level_desc&world=${ encode(world) }&cacheBust=${ Date.now() }
+			/community/?subtopic=worlds&order=level_desc&world=${ encode(world) }&${ Date.now() }
 		`).then(parseOnlineCharacters).then(function(map) {
 			const entry = map.get(charName);
 			// Update the level if it changed since the character’s last login.

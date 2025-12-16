@@ -3,7 +3,7 @@
 	"name": "Tibia.com enhancer",
 	"description": "Improve the user experience on Tibia.com.",
 	"author": "Mathias Bynens",
-	"version": "2.2.4",
+	"version": "2.2.5",
 	"homepage_url": "https://mths.be/tibiauserjs",
 	"icons": {
 		"48": "img/icon-48.png",
@@ -11,13 +11,8 @@
 		"128": "img/icon-128.png",
 		"256": "img/icon-256.png"
 	},
-	"permissions": [
-		"declarativeNetRequest",
-		"storage"
-	],
-	"host_permissions": [
-		"https://www.tibia.com/*"
-	],
+	"permissions": ["declarativeNetRequest", "storage"],
+	"host_permissions": ["https://www.tibia.com/*"],
 	"declarative_net_request": {
 		"rule_resources": [
 			{
@@ -30,13 +25,8 @@
 	"content_scripts": [
 		{
 			"run_at": "document_end",
-			"matches": [
-				"http://*.tibia.com/*",
-				"https://*.tibia.com/*"
-			],
-			"css": [
-				"css/common.css"
-			],
+			"matches": ["http://*.tibia.com/*", "https://*.tibia.com/*"],
+			"css": ["css/common.css"],
 			"js": [
 				"data/buildings.js",
 				"js/common.js",

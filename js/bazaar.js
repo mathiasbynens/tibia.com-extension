@@ -7,8 +7,8 @@
 
 const elTibiaCoins = document.querySelectorAll('.ShortAuctionDataValue b');
 
-// 1 TC = 0.03765 EUR
-const TIBIA_COIN_COST_IN_EUR = 0.03765;
+// In the official store, the price of 15K TC is 576.10 EUR as of 2025-12-16.
+const TIBIA_COIN_COST_IN_EUR = 576.10 / 15_000;
 
 // Enhance the auction page.
 if (elTibiaCoins) {

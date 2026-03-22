@@ -749,6 +749,8 @@ const TIBIA_HOUSES = new Map([
 		['Furrier Quarter 3', 55213]
 	])],
 	['Thais', new Map([
+		['Targuna Cottage 1', 101],
+		['Targuna Cottage 2', 102],
 		['Demon Tower', 10006],
 		['Open-Air Theatre', 10007],
 		['Sunset Homes, Flat 01', 10101],
